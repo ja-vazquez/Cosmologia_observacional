@@ -53,24 +53,21 @@
 
 \begin{document}
 
-\title{Cosmo Estad\'istica} 
+\title{Cosmolog\'ia Observacional y Estad\'istica} 
 
 \author{J. Alberto Vazquez}
-\affiliation{ICF-UNAM}
-\affiliation{CINVESTAV}
+\affiliation{Instituto de Ciencias F\'isicas, Universidad Nacional Aut\'onoma de M\'exico,	62210 Cuernavaca, Morelos, M\'exico}
+
 \email{javazquez@icf.unam.mx}
-
 \author{Luis E. Padilla}
-\affiliation{CINVESTAV}
+\affiliation{Departamento de F\'isica, Centro de Investigaci\'on y de Estudios Avanzados 
+		del IPN, AP 14-740, Ciudad de M\'exico 07000, M\'exico}
 
-
-
-
-\date{\today}
+%\date{\today}
 
 \begin{abstract}
  En este art\'iculo se presenta una breve introducci\'on sobre las propiedades
- que describen el Universo observable. Tanto la teor\'ia como las observaciones, y la conecci\'on existente entre
+ que describen el Universo observable. Tanto la teor\'ia como algunas observaciones, y la conecci\'on existente entre
  ellas dada por la estad\'istica Bayesiana a trav\'es de c\'odigos n\'umericos. 
  \end{abstract}
 
@@ -80,10 +77,34 @@
 
 \section{Introducci\'on}
 
-Algo sobre el universo
+En este art\'iculo revisaremos los fundamentos b\'asicos de 
+la Cosmolog\'ia de alta precisi\'on. Para esto, en las secciones (\ref{sec:Universo}) y (\ref{sec:Geom}) 
+ introduccimos las ecuaciones b\'asicas que rigen la din\'amica de nuestro Universo y 
+la geometr\'ia al que \'este debe necesariamente estar sujeto. Posteriormente, en la secci\'on 
+(\ref{sec:Inven}) nos enfocaremos en describir los diferentes constituyentes de materia que nuestro Universo 
+puede contener. De \'esta manera, en la secci\'on (\ref{sec:eqns}) utilizaremos esta informaci\'on los 
+resultados para as\'i obtener las ecuaciones finales que describen la din\'amica de nuestro Cosmos. 
+Como es de esperarse, cualquier 
+teor\'ia f\'isica que est\'e sujeta a observaciones experimentales por tanto contenga cantidades observables, en la 
+secci\'on (\ref{sec:Params}) describimos los par\'ametros cosmol\'ogicos que nos ayudar\'an a poder 
+comprobar nuestras teor\'ias. Luego, en la secci\'on (\ref{sec:Observ}) describiremos uno de los experimentos 
+cl\'asicos que nos permiten hacer fuertes constricciones sobre los par\'ametros de densidad y 
+curvatura en nuestro Cosmos. Uno vez que ya tenemos nuestro conjunto de par\'ametros observables 
+y resultados observacionales, es preciso tener un m\'etodo de an\'alisis de dichos resultados. 
+Para esto, y debido a la naturaleza de nuestras observaciones (no podemos generar m\'ultiples 
+Universos para hacer observaciones), en la secci\'on (\ref{sec:Bayes}) damos un peque\~no repaso a la 
+estad\'istica Bayesiana, la cual nos permitir\'a hacer esta tarea. En este art\'iculo solamente nos 
+centraremos en la inferencia de par\'ametros, por lo que esta introducci\'on se har\'a de tal forma 
+de que el objetivo pueda ser alcanzado. En la Cosmolog\'ia estandar se suelen tener teor\'ias 
+con varios par\'ametros, por lo que la realizaci\'on anal\'itica de nuestro an\'alisis no es 
+usualmente posible. Para esto, en la secci\'on (\ref{ref:metodos}) nos enfocaremos en proporcionar las 
+herramientas computacionales b\'asicas que nos permitir\'an hacer nuestra inferencia de par\'ametros 
+de forma num\'erica. Finalmente aplicaremos todos estos nuevos conceptos 
+aprendidos en uno de los ejemplos m\'as simples que existen: ajustar los par\'ametros libres de una recta (\ref{sec:recta})
+y distancias lumin\'osas (\ref{sec:SNs}).
 
 %%============================================================%%
-\section{El Universo observable}
+\section{El Universo observable} \label{sec:Universo}
 %%============================================================%%
 
 
@@ -116,7 +137,7 @@ presentar soluciones anal\'iticas simples en la presencia de simetr\'ias gen\'er
 
 
 %%============================================================%%
-\section{Geometr\'ia del espacio-tiempo}
+\section{Geometr\'ia del espacio-tiempo}\label{sec:Geom}
 %%============================================================%%
 
 
@@ -211,7 +232,7 @@ el factor de escala normalizado $a(t)$, el cual se calcula una vez que el conten
 
 
 %%============================================================%%
-\section{Inventario C\'osmico}
+\section{Inventario C\'osmico}\label{sec:Inven}
 %%============================================================%%
 
 
@@ -229,7 +250,7 @@ medidas por un observador en el sistema de referencia inercial local, en el cual
 se encuentra en reposo. En \'este sistema, donde la 4-velocidad del fluido es $u^{\mu}=(1,0,0,0)$,
 el tensor de energ\'ia-momento se reduce a $T^{\mu}_\nu=diag(-\rho, g^{ii}p)$. 
 %
-La componente $00$ de Einstein nos proporciona la ecuaci\'on de Friedmann
+La componente $00$ de las ecuaciones de Einstein nos proporciona la ecuaci\'on de Friedmann
 %
 	\beq \label{eq:Fried}
 		\left(\frac{\dot a}{a}\right)^2 = \frac{8\pi G}{3} \rho - \frac{k}{a^2} + \frac{\Lambda}{3}.
@@ -295,7 +316,7 @@ de dos contribuyentes principales: fotones ($\gamma$) y neutrinos sin masa ($\nu
 
 \textit{Fotones}. Los fotones primordiales juegan un papel muy importante en la cosmolog\'ia 
 observacional  ya que ellos constituyen la radiaci\'on c\'osmica en el fondo de microondas que observamos
-hoy en d\'ia \jav{ \cite{alguna cita}}
+hoy en d\'ia \citet{COBE}
 \\
 
 \textit{Neutrinos sin masa}. Los neutrinos son clasificados como leptones d\'ebilmente interactuantes los cuales existen
@@ -312,7 +333,7 @@ donde $N_{\rm eff}$ es el n\'umero efectivo de especies de neutrinos; n\'otese q
 Recientemente varios experimentos sugieren que los neutrinos efectivamente poseen 
 una masa aunque muy peque\~na, por ejemplo experimentos que detectan neutrinos atmosf\'ericos o neutrinos solares.
 Aunado a esto, obervaciones cosmol\'ogicas tambi\'en pueden imponer l\'imites en las masas de los neutrinos; algunos art\'iculos
-de revisi\'on sobre el tema \jav{\cite{algo}}.
+de revisi\'on sobre el tema \cite{neutrino} y \cite{neutrinomass1}.
 
 
 %%------------------------------------------------------------------------------------------------%%
@@ -342,7 +363,7 @@ y de materia oscura (DM)
 (protones $p^\texttt{+}$ y neutrones $n^0$).
 Adem\'as si consideramos que el Universo como un todo tiene una carga total neutra, por tanto debe de haber 
 un n\'umero igual de protones que de electrones ($e^\texttt{-}$ - leptones cargados). 
-Un art\'iculo de revisi\'on sobre la formaci\'on de elementos en el bing bang puede encontrarse en \jav{cite{}}.
+Un art\'iculo de revisi\'on sobre la formaci\'on de elementos en el bing bang puede encontrarse en \cite{bbn}.
 \\
 
 
@@ -352,8 +373,8 @@ partir de manifestaciones gravitacionales a trav\'es de, por ejemplo, el comport
 aplanado detectado en las curvas de rotaci\'on de diversas galaxias espirales, la
 raz\'on masa-luz observada en c\'umulos de galaxias y la distorci\'on de la luz proveniente 
 de fuentes lejanas medida por lentes gravitacionales.
- Una discuci\'on extensa sobre el estado actual de la materia oscura, incluyendo evidencia experimental
-y motivaciones te\'oricas es presentado por \jav{\cite{}}.
+ Una discuci\'on extensa sobre el estado de la materia oscura, incluyendo evidencia experimental
+y motivaciones te\'oricas es presentado por \cite{jav}.
 
 
 %%------------------------------------------------------------------------------------------------%%
@@ -375,7 +396,7 @@ la densidad de energ\'ia del vac\'io permanece siempre con el mismo valor consta
 la cual tiene una ecuaci\'on de estado asociada $w_\Lambda=-1$. 
 Por tanto la constante cosmol\'ogica puede verse como la forma m\'as simple de una componente de \textit{energ\'ia oscura}, 
 com\'unmente considerada como el principal candidato para la explicaci\'on de la aceleraci\'on actual del cosmos.
-En \jav{\cite{}} encuentran que una ecuaci\'on de estado dependiente del tiempo $w_{DE}(a)$ provee una mejor descripci\'on de las
+En cite{darken} encuentran que una ecuaci\'on de estado dependiente del tiempo $w_{DE}(a)$ provee una mejor descripci\'on de las
 observaciones actuales. 
 
 
@@ -406,7 +427,7 @@ de la siguiente manera
 Considerando que la densidad total del universo $\rho$ es positiva, la expansi\'on universal solamente puede detenerse 
 si la geometr\'ia de este es cerrada $K>0~ (\rho_k <0)$ o de cualquier otra manera el universo se expandir\'a por siempre. 
 Notamos de la ecuaci\'on (\ref{eq:curv}) que para un p\'arametro de Hubble muy particular existe una densidad para la cual el Universo 
-posee una curvaruta plana ($K=0$), a \'este valor de la densidad se le conoce como la \textit{densidad cr\'itica}, y queda dada definida por
+posee una curvaruta plana ($K=0$). A \'este valor de la densidad se le conoce como la \textit{densidad cr\'itica}, y queda dada definida por
 %
 	\beq
 		\rho_c(t) \equiv \frac{3H^2}{8 \pi G}.
@@ -414,7 +435,7 @@ posee una curvaruta plana ($K=0$), a \'este valor de la densidad se le conoce co
 
 
 %%============================================================%%
-\section{Ecuaciones Cosmol\'ogicas}
+\section{Ecuaciones Cosmol\'ogicas}\label{sec:eqns}
 %%============================================================%%
 
 Una vez que se ha especificado el contenido de materia toda la informaci\'on sobre la din\'amica del cosmos 
@@ -457,7 +478,7 @@ lleno de un conjunto de fluidos perfectos se pueden escribir de la siguiente man
 
 
 %%============================================================%%
-\section{Par\'ametros Cosmol\'ogicos}
+\section{Par\'ametros Cosmol\'ogicos}\label{sec:Params}
 %%============================================================%%
 
 
@@ -476,7 +497,7 @@ del cosmos.
 
 Este tipo de par\'ametros, com\'unmente  denominados como \textit{par\'ametros est\'andar}, son considerados
 como las principales cantidades utilizadas en la descripci\'on del Universo.
-Estos, sin embargo, no son predichos por una teor\'ia fundamental sino que tienen que ser modulados
+\'Estos, sin embargo, no son predichos por una teor\'ia fundamental sino que tienen que ser modulados
 a mano de tal manera que una combinaci\'on apropiada provea la mejor descripci\'on de las observaciones
 astrof\'isicas y cosmol\'ogicas  actuales. Variaciones de estos par\'ametros afectan la amplitud y forma del espectro, as\'i como
 las distancias luminosas medidas, y que por consecuencia desemboca en diferentes realizaciones de nuestro 
@@ -536,7 +557,7 @@ par\'ametros de densidad $\Omega_{i,0}$ y la constante de Hubble $H_0$.
 
 
 %%============================================================%%
-\section{Observaciones}
+\section{Observaciones}\label{sec:Observ}
 %%============================================================%%
 
 El r\'apido avance en el desarrollo de instrumentos observacionales altamente potentes ha guiado
@@ -579,7 +600,7 @@ en t\'erminos del corrimiento al rojo, para desp\'ues localizar la mejor combina
 %%%FIGURE
 \begin{figure}[th]
 \begin{center}
-\includegraphics[trim =  0mm  0mm 0mm 0mm, clip, width=14cm, height=7cm]{SN_models.pdf} 
+\includegraphics[trim =  0mm  0mm 0mm 0mm, clip, width=14cm, height=7cm]{Figures/SN_models.pdf} 
 \end{center}
 \caption[Geometries of the spacetime]
 {Las l\'ineas s\'olidas representan los valores te\'oricos del m\'odulo de la distancia para tres modelos distintos,
@@ -589,7 +610,7 @@ mientras que los datos son obtenidos a partir de mediciones de Supernovas tipo I
 
 
 %%============================================================%%
-\section{Estad\'istica Bayesiana}
+\section{Estad\'istica Bayesiana}\label{sec:Bayes}
 %%============================================================%%
 
 
@@ -848,7 +869,7 @@ dichas regiones corresponden con elipsoides.
 
 \noindent
 La forma en la que estas regiones de confidencia pueden ser calculadas es un poco t\'ecnica para los 
-fines de este cap\'itulo, sin embargo, para los lectores interesados se les recomienda revisar las referencias [ref].
+fines de este cap\'itulo, sin embargo, para los lectores interesados se les recomienda revisar las referencias \citep{LicV2}.
 
 \subsection{Marginalizaci\'on}
 
@@ -864,7 +885,7 @@ mediante la expresi\'on
 donde $m$ es el n\'umero total de par\'ametros en nuestro modelo y $\theta_1,...,\theta_j$ 
 corresponden a los par\'ametros en los que estamos interesados.
 
-\section{M\'etodos Num\'ericos}
+\section{M\'etodos Num\'ericos} \label{ref:metodos}
 
 En un escenario t\'ipico casi nunca es posible hacer el c\'alculo del posterior de manera anal\'itica. 
 Para estas circunstancias existe toda una caja de herramientas computacionales que pueden 
@@ -983,7 +1004,7 @@ par\'ametros que mejor se ajustan a los datos entre las regiones intermedias ent
 %\end{equation}
 %donde $X_i$ es la i-\'esima muestra y $X$ es el promedio de las muestras. Esta autocorrelaci\'on debe hacerse peque\~na conforme $k$ crece, lo que implicar\'ia que las muestras comienzan a ser independientes.
 
-\section{Ajustando una l\'inea recta}
+\section{Ajustando una l\'inea recta} \label{sec:recta}
 
 En esta secci\'on pondremos en uso las herramientas aprendidas anteriormente con uno de los 
 ejemplos m\'as simples que hay: ajustar una l\'inea recta. Para esto, primero generaremos un 
@@ -995,7 +1016,7 @@ Con esto, nuestros datos lucir\'an como se pueden ver en la figura \ref{dat}.
 
 
 \begin{figure}[ht] 
-\includegraphics[trim = 1mm  1mm 1mm 1mm, clip, width=8.cm, height=5cm]{data.png}
+\includegraphics[trim = 1mm  1mm 1mm 1mm, clip, width=8.cm, height=5cm]{Figures/data.png}
 \caption{Datos a lo largo 
 de la recta $y=1+x$ con un ruido gaussiano con desviaci\'on estandar $\sigma = 0.3$.}% \citep{LiddleLyth}.}
 \label{dat}
@@ -1055,7 +1076,7 @@ criterio de Gelman-Rubin para la convergencia de las cadenas.}}
 %muestras son independientes, con lo que podemos considerar que nuestro an\'alisis va bien y ha convergido completamente. 
 
 \begin{figure}[ht] 
-\includegraphics[trim = 1mm  1mm 1mm 1mm, clip, width=14.cm, height=5cm]{chain.png}
+\includegraphics[trim = 1mm  1mm 1mm 1mm, clip, width=14.cm, height=5cm]{Figures/chain.png}
 \caption{Resultados obtenidos de nuestro muestreo de pasos en nuestras cadenas de Markov}% \citep{LiddleLyth}.}
 \label{fig:chains}
 \end{figure}
@@ -1063,10 +1084,10 @@ criterio de Gelman-Rubin para la convergencia de las cadenas.}}
 Para ejemplificar los resultados obtenidos mediante este m\'etodo, podemos graficar la recta te\'orica considerando los valores promediados de nuestros par\'ametros proporcionados en la tabla \ref{tabla1}. En la figura \ref{fig:datastr} podemos observar esta gr\'afica. Como podemos observar, a pesar de que nuestra curva inferida por nuestro m\'etodo Bayesiano no coincide exactamente con la recta real, \'esta parece ajustar bastante bien nuestros datos. Por supuesto, esto se debe al hecho de que al contar con tan pocos datos, a\'un hay cierta ambig\"uedad en los par\'ametros que pueden ajustar relativamente bien a los datos. 
 
 \begin{figure}[ht] 
-\includegraphics[trim = 1mm  1mm 1mm 1mm, clip, width=8.cm, height=5cm]{datastr.png} \qquad
-\includegraphics[trim = 1mm  1mm 1mm 1mm, clip, width=6.cm, height=5cm]{cab.png}
-\caption{Derecha:Curva inferida por nuestro m\'etodo Bayesiano. Los par\'ametros obtenidos parecen ajustar muy bien nuestros datos.
-Izquierda:Regiones de confidencia en 2D para nuestros par\'ametros $a$ y $b$. Graficamos los contornos a 1-4 $\sigma$. }% \citep{LiddleLyth}.}
+\includegraphics[trim = 1mm  1mm 1mm 1mm, clip, width=8.cm, height=5cm]{Figures/datastr.png} \qquad
+\includegraphics[trim = 1mm  1mm 1mm 1mm, clip, width=6.cm, height=5cm]{Figures/cab.png}
+\caption{Derecha: Curva inferida por nuestro m\'etodo Bayesiano. Los par\'ametros obtenidos parecen ajustar muy bien nuestros datos.
+Izquierda: Regiones de confidencia en 2D para nuestros par\'ametros $a$ y $b$. Graficamos los contornos a 1-4 $\sigma$. }% \citep{LiddleLyth}.}
 \label{fig:datastr}
 \end{figure}
 
@@ -1079,47 +1100,77 @@ Izquierda:Regiones de confidencia en 2D para nuestros par\'ametros $a$ y $b$. Gr
 %\end{minipage}
 %\\ $ $
 
-Finalmente s\'olo resta mostrar las t\'ipicas regiones de confidencia para nuestros par\'ametros. Las regiones que son usuales mostrar son aquellas que corresponden a un m\'ultiplo de desviaciones estandar de los par\'ametros de inter\'es. En la figura \ref{confidence} mostramos las t\'ipicas regiones de confidencia a 1-4 $\sigma$. Adem\'as hemos graficado en color rojo el valor real para nuestros par\'ametros. Lo que podemos observar r\'apidamente es que el valor real de nuestros par\'ametros se encuentran a menos de una desviaci\'on estandar del valor estimado por nuestro m\'etodo de inferencia. Por supuesto, la raz\'on de esta discrepancia es debido a que s\'olo contamos con 25 datos para hacer nuestra inferencia Bayesiana; de contar con m\'as, nuestros resultados deber\'ian ser m\'as precisos y podr\'iamos ser capaces de acotar en una regi\'on muy peque\~na los posibles valores que nuestros par\'ametros podr\'ian tener.  
+Finalmente s\'olo resta mostrar las t\'ipicas regiones de confidencia para nuestros par\'ametros. Las regiones que son usuales mostrar son aquellas que corresponden a un m\'ultiplo de desviaciones estandar de los par\'ametros de inter\'es. En la figura \ref{fig:datastr} mostramos las t\'ipicas regiones de confidencia a 1-4 $\sigma$. Adem\'as hemos graficado en color rojo el valor real para nuestros par\'ametros. Lo que podemos observar r\'apidamente es que el valor real de nuestros par\'ametros se encuentran a menos de una desviaci\'on estandar del valor estimado por nuestro m\'etodo de inferencia. Por supuesto, la raz\'on de esta discrepancia es debido a que s\'olo contamos con 25 datos para hacer nuestra inferencia Bayesiana; de contar con m\'as, nuestros resultados deber\'ian ser m\'as precisos y podr\'iamos ser capaces de acotar en una regi\'on muy peque\~na los posibles valores que nuestros par\'ametros podr\'ian tener.  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Estad\'istica Bayesiana con Supernovas}
+\section{Comparando Supernovas} \label{sec:SNs}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+Para realizar una comparaci\'on cuantitativa entre modulo de la distancia medido por diversas supernovas con la 
+distancia lumin\'osa te\'orica hacemos uso del c\'odico \texttt{SimpleMC} desarrollado por A. Slosar y J.A. V\'azquez 
+ \cite{simplemc}. \'Este permite comprimir la informaci\'on de 
+radiaci\'on c\'osmica de fondo en un n\'umero apropiado de par\'ametros y tambi\'en incluye
+observaciones de las Oscilaciones Ac\'usticas en los bariones (BAO).
+\texttt{SimpleMC} calcula de manera f\'acil y r\'apida velocidades de expansi\'on y distancias 
+del universo a partir de la ecuaci\'on de Friedmann, y a partir de ah\'i constricciones a 
+los par\'ametros cosmol\'ogicos utilizando algoritmos MCMC (Markov Chain Monte Carlo).
+\\
+
+A partir de los resultados mostrados en la Figura \ref{Fig:cmb_sh} se encuentra que la mejor combinaci\'on 
+de par\'ametros cosmol\'ogicos que reproducen las observaciones actuales  son los siguientes:
+a partir de Supernovas y agregando datos obtenidos por el sat\'elite Planck $\Omega_{DM} =0.30 \pm 0.04$, 
+$\Omega_b h^2 = 0.0224 \pm 0.0004$,  $h = H_0/100 = 0.68 \pm 0.04$ $\Omega_k = -0.002 \pm 0.010$. 
+Por otro lado si utilizamos la combinaci\'on de BAO junto con Planck, como se hace en \cite{Joint}, encontramos que 
+$\Omega_{DM} = 0.301 \pm 0.008$,   $\Omega_b h^2 = 0.0225 \pm 0.0003$,  $h = H_0/100 = 0.679 \pm 0.007$, 
+$\Omega_k = -0.003 \pm 0.003$, donde el error en ambas combinaciones representa el 68\% nivel de confianza.
+Por lo tanto, el universo es escencialmente plano y adem\'as requiere de una constante cosmol\'ogica. 
 
 %%%FIGURE
 \begin{figure}[h]
 \begin{center}
-\includegraphics[trim =  0mm  0mm 0mm 0mm, clip, width=8cm, height=5cm]{constraints.pdf} 
-\includegraphics[trim =  0mm  0mm 0mm 0mm, clip, width=8cm, height=5cm]{constraints_1.pdf} 
+\includegraphics[trim =  0mm  0mm 0mm 0mm, clip, width=8cm, height=5cm]{Figures/constraints.pdf} 
+\includegraphics[trim =  0mm  0mm 0mm 0mm, clip, width=8cm, height=5cm]{Figures/constraints_1.pdf} 
 \end{center}
 \caption[Geometries of the spacetime]
-{A summary of possible geometries.}
+{Constricciones de los par\'ametros 
+$\Omega_{m}$, $\Omega_k$ , $h = H_0/100$, $\Omega_\Lambda $ empleados en la descripci\'on del Universo;
+usando dos conjuntos de datos: Planck $+$ SN (rojo) y Planck $+$ BAO (azul).
+Los contornos muestran niveles de confianza 1-$\sigma$ (68\%) y 2-$\sigma$ (95\%).}
 \label{Fig:cmb_sh}
 \end{figure}
 %%%%%%%
 
-Los resultados obtenidos utilizando SN $\Omega_{DM} =0.30 \pm 0.04, \Omega_b h^2 = 0.0224 \pm 0.0004, h = H_0/100 = 0.68 \pm 0.04
-\Omega_k = -0.002 \pm 0.010$, y usando BAO 
-$\Omega_{DM} = 0.301 \pm 0.008,   \Omega_b h^2 = 0.0225 \pm 0.0003,  h = H_0/100 = 0.679 \pm 0.007, 
-\Omega_k = -0.003 \pm 0.003$ donde el error representa 68\% nivel de confianza.
 
-\bibliography{cosmo,cosmo_preprints}
 
-Once we have learned how to use a Bayesian procedure to fit a model, we can use this new tecniques in our Cosmological models. 
+%\bibliography{cosmo,cosmo_preprints}
+
+%Once we have learned how to use a Bayesian procedure to fit a model, we can use this new tecniques in our Cosmological models. 
 
 
 
 %\jav{tomando los parametros que mejor ajustan, graficar la linea teoria en la misma figura 2, tambien falta decir que 
 %valor en el promedio $\pm$ su barra de error para a,b, m}
 
-\bibliography{cosmo,cosmo_preprints}
+%\bibliography{cosmo,cosmo_preprints}
 %\bibitem{AlanH}{Alan Heaven} Alan Heavens; Statistical techniques in cosmology; May 2010
 %\bibitem{LicV2} Verde L., astroph/0712.3028 (2007)
 %\bibitem{PyMC3}Salvatier J., Wiecki T.V., Fonnesbeck C. (2016) Probabilistic programming in Python using PyMC3. PeerJ Computer Science 2:e55 DOI: 10.7717/peerj-cs.55.
 %\bibitem{Github} https://github.com/LuisPaAl/Statistical-memories
-
+\begin{thebibliography}{9}
+\bibitem{neutrino}Yvonne Y. Y. Wong, Ann.Rev.Nucl.Part.Sci.(2011)61:69-98, DOI: 10.1146/annurev-nucl-102010-130252
+\bibitem{neutrinomass1}Julien Lesgourgues, Sergio Pastor, New Journal of Physics 16 (2014) 065002, DOI: 10.1088/1367-2630/16/6/065002
+\bibitem{bbn} David Tytler, \textit{et. al.}, Physica Scripta, Volume 2000, T85, DOI: 	10.1238/Physica.Topical.085a00012 
+\bibitem{darken}Gong-Bo Zhao, \textit{et. al.}, Nature Astronomy 1 (9), 627
+\bibitem{jav} A V\'azquez-González, T Matos, Revista mexicana de F\'isica E, 2008
+\bibitem{LicV2} Verde L., astroph/0712.3028 (2007)
+\bibitem{AlanH}{Alan Heaven} Alan Heavens; Statistical techniques in cosmology; May 2010
+\bibitem{PyMC3}Salvatier J., Wiecki T.V., Fonnesbeck C. (2016) Probabilistic programming in Python using PyMC3. PeerJ Computer Science DOI: 10.7717/peerj-cs.55.
+\bibitem{Joint} Éric Aubourg, \textit{et. al.} Cosmological implications of baryon acoustic oscillation (BAO) measurements, arXiv:1411.1074. 
+\bibitem{Github} https://github.com/LuisPaAl/Statistical-academic
+\bibitem{simplemc} https://github.com/slosar/april
+\end{thebibliography}
 \end{document}
 
 
