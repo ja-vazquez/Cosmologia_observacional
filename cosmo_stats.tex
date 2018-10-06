@@ -841,7 +841,128 @@ which means that we have a very strong evidence that $H_1$ is better that $H_0$.
 
 \section{Bayesian statistic and Cosmology}
 
-Along the new age of cosmology, observational experiments have been very helpful to confront, eliminate or refined several cosmological models. On this period it has been necessary to improve sensitivity to the experiments in order to achieve stronger constraints on the different models and model's parameters. For example, on CMB satellite experiments, there was a factor of 10 better in sensitive from \textit{COBE} to $WMAP$ and from $WMAP$ to Planck \cite{cmbex}.  On redshift surveys experiments which are interested to map the universe in redshift space, we can compare the 18,000 redshift bright galaxies that were measured by the CfA2 Redshift Survey on 1995 with the \textcolor{red}{[number]} of galaxies that the Sloan Digital Sky Survey (SDSS) measured on \textcolor{red}{(year)} \cite{observ}. In addition there are several new cosmological observations that pretend to update and make our data more precise and that we will need to confront with our models or model's parameters. Such experiments are, for example \textcolor{red}{(Nuevos experimentos. Explicarlos un poco. Aqu\'i entonces comenzar a hablar de que estos nuevos datos se pueden utilizar para constre\~nir par\'ametros).}
+%Along the new age of cosmology, observational experiments have been very helpful to confront, eliminate or refined several cosmological models. On this period it has been necessary to improve sensitivity to the experiments in order to achieve stronger constraints on the different models and model's parameters. For example, on CMB satellite experiments, there was a factor of 10 better in sensitive from \textit{COBE} to $WMAP$ and from $WMAP$ to Planck \cite{cmbex}.  On redshift surveys experiments which are interested to map the universe in redshift space, we can compare the 18,000 redshift bright galaxies that were measured by the CfA2 Redshift Survey on 1995 with the \textcolor{red}{[number]} of galaxies that the Sloan Digital Sky Survey (SDSS) measured on \textcolor{red}{(year)} \cite{observ}. In addition there are several new cosmological observations that pretend to update and make our data more precise and that we will need to confront with our models or model's parameters. Such experiments are, for example \textcolor{red}{(Nuevos experimentos. Explicarlos un poco. Aqu\'i entonces comenzar a hablar de que estos nuevos datos se pueden utilizar para constre\~nir par\'ametros).}
+
+
+In this section we will present the necessary topics of Cosmology in order to understand the application of Bayesian Statistics. We will use natural units.
+
+\subsection{The metric.}
+To study the Universe we consider that it is homogeneous and isotropic at large scales. This is known as \textbf{Cosmological Principle}. Isotropic means that the galaxies distribution doesn't depend on the direction, and homogeneous means that it is independent of the position. In addition,we will use the formalism of General Relativity. It studies the interaction between the geometry and matter contained in the space-time. The curvature of the space-time produces physical effects on the matter it contains, these effects are associated with a gravitational field. On the other hand, the curvature is related to the matter contained by an energy-momentum tensor. The above can be summarized by saying that matter tells space-time how to curve and, in turn, geometry tells matter how to move. We can write the above in the Einstein equation:
+
+\begin{equation}
+\label{einstein}
+G_{\mu \nu} = 8\pi G T_{\mu \nu}.
+\end{equation}
+
+Where $G_{\mu \nu}$ is the Einstein tensor (geometry of the space-time), $T_{\mu \nu}$ is the energy-momentum tensor (matter contained in the Universe) and $G$ is the gravitational constant \cite{baumann}, \cite{wald}.
+
+The distance between two points in a curved space-time can be measured using:
+
+\begin{equation}
+ds^2 = g_{\mu \nu}dx^{\mu}dx^{\nu}.
+\end{equation}
+
+Where $g_{\mu \nu}$ is the metric tensor which contains all the information about the structure of the space-time. The values that the indices $\mu$ and $\nu$ can take depend on the dimensions of the space-time.
+
+To study the Universe we use the Friedmann-Lema\^itre-Robertson-Walker metric (\textbf{FLRW}). This describes a homogeneous, isotropic and expanding Universe.
+
+\begin{equation}
+\label{m2}
+ds^2 = dt^2 -a^2(t)\gamma_{ij}dx^idx^j ,
+\end{equation}
+
+where
+
+\begin{equation}
+\label{m3}
+\gamma_{ij} \equiv \delta_{ij} + \kappa \frac{x_i x_j}{1 - \kappa \left(x_k x^k\right)}.
+\end{equation}
+
+In equation (\ref{m3}), $\kappa$ describes the curvature. In (\ref{m2}) $a$ is the scale factor which depends on time. By convention we set $a(t_0) \equiv 1$ today \cite{cambridge}.
+
+\subsection{Friedmann and continuity equations.}
+With the Cosmological Principle, the energy-momentum tensor describes a perfect fluid \cite{cambridge}
+
+\begin{equation}
+\label{tensorfluidoperfecto}
+T_{\mu \nu} = (\rho + P)U_{\mu}U_{\nu} - Pg_{\mu \nu} .
+\end{equation} 
+
+Where $\rho$ is the energy density, $P$ is the fluid pressure and $U^{\mu}$ is the 4-velocity relative to the observer. Using equations (\ref{einstein}) and (\ref{tensorfluidoperfecto}) we can deduce Friedmann and continuity equations. This last equation is given by
+
+\begin{equation}
+\label{continuidad}
+\dot{\rho} + 3 \frac{\dot{a}}{a} \left(\rho + P\right) = 0.
+\end{equation}
+
+Equation (\ref{continuidad}) implies energy conservation. On the other hand, Friedmann equations describe the expansion of the Universe. These are
+
+\begin{equation}
+\label{friedmann1}
+H^2 = \left(\frac{\dot{a}}{a}\right)^2 = \frac{8 \pi G}{3} \sum_{i}\rho_{i} - \frac{k}{a^2} ,
+\end{equation}
+
+\begin{equation}
+\frac{\ddot{a}}{a} = -\frac{4 \pi G}{3} \sum_{i}\left(\rho_i + 3P_i\right) .
+\end{equation}
+
+Where $H \equiv \frac{\dot{a}}{a}$ is the Hubble parameter. Using the dimensionless parameters \footnote{$\rho_{crit}$ is the condition to have a flat Universe.}
+
+\begin{eqnarray}
+\Omega_{i} &\equiv& \frac{\rho_i}{\rho_{crit}},\\
+\rho_{crit} &=& \frac{3H_0^2}{8 \pi G}
+\end{eqnarray} 
+
+we can rewrite (\ref{friedmann1}) as
+
+\begin{equation}
+\frac{H^2}{H_0^2} = \Omega_r a^{-4} + \Omega_m a^{-3} + \Omega_k a^{-2} + \Omega_{\Lambda} .
+\end{equation}
+
+Where $\Omega_r$ is the radiation dimensionless density parameter, $\Omega_m$ corresponds to the matter, $\Omega_k$ with curvature and $\Omega_{\Lambda}$ corresponds to Cosmological Constant. $H_0$ is the Hubble parameter value today.
+
+\subsection{Content of the Universe.}
+
+\begin{itemize}
+	\item \textbf{Matter:} It has no pressure and its energy density takes the form $\rho \propto a^{-3}.$ Matter can be baryons (ordinary matter) or dark matter. This dark matter is proposed to explain a lot of observations like the dynamics of the galaxies in Coma cluster or the rotation curves of galaxies. This kind of matter only interacts gravitationally with the rest of the Universe.
+	\item \textbf{Radiation:} It is everything that meets the relation $P = \frac{1}{3} \rho$. This implies a density of the form $\rho \propto a^{-4}$. We consider photons and neutrinos as radiation.
+	\item \textbf{Dark Energy:} We don't know what it is but we propose it in order to explain the accelerating expansion of the Universe. Dark energy can be vacuum energy or cosmological constant.
+\end{itemize}
+
+We can describe the above using the following state equation
+
+\begin{equation}
+\label{ecdeestado}
+\omega = \frac{P}{\rho}.
+\end{equation}
+(\ref{ecdeestado}) is called bariotropic equation because the density only depends on pressure.
+
+\begin{table} [htbp]
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			Component & $\omega$\\
+			\hline
+			Matter & 0 \\
+			\hline
+			Radiation & $\frac{1}{3}$\\
+			\hline
+			Cosmological constant & -1 \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table} 
+
+\subsection{Cosmological observables and parameters.}
+To explain the Universe we use the dimensionless density parameter of each component ($\Omega_i$), the Hubble constant $H_0$ and the optical depth to
+scattering $\tau$. Although there are more parameters that can be used, these can be derived from the previous ones.
+
+In the beginning of this section we mentioned that the FLRW metric describes a Universe with some curvature but the cosmological observations indicate a flat Universe. So the curvature density parameter is zero $\Omega_k = 0$.
+
+\begin{itemize}
+	\item \textbf{Hubble Constant:} It is the slope between the recessional velocity and the proper distance from the galaxy to the observe.
+\end{itemize}
+
 
 \subsection{A first example in parameter inference for Cosmology}
 
