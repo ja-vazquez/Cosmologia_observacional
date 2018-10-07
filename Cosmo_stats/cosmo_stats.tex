@@ -113,7 +113,7 @@ Hence, the Frequentist statistics is based on trying to answer the following que
 
 \subsection{Bayesian statistics}
 
-As it is explained in \cite{bayeslecture}, in bayesian statistics, data and model form two elements of the same space, i.e. no formal distinction is made between measured quantities $X$ and parameters $\theta$. One may envisage the process of generating a measurement's outcome $Y=y$ as two draws, one draw for $\Theta$ (or $Q$) to select a value of $\theta$ (or distribution $P_\theta$) and a subsequent draw for $P_\theta$ to arrive at $X=x$ \textcolor{red}{(que es draw en este contexto?)}. This perspective may seem rather absurd in view of the definitions for a frequentist way of thinking, but in a bayesian one, where probabilities are related to our own knowledge, it results natural to associate probability distributions to our parameters. In this way an element $P_\theta$ of the model is interpreted simply as the distribution of $X$ given the parameter value $\theta$, i.e. as the conditional distribution $X|\theta$.
+As it is explained in \cite{bayeslecture}, in bayesian statistics, data and model form two elements of the same space, i.e. no formal distinction is made between measured quantities $X$ and parameters $\theta$. One may envisage the process of generating a measurement's outcome $Y=y$ as two draws, one draw for $\Theta$ (or $Q$) to select a value of $\theta$ (or distribution $P_\theta$) and a subsequent draw for $P_\theta$ to arrive at $X=x$ \textcolor{red}{(que es draw en este contexto?)} \textcolor{blue}{Ser\'ia algo similar a trazo}. This perspective may seem rather absurd in view of the definitions for a frequentist way of thinking, but in a bayesian one, where probabilities are related to our own knowledge, it results natural to associate probability distributions to our parameters. In this way an element $P_\theta$ of the model is interpreted simply as the distribution of $X$ given the parameter value $\theta$, i.e. as the conditional distribution $X|\theta$.
 \subsection{A bit clearer}
 
 It is very important to understand the differences between both approximations. For it, let us review in this subsection the mandatory example that can help us to easily understand these differences.
@@ -154,6 +154,9 @@ We can see that both approximations arrive at different results. In one of them,
 \textit{Note}: If you are not familiarized with Bayesian statistics, please don't be scared of the last example. In the next section we will introduce the basic concepts to understand the bayesian part and then we will go back to this example to solve it using the new tools acquired.   
 
 \textcolor{red}{(Tratar de escribir esta parte un poco m\'as bonito)}
+\\
+
+\textcolor{blue}{De hecho creo que ser\'ia mejor si se quita esta parte}
 %\subsection{Summary}
 
 %In this section we reviewed the basic differences between the Bayesian and the Frequentist interpretation of statistics. Basically, what is important here is to notice that probability has a different meaning for a frequentist statistician than for a bayesian one. While for a Frequentist, probabilities are related to frequencies of events, for Bayesians, probabilities are related to our own knoledge about an event. Then, given this basic difference, there are several other ones that are a result of it and that are well summarized in table  \ref{table:1}. 
@@ -846,6 +849,14 @@ which means that we have a very strong evidence that $H_1$ is better that $H_0$.
 
 In this section we will present the necessary topics of Cosmology in order to understand the application of Bayesian Statistics. We will use natural units.
 
+\textcolor{blue}{En esta parte estar\'ia bien poner un párrafo donde explique brevemente que la forma en
+que se utiliza la estadística bayesiana en Cosmología es fijando
+parámetros o escogiendo modelos. Luego explicar que para poder hacer un
+análisis bayesiano es necesario conocer bien los modelos, las
+observaciones y los datos que tenemos a nuestra disposición. Por tal
+motivo en esta sección...bla, bla, bla}
+
+\textcolor{blue}{No veo referencias en las im\'agenes.}
 \subsection{The metric.}
 To study the Universe we consider that it is homogeneous and isotropic at large scales. This is known as \textbf{Cosmological Principle}. Isotropic means that the galaxies distribution doesn't depend on the direction, and homogeneous means that it is independent of the position. In addition,we will use the formalism of General Relativity. It studies the interaction between the geometry and matter contained in the space-time. The curvature of the space-time produces physical effects on the matter it contains, these effects are associated with a gravitational field. On the other hand, the curvature is related to the matter contained by an energy-momentum tensor. The above can be summarized by saying that matter tells space-time how to curve and, in turn, geometry tells matter how to move. We can write the above in the Einstein equation:
 
@@ -937,6 +948,10 @@ We can describe the above using the following state equation
 \end{equation}
 (\ref{ecdeestado}) is called bariotropic equation because the density only depends on pressure.
 
+\textcolor{blue}{Bariotropic o barotropic?}
+
+\textcolor{blue}{Referenciar la tabla que aparece después de la ecuación 74.}
+
 \begin{table} [htbp]
 	\begin{center}
 		\begin{tabular}{|l|l|}
@@ -958,6 +973,10 @@ To explain the Universe we use the dimensionless density parameter of each compo
 scattering $\tau$ (the probability that a given photon scatters once). Although there are more parameters that can be used, these can be derived from the previous ones.
 
 In the beginning of this section we mentioned that the FLRW metric describes a Universe with some curvature but the cosmological observations indicate a flat Universe. So the curvature density parameter is zero $\Omega_k = 0$.
+
+\textcolor{blue}{Podría decir que más
+adelante se usará estadística bayesiana para obtener que las observaciones
+son cero (si es que quiere agregar este ejemplo)}
 
 \textbf{Hubble Constant:} It is the slope between the recessional velocity and the proper distance from the galaxy to the observer found by Edwin Hubble in 1929. The Hubble Space Telescope found \cite{hubble2016}:
 
@@ -1095,6 +1114,18 @@ The components in this model are \cite{liddle}:
 \end{itemize}
 
 \subsection{Cosmological example.}
+
+\textcolor{blue}{Deber\'ias poner m\'as ejemplos de cosmolog\'ia e inferencia de par\'ametros. S\'olo
+pones tu parametrizaci\'on CPL, que por cierto nunca la mensionas antes.
+Considero que hay ejemplos que deben estar de caj\'on, como es el de LCDM
+con y sin curvatura (como lo que yo ten\'ia despu\'es de esta parte).
+Tal vez tambi\'en mostrando como funcionan las cosas con diferentes datos,
+por ejemplo para H, y mostrar por qu\'e los hiperpar\'ametros podr\'ian ser
+interesantes. Finalmente, como un ejemplo extra puedes dejar tu
+parametrizaci\'on CPL pero explicando un poco de donde sale y por qu\'e se
+suele proponer.
+}
+
 In this section we show a few examples of what was learned in previous sections applied on Cosmology. We used the CPL parameterization of dark energy state equation \footnote{For more information see references \cite{CPL1} and \cite{CPL2}} 
 
 \begin{equation}
