@@ -1096,48 +1096,7 @@ The components in this model are \cite{liddle}:
 	\item \textbf{Cosmological constant:} We consider it as dark energy to explain the accelerating expansion of the Universe. The idea of Cosmological Constant comes out as a correction to Einstein equations.
 \end{itemize}
 
-\subsection{Cosmological example.}
-In this section we show a few examples on Cosmology. We start with the model $\Lambda$CDM where we have set curvature to zero. The figure (\ref{LCDM}) shows the confidence regions to 1,2-$\sigma$. To obtain this graphs we use first BAO's data. Then we combine it with Planck's data and finally we use BAO, Planck and JLA. It can be seen that increasing the number of data reduces the size of the confidence regions. For example, if we see the first graph, using only BAO's we see that the confidence region is bigger than that the obtained using BAO's plus Planck data. 
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=10cm]{FiguresCosmo/h_Om_LCDM_todas.pdf}	
-	\includegraphics[width=10cm]{FiguresCosmo/Obh2_Om_LCDM_todas.pdf}
-	\caption{Constrictions to cosmological parameters in $\Lambda$CDM usign observational data. Vertical axis corresponds to matter density parameter ($\Omega_m$). In horizontal axis we have Hubble parameter ($h$) and ordinary matter density parameter times $h^2$ ($\Omega_b h^2$).}
-	\label{LCDM}
-\end{figure}
-
-In the figure (\ref{cLCDM}) we fit the parameters in $\Lambda$CDM but we let $\Omega_k$ as a free parameter to be fitted using the observational data. Again we see that the size of the confidence regions depends on the number of data we use. The last graph of (\ref{cLCDM}) shows that the best fit to the curvature density parameter is zero (as we expected).
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=10cm]{FiguresCosmo/h_Om_cLCDM_todas.pdf}	
-	\includegraphics[width=10cm]{FiguresCosmo/Obh2_Om_cLCDM_todas.pdf}
-	\includegraphics[width=10cm]{FiguresCosmo/Ok_Om_cLCDM_todas.pdf}
-	\caption{Constrictions to cosmological parameters in $\Lambda$CDM usign observational data. Vertical axis corresponds to matter density parameter ($\Omega_m$). In horizontal axis we have Hubble parameter ($h$), ordinary matter density parameter times $h^2$ ($\Omega_b h^2$) and curvature density parameter ($\Omega_k$).}
-	\label{cLCDM}
-\end{figure}
-
-Just to show a different example to $\Lambda$CDM we used the CPL parameterization of dark energy state equation. This model considers that dark energy is not a cosmological constant \footnote{For more information see references \cite{CPL1} and \cite{CPL2}}. 
-
-\begin{equation}
-\omega = \omega_0 + \omega_a\left(\frac{z}{1 + z}\right) = \omega_0 + \omega_a\left(1 - a\right).
-\end{equation}
-
-Where $z$ is the redshift, $a$ the scale factor, $\omega_0$ and $\omega_a$ are real numbers.
-
-In the following graphs we fit the parameters in a cosmological model with cold dark matter and the CPL parameterization (dark energy) using the data from Planck collaboration (CMB), BOSS (BAO's) and JLA (Supernovas). \\
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=10cm]{FiguresCosmo/Ok_Om_owaCDM_todos.pdf}	
-	\includegraphics[width=10cm]{FiguresCosmo/wa_Om_owaCDM_todos.pdf}
-	\includegraphics[width=10cm]{FiguresCosmo/w_Om_owaCDM_todos}
-	\caption{Constrictions to cosmological parameters usign observational data. Vertical axis corresponds to matter density parameter ($\Omega_m$). In horizontal axis we have curvature density parameter ($\Omega_k$), $w_a$ and $w_0$ are the CPL parameters.}
-	\label{cosmo1}
-\end{figure}
-
-In figure \ref{cosmo1}, it can be seen that increasing the number of data reduces the size of the confidence regions. We show, in the three graphs, the confidence region to 1,2-$\sigma$. We found that $\Omega_k \approx 0$ this means that we have a flat Universe. We did the same with the CPL parameterization ($\omega_0$ and  $\omega_a$) in horizontal axis. In vertical axis we have the total matter density parameter 	.
 
 \subsection{A first example in parameter inference for Cosmology}
 
@@ -1207,6 +1166,117 @@ The code contains several sampling methods available: Metropolis-Hastings, Neste
 
 \subsection{Some examples}
 \textcolor{red}{Examples of cosmology}
+\subsection{Cosmological example.}
+In this section we show a few examples on Cosmology. We start with the model $\Lambda$CDM where we have set curvature to zero. The figure (\ref{LCDM}) shows the confidence regions to 1,2-$\sigma$. To obtain this graphs we use first BAO's data. Then we combine it with Planck's data and finally we use BAO, Planck and JLA. It can be seen that increasing the number of data reduces the size of the confidence regions. For example, if we see the first graph, using only BAO's we see that the confidence region is bigger than that the obtained using BAO's plus Planck data. 
+
+\begin{figure}[htp]
+	\centering
+	\includegraphics[width=10cm]{FiguresCosmo/h_Om_LCDM_todas.pdf}	
+	\includegraphics[width=10cm]{FiguresCosmo/Obh2_Om_LCDM_todas.pdf}
+	\caption{Constrictions to cosmological parameters in $\Lambda$CDM usign observational data. Vertical axis corresponds to matter density parameter ($\Omega_m$). In horizontal axis we have Hubble parameter ($h$) and ordinary matter density parameter times $h^2$ ($\Omega_b h^2$).}
+	\label{LCDM}
+\end{figure}
+
+In the figure (\ref{cLCDM}) we fit the parameters in $\Lambda$CDM but we let $\Omega_k$ as a free parameter to be fitted using the observational data. Again we see that the size of the confidence regions depends on the number of data we use. The last graph of (\ref{cLCDM}) shows that the best fit to the curvature density parameter is zero (as we expected).
+
+\begin{figure}[htp]
+	\centering
+	\includegraphics[width=10cm]{FiguresCosmo/h_Om_cLCDM_todas.pdf}	
+	\includegraphics[width=10cm]{FiguresCosmo/Obh2_Om_cLCDM_todas.pdf}
+	\includegraphics[width=10cm]{FiguresCosmo/Ok_Om_cLCDM_todas.pdf}
+	\caption{Constrictions to cosmological parameters in $\Lambda$CDM usign observational data. Vertical axis corresponds to matter density parameter ($\Omega_m$). In horizontal axis we have Hubble parameter ($h$), ordinary matter density parameter times $h^2$ ($\Omega_b h^2$) and curvature density parameter ($\Omega_k$).}
+	\label{cLCDM}
+\end{figure}
+
+Just to show a different example to $\Lambda$CDM we used the CPL parameterization of dark energy state equation. This model considers that dark energy is not a cosmological constant \footnote{For more information see references \cite{CPL1} and \cite{CPL2}}. 
+
+\begin{equation}
+\omega = \omega_0 + \omega_a\left(\frac{z}{1 + z}\right) = \omega_0 + \omega_a\left(1 - a\right).
+\end{equation}
+
+Where $z$ is the redshift, $a$ the scale factor, $\omega_0$ and $\omega_a$ are real numbers.
+
+In figure \ref{cosmo1}, we fit the parameters in a cosmological model with cold dark matter and the CPL parameterization (dark energy) using the data from Planck collaboration (CMB), BOSS (BAO's) and JLA (Supernovas). It can be seen that increasing the number of data reduces the size of the confidence regions. We show the confidence region to 1,2-$\sigma$. We did the same with the CPL parameterization ($\omega_0$ and  $\omega_a$) in horizontal axis. In vertical axis we have the total matter density parameter.
+
+\begin{figure}[htp]
+	\centering
+	\includegraphics[width=10cm]{FiguresCosmo/Ok_Om_owaCDM_todos.pdf}	
+	\includegraphics[width=10cm]{FiguresCosmo/wa_Om_owaCDM_todos.pdf}
+	\includegraphics[width=10cm]{FiguresCosmo/w_Om_owaCDM_todos}
+	\caption{Constrictions to cosmological parameters using observational data. We consider cold dark matter and CPL parameterization (dark energy). Vertical axis corresponds to matter density parameter ($\Omega_m$). In horizontal axis we have curvature density parameter ($\Omega_k$), $w_a$ and $w_0$ are the CPL parameters.}
+	\label{cosmo1}
+\end{figure}
+
+Table \ref{tablaLCDM} shows the best fit for the total matter dimensionless density parameter ($\Omega_m$), baryon dimensionless density parameter times square Hubble constant ($\Omega_b h^2$) and Hubble constant ($h$) in $\Lambda$CDM model considering no curvature. In the first column we have the best fit using only BAO's data, in the second column we combine BAO's and Planck data and, in the last column, we use BAO's, Planck and Supernova's data.
+\begin{table} [htbp]
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\multicolumn{4}{c}{\textbf{$\Lambda$CDM}}\\
+			\hline
+			Parameter & BBAO & BBAO+Planck & BBAO+Planck+SN\\
+			\hline
+			$\Omega_m$ & $2.85 \times 10^{-1} \pm 1.99 \times 10^{-2}$  & $3.02 \times 10^{-1} \pm 3.10 \times 10^{-2}$ & $3.02 \times 10^{-1} \pm 8.03 \times 10^{-3}$\\
+			\hline
+			$\Omega_b h^2$& $2.20 \times 10^{-2} \pm 4.61 \times 10^{-4}$ & $2.23 \times 10^{-2} \pm 2.69 \times 10^{-4}$ & $2.23 \times 10^{-2} \pm 2.67 \times 10^{-4}$ \\
+			\hline
+			$h$ & $6.66 \times 10^{-1} \pm 1.30 \times 10^{-2}$ & $6.82 \times 10^{-1} \pm 6.63 \times 10^{-3}$ & $6.82 \times 10^{-1} \pm 6.43 \times 10^{-3}$ \\
+			\hline
+		\end{tabular}
+		\caption{This table shows the best fit for the parameters in $\Lambda$CDM model.}
+			\label{tablaLCDM}
+	\end{center}
+\end{table} 
+
+To obtain table \ref{tablacLCDM} we consider the curvature as a free parameter in $\Lambda$CDM model. So we find the best fit for $\Omega_m$, $\Omega_b h^2$, $h$ and the curvature dimensionless density parameter ($\Omega_k$). Table \ref{tablacLCDM} has the same structure as table \ref{tablaLCDM}.
+
+\begin{table} [htbp]
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\multicolumn{4}{c}{\textbf{$\Lambda$CDM}}\\
+			\hline
+			Parameter & BBAO & BBAO+Planck & BBAO+Planck+SN\\
+			\hline
+			$\Omega_m$ & $2.98 \times 10^{-1} \pm 3.23 \times 10^{-2}$  & $3.01 \times 10^{-1} \pm 8.34 \times 10^{-3}$ & $3.00 \times 10^{-1} \pm 8.12 \times 10^{-3}$\\
+			\hline
+			$\Omega_b h^2$& $2.20 \times 10^{-2} \pm 4.56 \times 10^{-4}$ & $2.25 \times 10^{-2} \pm 3.46 \times 10^{-4}$ & $2.25 \times 10^{-2} \pm 3.39 \times 10^{-4}$ \\
+			\hline
+			$h$ & $6.97 \times 10^{-1} \pm 6.02 \times 10^{-2}$ & $6.78 \times 10^{-1} \pm 7.27 \times 10^{-3}$ & $6.79 \times 10^{-1} \pm 7.21 \times 10^{-3}$ \\
+			\hline
+			$\Omega_k$ & $-8.11 \times 10^{-2} \pm 1.52 \times 10^{-1}$ & $-2.66 \times 10^{-3} \pm 3.08 \times 10^{-3}$ & $-2.60 \times 10^{-3} \pm 3.06 \times 10^{-3}$ \\
+			\hline
+		\end{tabular}
+		\caption{This table shows the best fit for the parameters in $\Lambda$CDM model when curvature is a free parameter.}
+		\label{tablacLCDM}
+	\end{center}
+\end{table} 
+
+In table \ref{tablaowaCDM} we consider a cosmological model with cold dark matter and CPL parameterization for dark energy. We show the best fit for the parameters $\Omega_m$, $\Omega_b h^2$, $h$, $\Omega_k$ and the CPL parameters ($\omega_0$ and $\omega_a$). Table \ref{tablaowaCDM} has the same structure as table \ref{tablaLCDM}.
+
+\begin{table} [htbp]
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\multicolumn{4}{c}{\textbf{$\Lambda$CDM}}\\
+			\hline
+			Parameter & BBAO & BBAO+Planck & BBAO+Planck+SN\\
+			\hline
+			$\Omega_m$ & $1.98 \times 10^{-1} \pm 7.61 \times 10^{-2}$  & $3.65 \times 10^{-1} \pm 2.33 \times 10^{-2}$ & $3.07 \times 10^{-1} \pm 1.09 \times 10^{-2}$\\
+			\hline
+			$\Omega_b h^2$& $2.21 \times 10^{-2} \pm 4.64 \times 10^{-4}$ & $2.25 \times 10^{-2} \pm 3.52 \times 10^{-4}$ & $2.25 \times 10^{-2} \pm 3.52 \times 10^{-4}$ \\
+			\hline
+			$h$ & $4.78 \times 10^{-1} \pm 6.99 \times 10^{-2}$ & $6.16 \times 10^{-1} \pm 2.28 \times 10^{-2}$ & $6.71 \times 10^{-1} \pm 1.15 \times 10^{-2}$ \\
+			\hline
+			$\Omega_k$ & $-2.46 \times 10^{-1} \pm 1.73 \times 10^{-1}$ & $-3.60 \times 10^{-3} \pm 4.52 \times 10^{-3}$ & $-5.00 \times 10^{-3} \pm 4.31 \times 10^{-3}$ \\
+			\hline
+			$\omega_0$ & $-5.49 \times 10^{-1} \pm 1.99 \times 10^{-1}$ & $-3.09 \times 10^{-1} \pm 2.02 \times 10^{-1}$ & $-8.84 \times 10^{-1} \pm 1.29 \times 10^{-1}$ \\
+			\hline
+			$\omega_a$ & $2.31 \times 10^{-1} \pm 7.00 \times 10^{-1}$ & $-1.82 \pm 5.42 \times 10^{-1}$ & $-4.90 \times 10^{-1} \pm 6.30 \times 10^{-1}$ \\
+			\hline
+		\end{tabular}
+		\caption{This table shows the best fit for the parameters in a model with cold dark matter and CPL parameterization (dark energy).}
+		\label{tablaowaCDM}
+	\end{center}
+\end{table} 
+
 \subsection{Conclusions}
 \appendix
 \section{A. A simple MCMC python code}
