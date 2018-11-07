@@ -4,7 +4,7 @@
                preprintnumbers,     % Preprint: preprintnumbers,
                			    %           nopreprintnumbers
                aps,                 % Society: ...
-               prl,          	    % Journal Style : pra, prb, prc, prd, pre,
+               %prl,          	    % Journal Style : pra, prb, prc, prd, pre,
                			    %                 prl, prstab, rmp
                letterpaper,             % Size : a4paper, ...
                superscriptaddress,      % Affiliation (Title) : groupedaddress,
@@ -15,6 +15,14 @@
                floats,floatfix      % Floating pictures and tables
                ,usenatbib,
                ]{revtex4-1}
+               
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+               
+
+
+
 \usepackage{graphicx}  % needed for figures
 \usepackage{dcolumn}   % needed for some tables}
 %\usepackage[style=authoryear,backend=biber]{biblatex}
@@ -172,18 +180,22 @@ When a statistician is interested in working with the Bayes framework, there are
 
 \textit{The Bayes theorem.} The Bayes theorem is a direct consequence of the axioms of probability \eqref{rules}. We can see that, from \eqref{rule4}, without loss of generality, we can rewrite $P(x_2,x_1)=P(x_2)P(x_2|x_1)$. Taking into account that the relation $P(x_1,x_2)=P(x_2,x_1)$ has to be fulfilled, we arrive at the Bayes formula   
 \begin{equation}
-P(x_2|x_1)=\frac{P(x_2)P(x_1|x_2)}{P(x_1)}.
+P(x_2|x_1)=\frac{P(x_1|x_2)P(x_2)}{P(x_1)}.
 \end{equation}
-As already mentioned, in the Bayes framework data and model are part of the same space. In this manner, considering $x_1\rightarrow D$ as a set of data, and $x_2\rightarrow H$ as our ``hypothesis", we can rewrite the above equation as
+As already mentioned, in the Bayes framework data and model are part of the same space. Given a model (or hypothesis) $H$, considering $x_1\rightarrow D$ as a set of data, and $x_2\rightarrow \theta$ as the parameter vector of said hypothesis, we can rewrite the above equation as
 \begin{equation}\label{BayesT}
-P(\theta,H|D)=\frac{P(\theta,H)P(D|\theta,H)}{P(D)}
+P(\theta|D, H)=\frac{P(D|\theta,H)P(\theta|H)}{P(D|H)}.
 \end{equation}
-Here we have added the extra term $\theta$ in order to specify that our hypothesis depend on one or several parameters. 
-The above equation is the so-called \textit{Bayes theorem} and the most important tool in a Bayesian inference procedure. In this result, $P(\theta,H|D)$ is called the \textit{posterior} probability for the model. $L(D;\theta)\equiv P(D|\theta,H)$ is called the \textit{Likelihood} and it will be our main focus in a future section. $P(D|\theta,H)$ is called the \textit{prior} and expresses the knowledge about our model before acquiring the data. This prior can be fixed depending on either previous experiment results or the theory that we are working with. $P(D)$ is the evidence of our model. We notice that this evidence acts only as a normalizing factor
+The above equation is the so-called \textit{Bayes theorem} and the most important tool in a Bayesian inference procedure. In this result, $P(\theta|D, H)$ is called the \textit{posterior} probability for the model. $L(D;\theta)\equiv P(D|\theta,H)$ is called the \textit{Likelihood} and it will be our main focus in a future section. $P(\theta|H)\equiv \pi(\theta)$ is called the \textit{prior} and expresses the knowledge about our model before acquiring the data. This prior can be fixed depending on either previous experiment results or the theory that we are working with. $P(D|H)$ is the evidence of our model. We notice that this evidence acts only as a normalizing factor
 \begin{equation}\label{PD}
-P(D)=\int d\theta P(D|\theta,H)P(\theta,H).
+P(D|H)=\int d\theta P(D|\theta,H)P(\theta|H).
 \end{equation}
-This quantity is usually ignored for practical reasons when testing the parameter space of a unique model. On the other hand, for model comparison, the evidence plays an important role when we choose which model is more likely to be the ``real one'', whatever the parameters are. For the purpose of this work, we are not interested in this scenario and we will ignore it at all times.
+This quantity is usually ignored for practical reasons when testing the parameter space of a unique model. On the other hand, for model comparison, the evidence plays an important role when choosing the model which best ``predicts'' the data, whatever the parameters are. This is known as \textit{model selection} and it uses the \textbf{Bayes' Factor}
+
+\begin{equation}\label{bayesfactor}
+\frac{P(D\vert H_0)}{P(D\vert H_1)}= \frac{\int P(\theta_0\vert H_0)P(D\vert\theta_0, H_0)d\theta_0}{\int P(\theta_1\vert H_1)P(D\vert\theta_1, H_1)d\theta_1}=K,
+\end{equation}
+where $\theta_i$ is a parameter vector for the hypothesis $H_i$ and $i=0,1$. This ratio between evidences tells us how probable is one model with respect to the other, and to evaluate this we use a criteria known as Jeffreys' scale (TABLE \ref{evidence}). 
 
 The reader can notice that we have added a new ingredient in our Bayes description: the hypothesis. An hypothesis is our best guess at which model best fits the data, $H=Q_{best}$.
 
@@ -267,15 +279,15 @@ P(\theta,H|D'I')=\frac{P(\theta,H|I)P(DD'|\theta,HI)}{P(DD'|I)}=P(\theta,H|[DD']
 where we can explicitly see the equivalence of the 2 different options. 
 \subsection{About the Likelihood}
 
-We mentioned that the evidence in the Bayes theorem is usually setting apart when doing any inference procedure in the parameter space of a single model. Then, we can fix it as $P(D)=1$ without lost of generality. If we ignore the prior\footnote{It is expected that the real value of a given parameter is independent of the prior.} we can identify the likelihood with $P(D|H)=L(D;H)$ and thus, by maximizing it, we can find the most probable model (or model parameters) for given data. However, having ignored $P(D)$ and the prior, this approach cannot give a goodness of fit and thus cannot give an absolute probability for a given model, but it can give relative probabilities. On the other hand, it is possible to report results independently of the prior by using the \textit{Likelihood ratio}. The likelihood at a particular point in the parameter space can be compared with the one that best fit the observations, $L_{max}$. Then we can say that a model is acceptable if the likelihood ratio
+We mentioned that the evidence in the Bayes theorem is usually setting apart when doing any inference procedure in the parameter space of a single model. Then, we can fix it as $P(D)=1$ without lost of generality. If we ignore the prior\footnote{It is expected that the real value of a given parameter is independent of the prior.} we can identify the likelihood with $P(D|\theta, H)=L(D|\theta, H)$ and thus, by maximizing it, we can find the most probable model (or model parameters) for given data. However, having ignored $P(D|H)$ and the prior, this approach cannot give a goodness of fit and thus cannot give an absolute probability for a given model, but it can give relative probabilities. On the other hand, it is possible to report results independently of the prior by using the \textit{Likelihood ratio}. The likelihood at a particular point in the parameter space can be compared with the one that best fit the observations, $L_{max}$. Then we can say that a model is acceptable if the likelihood ratio
 \begin{equation}
-\Lambda=-2\ln\left[\frac{L(D;H)}{L_{max}}\right],
+\Lambda=-2\ln\left[\frac{L(D|\theta, H)}{L_{max}}\right],
 \end{equation}
 is bigger than a given value.
 
 Let us assume we have a posterior distribution, which is single-peaked. We consider that $\hat \theta$ is the peak of the distribution (most probable value) or the mean
 \begin{equation}
-\hat \theta =\int d\theta \theta P(\theta,H|D).
+\hat \theta =\int d\theta \theta P(\theta|D, H).
 \end{equation}
 If our model is well-specified and the expectation value of $\hat \theta$ corresponds with the real value $\theta_0$
 \begin{equation}
@@ -283,11 +295,11 @@ If our model is well-specified and the expectation value of $\hat \theta$ corres
 \end{equation}
 then we say that $\hat \theta$ is \textit{unbiased}. Considering a Taylor expansion of the \textit{log likelihood}
 \begin{equation}
-\ln L(D;H)=\ln L(D;H_0)+\frac{1}{2}(\theta_\alpha-\theta_{0\alpha})\frac{\partial^2\ln L}{\partial\theta_\alpha \partial\theta_\beta}(\theta_\beta-\theta_{0\beta})+...,
+\ln L(D|\theta, H)=\ln L(D|\theta_0, H_0)+\frac{1}{2}(\theta_\alpha-\theta_{0\alpha})\frac{\partial^2\ln L}{\partial\theta_\alpha \partial\theta_\beta}(\theta_\beta-\theta_{0\beta})+...,
 \end{equation}
-where $H_0$ corresponds with the real model (and/or parameter of the model). In this manner, we have that the likelihood can be expressed as a multi-variable likelihood given by 
+where $H_0$ corresponds with the real model (and $\theta_0$ with the parameter of the real model). In this manner, we have that the likelihood can be expressed as a multi-variable likelihood given by 
 \begin{equation}\label{GLik}
-L(D;H)=L(D;H_0)\exp \left[-\frac{1}{2}(\theta_\alpha-\theta_{0\alpha})H_{\alpha\beta}(\theta_\beta-\theta_{0\beta})\right],
+L(D|\theta, H)=L(D\theta_0, H_0)\exp \left[-\frac{1}{2}(\theta_\alpha-\theta_{0\alpha})H_{\alpha\beta}(\theta_\beta-\theta_{0\beta})\right],
 \end{equation}
 where 
 \begin{equation}
@@ -300,11 +312,11 @@ The above expression for the likelihood is a good approximation as long as our p
 
 In this section we present an argument for neglecting the prior in the Bayes theorem. For this, we follow the example given in \cite{RobT}. In this example there are two persons, A and B, that are interested in the measurement of a given physical quantity $\theta$. A and B have different prior beliefs regarding the possible value of $\theta$. This discrepancy could be given by the experience, such as the possibility that A and B have made the same measurement at different times. Let us denote their priors by $P(\theta|I_i)$, $(i=A,B)$, and assume they are described by two Gaussian distributions with mean $\mu_i$ and variance $\Sigma_i^2$. Now, A and B make a measurement together and they obtain the value $\theta_0=m_1$. If we consider that the experiment is such that our parameters are uncorrelated we can rewrite \eqref{GLik} as
 \begin{equation}\label{LikG}
-L(D;HI)=L_0\exp\left[-\frac{1}{2}\frac{(\theta-m_1)^2}{\sigma^2}\right].
+L(D|\theta, HI)=L_0\exp\left[-\frac{1}{2}\frac{(\theta-m_1)^2}{\sigma^2}\right].
 \end{equation}
 By replacing the hypothesis $H$ by the continuous variable $\theta$ the Bayes theorem for the model of A and B becomes
 \begin{equation}
-P(\theta|m_1)=\frac{L(m_1;\theta I_i)P(\theta|I_i)}{P(m_1|I_i)},
+P(\theta|m_1)=\frac{L(m_1|\theta I_i)P(\theta|I_i)}{P(m_1|I_i)},
 \end{equation}
 where we have used the notation given in \eqref{BayesTI}. Then, the posterior of A and B are (again) Gaussian with mean
 \begin{equation}
@@ -459,7 +471,7 @@ Here, the quantity inside square brackets is the marginalized likelihood over hy
 
 We add these hyperparameters in order to, in a way, weight every dataset and take away the importance of the data that doesn't seem to be consistent with other ones. Then, how can we know whether the data support the introduction of hyperparameters? Of course, if the datasets are consistent, the introduction of hyperparameters could make difficult the estimation or give rise to large uncertainties. A way to answer this question is given by the Bayesian evidence.
 
-Suppose that we have two models, one with the introduction of hyperparameters, called $H_1$, while the second one doesn't, called $H_0$. The Bayesian evidence $P(D|H_i)$ is an important quantity if we are interested in making a comparison between two different models. In fact, by defining the ratio between two Bayesian evidences
+Suppose that we have two models, one with the introduction of hyperparameters, called $H_1$, while the second one doesn't, called $H_0$. The Bayesian evidence $P(D|H_i)$ is an important quantity if we are interested in making a comparison between two different models. In fact, by using the Bayes factor
 \begin{equation}
 K=\frac{P(D|H_1)}{P(D|H_0)}
 \end{equation}
@@ -482,8 +494,9 @@ we can estimate if it's necessary to introduce the hyperparameters to our model 
 \hline
 $>100$ & Decisive\\ [1ex] 
  \hline
-\end{tabular}\label{evidence}
-\caption{Criteria for the ratio between two Bayesian evidences, taken from \cite{hiperp2}.}
+\end{tabular}
+\caption{Criteria for the ratio between two Bayesian evidences known as \textit{Jeffreys' Scale}, taken from \cite{hiperp2}.}
+\label{evidence}
 \end{table}
 
 If we consider a gaussian likelihood and a maximum entropy prior, and assuming average, the hyperparameters' weight are unity, we can rewrite the marginalized likelihood function $L(D;\theta,H_1)$ for model $H_1$ as
