@@ -903,7 +903,18 @@ With the Cosmological Principle, the energy-momentum tensor describes a perfect 
 T_{\mu \nu} = (\rho + P)U_{\mu}U_{\nu} - Pg_{\mu \nu} .
 \end{equation} 
 
-Where $\rho$ is the energy density, $P$ is the fluid pressure and $U_{\mu}$ is the 4-velocity relative to the observer. Using equations (\ref{einstein}) and (\ref{tensorfluidoperfecto}) we can deduce Friedmann and continuity equations. This last equation is given by
+Where $\rho$ is the energy density, $P$ is the fluid pressure and $U_{\mu}$ is the 4-velocity relative to the observer. If we take the velocity as $U^{\mu} = \left(1,0,0,0\right)$ (comoving observer), the energy-momentum tensor reduces to \cite{cambridge}:
+
+\begin{equation}
+T^{\mu}_{\nu} = g^{\mu \lambda} T_{\lambda \nu} = \begin{pmatrix}
+\rho & 0 & 0 & 0 \\
+0 & -P & 0 & 0 \\
+0 & 0 & -P & 0 \\
+0 & 0 & 0 & -P \\
+\end{pmatrix} 
+\end{equation}
+
+Using equations (\ref{einstein}) and (\ref{tensorfluidoperfecto}) we can deduce Friedmann and continuity equations. This last equation is given by
 
 \begin{equation}
 \label{continuidad}
@@ -969,10 +980,10 @@ We can describe the above using the following state equation
 	\end{center}
 \end{table} 
 
-\subsection{Cosmological observables and parameters.}
+\subsection{Cosmological observables, parameters amd experiments.}
 To explain the Universe we use the dimensionless density parameter of each component ($\Omega_i$) and the Hubble constant $H_0$. Although there are more parameters that can be used, these can be derived from the previous ones.
 
-In the beginning of this section we mentioned that the FLRW metric describes a Universe with some curvature but the cosmological observations indicate a flat Universe. We will show, using Bayesian statistic, that this is true.
+In the beginning of this section we mentioned that the FLRW metric describes a Universe with some curvature but the cosmological observations indicate a flat Universe. We will show, using Bayesian statistic, that this is true.\\
 
 \textbf{Hubble Constant:} It is the slope between the recessional velocity and the proper distance from the galaxy to the observer found by Edwin Hubble in 1929. The Hubble Space Telescope found \cite{hubble2016}:
 
@@ -986,7 +997,7 @@ On the other hand, Planck Collaboration found another value \cite{planck}:
 H_0 = 67.3 \pm 1.2 kms^{-1} Mpc^{-1}.
 \end{equation}
 
-The discrepancy between these values ​​is still a research issue.
+The discrepancy between these values ​​is still a research issue.\\
 
 \textbf{Supernovas:} The most accepted explanation is that they are white dwarfs in which thermonuclear processes occur. Empirically, the peak luminosity of the type Ia supernovas (SNIa) can be used as a distance indicator using the relation between redshift and distance\cite{parametros}. 
 
@@ -998,9 +1009,21 @@ Using them, the Supernova Cosmology Project and High-z Supernova Search Team bot
 
 This means that matter (ordinary and dark) occupies $30 \%$ of the content of the Universe and dark energy occupies the remaining $70 \%$. 
 
+The experiment that we use in this work is \textbf{Joint Light-curve Analysis (JLA).} It is a collaboration to analyze the data from SDSS-II and SNLS experiment \cite{jla}. SDSS-II is the previous version of BOSS and SNLS is the SuperNova Legacy Survey. SNLS used the Canada-France-Hawaii telescope (CFHT), located in Hawaii, to detect type Ia supernovas at high redshift \cite{snls}. The collaboration used 740 samples. \\
+
+%Figure \ref{jla} shows the Hubble diagram obtained by the collaboration.
+%
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=10cm]{FiguresCosmo/snls_fig2.png}	
+%	\caption{Hubble diagram from 740 type Ia supernovae. Published by SNLS and SDSS Source: \cite{snls}.}
+%	\label{jla}
+%\end{figure}
+
 \textbf{Cosmic Microwave Background (CMB):} Discovered in 1965, they are the radiation that permeates all the Universe. Before recombination, baryons and photons were tightly coupled. After uncoupling, baryons collapsed due to the effects of gravity and the photons were free and they started traveling. This radiation contains information of last scattering epoch, gravitational lensing, among others. This is because CMB has been traveling throughout the Universe and the interaction with everything they have found in their path leaves a trace that can be detected until our days.
 
-CMB shows anisotropies that are studied using an angular power spectrum in terms of spherical harmonics. See figure (\ref{CMBgraf}).
+CMB shows anisotropies that are studied using an angular power spectrum in terms of spherical harmonics.
+% See figure \ref{CMBgraf}.
 
 \begin{equation}
 T(\theta, \phi) = \sum_{lm} a_{lm} Y_{lm} \left(\theta, \phi \right) .
@@ -1008,16 +1031,35 @@ T(\theta, \phi) = \sum_{lm} a_{lm} Y_{lm} \left(\theta, \phi \right) .
 
 Where $a_{lm}$ is constant and $l$ is the multipole moment. This power spectrum is very similar to black body radiation with a temperature $T = 2.725K$ \cite{CMB1}, \cite{CMB2}.
 
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=12cm]{FiguresCosmo/espectro_temperatura_CMB.png}	
+%	\caption{CMB anisotropies power spectrum. Horizontal axis changes from logarithmic scale to linear scale in $l = 50$. Solid line shows the best fit considering $\Lambda CDM$. Source: \cite{parametros}.}
+%	\label{CMBgraf} 
+%\end{figure}
+
+One of the most important collaboration that studies CMB is \textbf{Planck.} It is a European Space Agency ESA's mission whose main objective is to measure the temperature, polarization and anisotropies of the CMB over the entire sky. These results would allow to determine the properties of the Universe at large scales, the nature of dark matter and dark energy. As well as test inflation theories, determine if the Universe is homogenous or not and obtain maps of galaxies in the microwave. Figure \ref{CMBPlanck} shows the last CMB anisotropies picture obtained by Planck this year\cite{Planck1}, \cite{Planck2}, \cite{Planck3}.\\
+
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=12cm]{FiguresCosmo/espectro_temperatura_CMB.png}	
-	\caption{CMB anisotropies power spectrum. Horizontal axis changes from logarithmic scale to linear scale in $l = 50$. Solid line shows the best fit considering $\Lambda CDM$. Source: \cite{parametros}.}
-	\label{CMBgraf} 
+	\includegraphics[width=10cm]{FiguresCosmo/CMB.jpg}	
+	\caption{CMB anisotropies obtained by Planck 2018. Source:\cite{Planck4}}
+	\label{CMBPlanck}
 \end{figure}
 
-\textbf{Baryon Acoustic Oscillations (BAO's):} We know Universe was almost uniform in the beginning, it contained small fluctuations where the density matter was greater than the average. The gravitational force made these denser regions collapse \textcolor{red}{little by little} until this happened at large scales. But radiation pressure pushed back these regions against the collapse. The pressure causes the baryons and photons move away from the overdensity region forming a spherical wave. Since dark matter only interacts gravitationally, it remains in the wave center. After photon decoupling there wasn't radiation pressure so only remained overdensity in the wave center and a shell of baryonic matter at a fixed radius. This radius is called sound horizon and is used as a standard unit of distance. We can see a cartoon of them in figure (\ref{cartoon}).
+\textbf{Baryon Acoustic Oscillations (BAO's):} We know Universe was almost uniform in the beginning, it contained small fluctuations where the density matter was greater than the average. The gravitational force made these denser regions collapse \textcolor{red}{little by little} until this happened at large scales. But radiation pressure pushed back these regions against the collapse. The pressure causes the baryons and photons move away from the overdensity region forming a spherical wave. Since dark matter only interacts gravitationally, it remains in the wave center. After photon decoupling there wasn't radiation pressure so only remained overdensity in the wave center and a shell of baryonic matter at a fixed radius. This radius is called sound horizon and is used as a standard unit of distance. 
 
-The experiments that showed evidence of BAO's were the 2-degree Field (2dF) Galaxy Redshift Survey \cite{BAO3} and the Sloan Digital Sky Survey (SDSS) \cite{BAO4}. The experiment Baryon Oscillation Spectroscopic Survey (BOSS) found that dark energy state equation is $\omega = 1 \pm 0.06$.
+The experiments that showed evidence of BAO's were the 2-degree Field (2dF) Galaxy Redshift Survey \cite{BAO3} and the Sloan Digital Sky Survey (SDSS) \cite{BAO4}. The experiment Baryon Oscillation Spectroscopic Survey (BOSS) found that dark energy state equation is $\omega = 1 \pm 0.06$. On the other hand, the Baryon Oscillation Spectroscopic Survey (\textbf{BOSS}) is part of the third stage of the Sloan Digital Sky Survey (SDSS). BOSS was in charge of mapping the spatial distribution of luminous red galaxies (LRGs) and quasars when detecting the mark left by baryon acoustic oscillations in the early Universe, whose objective is to prove the existence of dark energy. BOSS is a spectroscopic collection of redshifts of 1.5 million LRG's and Lyman-alpha absorption of more than 160000 quasars with high redshifts. BOSS is a telescope with spectroscopic instruments \cite{boss}.\\
+
+\textbf{Large Red Galaxies:} These are the most massive galaxies for each redshift and contain the oldest star population. These kind of galaxies are used to estimate the Hubble factor because they contain little stardust which makes it easier to get their spectrum. 
+
+Two galaxies at different redshift between $z \sim 0-2$ are chosen\footnote{For example galaxies at $z=0$ and $z \sim 0.2$} and the upper cut in its age distributions is compared. We obtain the difference of ages $\Delta t$ and redshifts $\Delta z$ so we can infer $\frac{dz}{dt}$. This quantity is related with the Hubble factor and dark energy state equation as \cite{H1}, \cite{H2}
+
+\begin{eqnarray}
+H(z) &=& \frac{-1}{(1+z)} \frac{dz}{dt},\\
+\omega_{DE} &\propto& \frac{d^2z}{dt^2}.
+\end{eqnarray}
+
 
 %\begin{figure}[h]
 %	\centering
@@ -1056,29 +1098,6 @@ The experiments that showed evidence of BAO's were the 2-degree Field (2dF) Gala
 %\end{table} 
 %
 %The data used were obtained from Planck collaboration, Wilkinson Microwave Anisotropy Probe (WMAP), Atacama Cosmology Telescope (ACT), South Pole Telescope (SPT) and eCMB for CMB. For BAO's we have SDSS, BOSS, 6dF and WiggleZ. We assume $\Lambda CDM$ \footnote{We will explain this model later.}, a flat Universe and cosmological constant as dark energy.
-
-\subsection{Experiments.}
-In this section we present only the experiments used in the following examples.
-
-\textbf{Planck:} It is a European Space Agency ESA's mission whose main objective is to measure the temperature, polarization and anisotropies of the CMB over the entire sky. These results would allow to determine the properties of the Universe at large scales, the nature of dark matter and dark energy. As well as test inflation theories, determine if the Universe is homogenous or not and obtain maps of galaxies in the microwave. Figure (\ref{CMBPlanck}) shows the last CMB anisotropies picture obtained by Planck this year\cite{Planck1}, \cite{Planck2}, \cite{Planck3}.\\
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=10cm]{FiguresCosmo/CMB.jpg}	
-	\caption{CMB anisotropies obtained by Planck 2018. Source:\cite{Planck4}}
-	\label{CMBPlanck}
-\end{figure}
-
-\textbf{BOSS:} The Baryon Oscillation Spectroscopic Survey is part of the third stage of the Sloan Digital Sky Survey (SDSS). BOSS was in charge of mapping the spatial distribution of luminous red galaxies (LRGs) and quasars when detecting the mark left by baryon acoustic oscillations in the early Universe, whose objective is to prove the existence of dark energy. BOSS is a spectroscopic collection of redshifts of 1.5 million LRG's and Lyman-alpha absorption of more than 160000 quasars with high redshifts. BOSS is a telescope with spectroscopic instruments \cite{boss}.\\
-
-\textbf{Joint Light-curve Analysis (JLA):} It is a collaboration to analyze the data from SDSS-II and SNLS experiment \cite{jla}. SDSS-II is the previous version of BOSS and SNLS is the SuperNova Legacy Survey. SNLS used the Canada-France-Hawaii telescope (CFHT), located in Hawaii, to detect type Ia supernovas at high redshift \cite{snls}. The collaboration used 740 samples. Figure (\ref{jla}) shows the Hubble diagram obtained by the collaboration.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=10cm]{FiguresCosmo/snls_fig2.png}	
-	\caption{Hubble diagram from 740 type Ia supernovae. Published by SNLS and SDSS Source: \cite{snls}.}
-	\label{jla}
-\end{figure}
 
 \subsection{$\Lambda$ Cold Dark Matter ($\Lambda$CDM).}
 Also know as the Cosmological Standard Model, it is the most accepted model to describe the Universe. This model considers an expanding flat Universe that is fourteen billion years old. 
@@ -1180,7 +1199,7 @@ The code contains several sampling methods available: Metropolis-Hastings, Neste
 \subsection{Some examples}
 \textcolor{red}{Examples of cosmology}
 \subsection{Cosmological example.}
-In this section we show a few examples on Cosmology. We start with the model $\Lambda$CDM where we have set curvature to zero. The figure (\ref{LCDM}) shows the confidence regions to 1,2-$\sigma$. To obtain this graphs we use first BAO's data. Then we combine it with Planck's data and finally we use BAO, Planck and JLA. It can be seen that increasing the number of data reduces the size of the confidence regions. For example, if we see the first graph, using only BAO's we see that the confidence region is bigger than that the obtained using BAO's plus Planck data. 
+In this section we show a few examples on Cosmology. We start with the model $\Lambda$CDM where we have set curvature to zero. The figure \ref{LCDM} shows the confidence regions to 1,2-$\sigma$. To obtain this graphs we use first BAO's data. Then we combine it with Planck's data and finally we use BAO, Planck and JLA. It can be seen that increasing the number of data reduces the size of the confidence regions. For example, if we see the first graph, using only BAO's we see that the confidence region is bigger than that the obtained using BAO's plus Planck data. 
 
 \begin{figure}[htp]
 	\centering
@@ -1190,7 +1209,7 @@ In this section we show a few examples on Cosmology. We start with the model $\L
 	\label{LCDM}
 \end{figure}
 
-In the figure (\ref{cLCDM}) we fit the parameters in $\Lambda$CDM but we let $\Omega_k$ as a free parameter to be fitted using the observational data. Again we see that the size of the confidence regions depends on the number of data we use. The last graph of (\ref{cLCDM}) shows that the best fit to the curvature density parameter is zero (as we expected).
+In the figure \ref{cLCDM} we fit the parameters in $\Lambda$CDM but we let $\Omega_k$ as a free parameter to be fitted using the observational data. Again we see that the size of the confidence regions depends on the number of data we use. The last graph of \ref{cLCDM} shows that the best fit to the curvature density parameter is zero.
 
 \begin{figure}[htp]
 	\centering
@@ -1201,13 +1220,13 @@ In the figure (\ref{cLCDM}) we fit the parameters in $\Lambda$CDM but we let $\O
 	\label{cLCDM}
 \end{figure}
 
-Just to show a different example to $\Lambda$CDM we used the CPL parameterization of dark energy state equation. This model considers that dark energy is not a cosmological constant \footnote{For more information see references \cite{CPL1} and \cite{CPL2}}. 
+Just to show a different example to $\Lambda$CDM, and because it is used in the cosmological chronometers, we used the CPL parameterization of dark energy state equation. This model considers that dark energy is not a cosmological constant \footnote{For more information see references \cite{CPL1} and \cite{CPL2}}. CPL is the first two terms in the series expansion of the dark energy state equation. This is the simplest parameterization which considers dynamics in dark energy.
 
 \begin{equation}
 \omega = \omega_0 + \omega_a\left(\frac{z}{1 + z}\right) = \omega_0 + \omega_a\left(1 - a\right).
 \end{equation}
 
-Where $z$ is the redshift, $a$ the scale factor, $\omega_0$ and $\omega_a$ are real numbers.
+Where $z$ is the redshift, $a$ the scale factor, $\omega_0$ and $\omega_a$ are the coefficients of the expansion.
 
 In figure \ref{cosmo1}, we fit the parameters in a cosmological model with cold dark matter and the CPL parameterization (dark energy) using the data from Planck collaboration (CMB), BOSS (BAO's) and JLA (Supernovas). It can be seen that increasing the number of data reduces the size of the confidence regions. We show the confidence region to 1,2-$\sigma$. We did the same with the CPL parameterization ($\omega_0$ and  $\omega_a$) in horizontal axis. In vertical axis we have the total matter density parameter.
 
@@ -1275,7 +1294,7 @@ In table \ref{tablaowaCDM} we consider a cosmological model with cold dark matte
 		\begin{tabular}{|c|c|c|c|c|}
 			\multicolumn{4}{c}{\textbf{CDM and CPL parameterization.}}\\
 			\hline
-			Parameter & BBAO & BBAO+Planck & BBAO+Planck+SN & BBAO+Planck+SN \\
+			Parameter & BBAO & BBAO+Planck & BBAO+Planck+SN & BBAO+Planck+SN+HD \\
 			\hline
 			$\Omega_m$ & $1.98 \times 10^{-1} \pm 7.61 \times 10^{-2}$  & $3.65 \times 10^{-1} \pm 2.33 \times 10^{-2}$ & $3.07 \times 10^{-1} \pm 1.09 \times 10^{-2}$ & $3.06 \times 10^{-1} \pm 1.08 \times 10^{-2}$\\
 			\hline
@@ -1296,6 +1315,54 @@ In table \ref{tablaowaCDM} we consider a cosmological model with cold dark matte
 		\label{tablaowaCDM}
 	\end{center}
 \end{table} 
+
+In figure \ref{bestfit}, each graph shows and compares the probability distribution function for common parameters for the different models used here. The peak in the distribution functions is the value of the best fit for the parameters. These peaks correspond to the values showed in the tables \ref{tablaLCDM}, \ref{tablacLCDM} and \ref{tablaowaCDM} using BAO's, CMB, Supernovas and H(z) (BBAO+Planck+SN+HD).
+
+\begin{figure}[htp]
+	\centering
+	\includegraphics[width=7cm]{FiguresCosmo/Om_best_fit.pdf}	
+	\includegraphics[width=7cm]{FiguresCosmo/Obh2_best_fit.pdf}
+	\includegraphics[width=7cm]{FiguresCosmo/h_best_fit.pdf}
+	\includegraphics[width=7cm]{FiguresCosmo/Ok_best_fit.pdf}
+	\caption{Probability distribution functions for the common parameters in the models used. We obtained them using the data from BAO, Planck, Supernovas and H(z). Here c$\Lambda$CDM refers to $\Lambda$CDM with curvature as free parameter and owaCDM is the CPL parameterization of dark energy.}
+	\label{bestfit}
+\end{figure}
+
+Table \ref{tablapriors} shows the priors of the parameters in the models used here.
+
+\begin{table} [htbp]
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\multicolumn{2}{c}{\textbf{Priors of the parameters.}}\\
+			\hline
+			Parameter & Prior \\
+			\hline
+			$\Omega_m$ & $\left(0.05, 1.5\right)$  \\
+			\hline
+			$\Omega_b h^2$ & $\left(0.02, 0.025\right)$ \\
+			\hline
+			$h$ & $\left(0.4, 1\right)$ \\
+			\hline
+			$\Omega_k$ & $\left(-1.5, 1.5\right)$ \\
+			\hline
+			$\omega_0$ & $\left(-2.0, 0.0\right)$ \\
+			\hline
+			$\omega_a$ & $\left(-2.0, 2.0\right)$\\
+			\hline
+		\end{tabular}
+		\caption{This table shows the priors of the parameters in the models used in this paper.}
+		\label{tablapriors}
+	\end{center}
+\end{table} 
+
+In figure \ref{examplechain} we show an example chain corresponding to the parameter $\Omega_m$ using BAO's, CMB, Supernovas and H(z) data applied to $\Lambda$CDM.
+
+\begin{figure}[htp]
+	\centering
+	\includegraphics[width=8cm]{FiguresCosmo/chain_cosmo.pdf}	
+	\caption{Example of a chain.}
+	\label{examplechain}
+\end{figure}
 
 \subsection{Conclusions}
 \appendix
@@ -1440,6 +1507,10 @@ The Theory of Probability
 \bibitem{CPL1} Linden S., Virey J., 2008, arXiv: 0804.0389.
 
 \bibitem{CPL2} Scherrer R. J., 2015, arXiv: 1505.05781.
+
+\bibitem{H1} Stern D. et al., 2009, arXiv: 0907.3152v1.
+
+\bibitem{H2} Stern D. et al., 2009, arXiv: 0907.3149v1.
 
 \end{thebibliography}
 \end{document}
