@@ -4,7 +4,7 @@
                preprintnumbers,     % Preprint: preprintnumbers,
                			    %           nopreprintnumbers
                aps,                 % Society: ...
-               prl,          	    % Journal Style : pra, prb, prc, prd, pre,
+               %prl,          	    % Journal Style : pra, prb, prc, prd, pre,
                			    %                 prl, prstab, rmp
                letterpaper,             % Size : a4paper, ...
                superscriptaddress,      % Affiliation (Title) : groupedaddress,
@@ -15,6 +15,14 @@
                floats,floatfix      % Floating pictures and tables
                ,usenatbib,
                ]{revtex4-1}
+               
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+               
+
+
+
 \usepackage{graphicx}  % needed for figures
 \usepackage{dcolumn}   % needed for some tables}
 %\usepackage[style=authoryear,backend=biber]{biblatex}
@@ -33,7 +41,7 @@
 \email{epadilla@fis.cinvestav.mx}
 \affiliation{Departamento de F\'isica, Centro de Investigaci\'on y de Estudios Avanzados del IPN, A.P. 14-740, 07000 M\'exico D.F.,
   M\'exico.}
-   \author{Alberto Vazquez-Gonzalez}  
+   \author{Alberto Vazquez}  
 \email{vetovazquez@hotmail.com}
 \affiliation{Departamento de F\'isica, Centro de Investigaci\'on y de Estudios Avanzados del IPN, A.P. 14-740, 07000 M\'exico D.F.,
   M\'exico.}
@@ -41,7 +49,12 @@
 \email{ltellez@fis.cinvestav.mx}
 \affiliation{Departamento de F\'isica, Centro de Investigaci\'on y de Estudios Avanzados del IPN, A.P. 14-740, 07000 M\'exico D.F.,
   M\'exico.}
+    \author{Luis A. Escamilla}  
+\email{lescamilla@fis.cinvestav.mx}
+\affiliation{Departamento de F\'isica, Centro de Investigaci\'on y de Estudios Avanzados del IPN, A.P. 14-740, 07000 M\'exico D.F.,
+  M\'exico.}
 \date{\today}
+\newcommand{\lp}[1]{\textcolor{blue}{(lp: #1)}}
 
 \begin{abstract}
 
@@ -55,43 +68,43 @@ First, we start by giving the basic differences between Bayesian and Frequentist
 
 \section{Introduction}
 
-The beginning of the standard cosmology as it is known today emerged after 1920 when the Shaphey-Curtis debate was carried out \cite{debate}. This debate was held between the astronomers Harlow Shapley and Heber Curtis, resulting in a revolution for astronomy at that time: ``The universe had a larger scale than the Milky Way galaxy". Several observations at that epoch established the size and the dynamics of the cosmos that could only be explained by Einstein's General Theory of Relativity. In its childhood, Cosmology was a speculative science that was based only on a few data sets and characterized by a dispute between two cosmological models: the steady state model and the Big Bang (BB) theory. It was not until 1990 when the amount of data was enough to eliminate competing theories, being awarded the BB model as the most accepted cosmological theory. In that same decade David Schramm heralded the ``Golden Age of Cosmology" at a National Academy of Sciences colloquium.    
+The beginning of the standard cosmology as it is known today emerged after 1920 when the Shaphey-Curtis debate was carried out \cite{debate}. This debate was held between the astronomers Harlow Shapley and Heber Curtis, resulting in a revolution for astronomy at that time: ``The universe had a larger scale than the Milky Way galaxy". Several observations at that epoch established that the size and dynamics of the cosmos could be explained by Einstein's General Theory of Relativity. In its childhood, cosmology was a speculative science based only on a few data sets and characterized by a dispute between two cosmological models: the steady state model and the Big Bang (BB) theory. It was not until 1990 when the amount of data was enough to discriminate and rule out compelling theories, the BB model being awarded as the most accepted theory. During the same decade David Schramm heralded the ``Golden Age of Cosmology" at a National Academy of Sciences colloquium.    
 
-Once the new age of cosmological experiments arrived with a very large variety of cosmological data, it was necessary to confront all the cosmological models with said data. The way that it is usually done is using a statistical confrontation. First of all we need to notice that, since we only have one Universe, we can not consider a frequentist interpretation of statistics (we can not create multiple Universes to make a frequentist inference of our models). An alternative interpretation that can help us is the Bayesian statistics. In Bayesian statistics probability is interpreted as a ``degree of belief'' and it can be useful when no repetitive processes need to be considered.  
+Once the new age of cosmological observations arrived with a very large variety of data, it was necessary to confront all the cosmological models with such data. The way it is usually done is using a statistical confrontation. First of all we need to notice that, since we have only one universe, we cannot consider a frequentist interpretation of statistics (we are not able to create multiple universes to make a frequentist inference of our models). An alternative interpretation that can help us is the Bayesian statistics. In Bayesian statistics probability is interpreted as a ``degree of belief'' and it may be useful when no repetitive processes need to be considered.  
 
-The main objective of this work is to give the reader an introduction on bayesian parameter inference and how we can use it in cosmology. We assume that the reader is familiarized with the basic concepts of statistics, but not necessarily with Bayesian statistics. Then, we give a not so formal general view of it, enough to understand the basic concepts of our main objective. This general view is written in a generic way so that if the reader is not interested in the cosmological section but in the parameter inference one he/she can draw on the bayesian part.  
+The main objective of this work is to give the reader an introduction on bayesian parameter inference and its use on cosmology. We assume the reader is familiarized with the basic concepts of statistics, but not necessarily with Bayesian statistics. Then, we provide an introductory general view of it, enough to understand the basic concepts of our main objective. This revre is written in a generic way so the reader interested in the parameter inference section he/she can draw on the bayesian part.  
 
-This paper is organized as follows. We start in the section [Bayesian vs Frequentist statistic] mentioning the most important differences between the Bayesian statistics and the Frequentist one. Then, in section [A first look on the Bayesian statistics] we present the basic mathematical concepts in Bayesian statistics that are going to be necessary at the moment that we want to estimate a model parameter. Once we have the mathematical concepts, we continue in section [Numerical tools] with the numerical tools at our disposal that can help us simplify our homework. Such numerical tools are very important given the fact that, in general, it is not possible to apply the analytical ones when several parameters of our models need to be confronted with data. In section [Bayesian statistics and cosmology] we show how these tools can be used in cosmology, mentioning the different numerical codes free to download on web that are programmed to do this homework and applying them to specific examples. Finally, in section [Conclusions] we conclude this paper.
+This paper is organized as follows. We start in section [Bayesian vs Frequentist statistic] by presenting the most important differences between the Bayesian and Frequentist approaches. Then, in section [A first look on the Bayesian statistics] we explain the basic mathematical concepts in Bayesian statistics necessary to perform the parameter estimation given a model. Once we have the mathematical concepts, we continue in section [Numerical tools] with the numerical tools at our disposal that can help us to simplify our homework. Such numerical tools are very important given the fact that, in general, it is not possible to apply the analytical ones when a model containing several parameters that need to be confronted with data. In section [Bayesian statistics and cosmology] we show how these tools can be applied to cosmology, commenting about a couple of numerical codes available already and programmed to do this task. As an example, we apply these techniques to constraint the parameter space that describes the standard cosmology model (LCDM). Finally, in section [Conclusions] we conclude this paper.
 
 \section{Bayesian vs Frequentist statistics}
 
 Fundamentally, the main difference between Bayesian and Frequentist statistics is their definition of probability. In a frequentist point of view probability has meaning in a limiting case of repeated measurements
 \begin{equation}
-P=\frac{n}{N}
+P=\frac{n}{N},
 \end{equation}
-where $n$ denotes the number of successes and $N$ the total number of attempts. Frequentist statistics define probability as the limit for the number of independent trials going to infinity \textcolor{red}{(cambiar definicion, suena rara)}. Then, \textbf{for frequentist statistics, probabilities are fundamentally related to frequencies of events}. On the other hand, in bayesian statistics the concept of probability is extended to cover degrees of certainty about a statement. \textbf{For Bayesian statistics, probabilities are fundamentally related to our knowledge about an event}.
+where $n$ denotes the number of successes and $N$ the total number of trials. Frequentist statistics defines probability as the limit for the number of independent trials going to infinity. Then, \textbf{for frequentist statistics, probabilities are fundamentally related to frequencies of events}. On the other hand, in bayesian statistics the concept of probability is extended to cover degrees of certainty about a statement. \textbf{For Bayesian statistics, probabilities are fundamentally related to our knowledge about an event}.
 
-On this part we introduce the basic concepts necessary to understand the basic consequences that this discrepancy entails. For an extended review see \cite{bayeslecture}, \cite{AlanH}, \cite{RobT}, \cite{LiV} or/and \cite{RobTr}. 
+On this part we introduce the basic concepts necessary to understand the consequences that this discrepancy entails. For an extended review see \cite{bayeslecture, AlanH, RobT, LiV, RobTr}. 
 
-If we consider that $x$ is a random variable related to a particular event and $P(x)$ its corresponding probability distribution, for both cases the same rules of probabilities apply\footnote{This rules are defined for a continuous variable; however, the corresponding discrete definition can be given immediately by replacing $\int \rightarrow \sum$.}:
+Let $x$ be a random variable related to a particular event and $P(x)$ its corresponding probability distribution, for both cases the same rules of probabilities apply\footnote{These rules are defined for a continuous variable; however, the corresponding discrete definition can be given immediately by replacing $\int \rightarrow \sum$.}:
 \begin{subequations}\label{rules}
 \begin{equation}\label{rule1}
-P(x)\geq 0
+P(x)\geq 0,
 \end{equation}
 \begin{equation}\label{rule2}
-\int_{-\infty}^\infty dxP(x)=1\end{equation}
-For mutually exclusive events \begin{equation}\label{rule3}
-P(x_1\cup x_2)=P(x_1)+P(x_2)
+\int_{-\infty}^\infty dxP(x)=1.\end{equation}
+For mutually exclusive events $(x_1 , x_2)$ we have\begin{equation}\label{rule3}
+P(x_1\cup x_2)=P(x_1)+P(x_2).
 \end{equation}
 Generally
 \begin{equation}\label{rule4}
-P(x_1,x_2)=P(x_1)P(x_1|x_2)\end{equation}
+P(x_1,x_2)=P(x_1)P(x_1|x_2).\end{equation}
 \end{subequations}
 The last rule can be read as: the probability of $x_1$ and $x_2$ to happen is equal to the probability of $x_1$ times the probability of $x_2$ given that $x_1$ has already happened. \\
 %But what does the last rules means? The first condition is necessary because we want that the probability of having an event is always positive. The second rule is a normalized relation which tell us that whatever event we have, it will always be a corresponding probability in the model that we are working with. Now, in the third point we have a relation about two mutually exclusive events which can be reed as follows: if $x_1$ and $x_2$ are two measurements one independent of the other, then 
 
 
-These rules for probability distributions must be fulfilled by both frequentist and bayesian statistics. But what are the consequences derived by the fact that these two scenarios have a different definition of probability? In the next section we will try to answer this question.
+These rules for probability distributions must be fulfilled by both frequentist and Bayesian statistics. But what are the consequences derived by the fact that these two scenarios have a different definition of probability? In the next section we will try to answer this question.
 
 \subsection{Frequentist statistics}
 
@@ -100,23 +113,23 @@ Any frequentist inferential procedure relies on three basic ingredients: the dat
 The \textit{data} is a measurement or observation, denoted by $X$, that can take any value from a corresponding \textit{sample space}. A \textit{sample space} of an observation $X$ can be defined as a measurable space $(x,\hat B)$ that contains all values that $X$ can take upon measurement.
 
 In Frequentist statistics it is considered that there is a probability function $P_0:\hat B\rightarrow [0,1]$ in the sample space $(x,\hat B)$ representing the ``true distribution of the data"
-\[X\sim P_0\]
+\[X\sim P_0.\]
 
-Now we have the model. For Frequentist statistics a model $Q$ is a collection of probability measurements $P:\hat B\rightarrow[0,1]$ in the sample space $(x,\hat B)$. The distributions $P_\theta$ are called model distributions. In this approach $\theta$ is unchanged. 
+Now we have the \textit{model}. For Frequentist statistics a model $Q$ is a collection of probability measurements $P:\hat B\rightarrow[0,1]$ in the sample space $(x,\hat B)$. The distributions $P_\theta$ are called model distributions. In this approach $\theta$ is unchanged. 
 
 A model $Q$ is said to be well-specified if it contains the true distribution of the data $P_0$, i.e.
 \[P_0\in Q\]
 
 Finally, we need a point-estimator(or estimator) for $P_0$. An estimator for $P_0$ is a map $\hat P:x\rightarrow Q$, representing our ``best guess" $\hat P\in Q$ for $P_0$ based on the data $X$.
 
-Hence, the Frequentist statistics is based on trying to answer the following questions: ``what does the data clarify about $P_0$?" or ``from the data, what can we say about the mean of $P_0$?".
+Hence, the Frequentist statistics is based on trying to answer the following questions: ``what does the data tell us about $P_0$?" or ``from the data, what can we say about the mean of $P_0$?".
 
 \subsection{Bayesian statistics}
 
-As it is explained in \cite{bayeslecture}, in bayesian statistics, data and model form two elements of the same space, i.e. no formal distinction is made between measured quantities $X$ and parameters $\theta$. One may envisage the process of generating a measurement's outcome $Y=y$ as two draws, one draw for $\Theta$ (or $Q$) to select a value of $\theta$ (or distribution $P_\theta$) and a subsequent draw for $P_\theta$ to arrive at $X=x$ \textcolor{red}{(que es draw en este contexto?)}. This perspective may seem rather absurd in view of the definitions for a frequentist way of thinking, but in a bayesian one, where probabilities are related to our own knowledge, it results natural to associate probability distributions to our parameters. In this way an element $P_\theta$ of the model is interpreted simply as the distribution of $X$ given the parameter value $\theta$, i.e. as the conditional distribution $X|\theta$.
-\subsection{A bit clearer}
+As it is explained in \cite{bayeslecture}, in Bayesian statistics, data and model form two elements of the same space, i.e. no formal distinction is made between measured quantities $X$ and parameters $\theta$. One may envisage the process of generating a measurement's outcome $Y=y$ as two draws, one draw for $\Theta$ (or $Q$) to select a value of $\theta$ (or distribution $P_\theta$) and a subsequent draw for $P_\theta$ to arrive at $X=x$. This perspective may seem rather absurd in view of the definitions for a frequentist way of thinking, but in a Bayesian one, where probabilities are related to our own knowledge, it results natural to associate probability distributions to our parameters. In this way an element $P_\theta$ of the model is interpreted simply as the distribution of $X$ given the parameter value $\theta$, i.e. as the conditional distribution $X|\theta$.
+\subsection{Comparison}
 
-It is very important to understand the differences between both approximations. For it, let us review in this subsection the mandatory example that can help us to easily understand these differences.
+It is very important to understand the differences between both approximations. For it, let us review the mandatory example that can help us to easily understand these differences.
 \begin{table}[h!]
 \centering
 \begin{tabular}{||l|l||} 
@@ -137,21 +150,21 @@ Parameters are fixed & Data are fixed\\ [1ex]
 \label{table:1}
 \end{table}
 
-In table \ref{table:1} we have a little review of the most important differences about the two approximations. In the next example we present an experiment seen from both points of view. Since we are interested in knowing both descriptions, we show only the basic results of the procedures and we analyze them in the point of view of both the Frequentist and Bayesian statistics. 
+In table \ref{table:1} we have a little review of the most important differences about the two approximations. In the next example we present an experiment seen from both points of view. Since we are interested in knowing both descriptions, we show only the basic results and analyze them from the point of view of both the Frequentist and Bayesian statistics. 
 
-\textit{Example.-} In this experiment we have a coin that has a probability $p$ to land as heads and a probability $1-p$ to land tails. Trying to estimate $p$ (that must be $p=0.5$ since we have two possible states) we flip the coin 14 times, obtaining heads in 10 of them. Now we are interested in the next two possible events. To be precise: ``What is the probability that in the next two tosses we will get two heads in a row?"
+\textit{Example.-} In this experiment we have a coin that has a probability $p$ to land as heads and a probability $1-p$ to land tails. Trying to estimate $p$ (that must be $p=0.5$ since we have only two possible states) we flip the coin 14 times, obtaining heads in 10 of them. Now we are interested in the next two possible events. To be precise: ``What is the probability that in the next two tosses we will get two heads in a row?"
 \begin{itemize}
-\item \textit{Frequentist approximation}. As mentioned previously, in Frequentist statistics probability is related to the frequency of events, then our best estimate for $p$ is $P(head)=p=$No.heads/No.total$=10/14$. So, the probability of having 2 heads in a row is $P(2heads)=P(head)P(head)\simeq 0.51$.  
-\item \textit{Bayesian approximation}. In the bayesian approach $p$ is not a value, it is a random variable with its own distribution. This distribution must be defined by the existing evidence. In this example a good distribution for $p$ is a binomial distribution. Then, by considering a uniform distribution as our prior information (we do not know anything about $p$) we have that the probability of having two heads is
+\item \textit{Frequentist approximation}. As mentioned previously, in Frequentist statistics probability is related to the frequency of events, then our best estimate for $p$ is $P(head)=p=\frac{number \: of\: heads}{number\: of\: events}=10/14$. So, the probability of having 2 heads in a row is $P(2heads)=P(head)P(head)\simeq 0.51$.  
+\item \textit{Bayesian approximation}. In the Bayesian approach $p$ is not a value, it is a random variable with its own distribution. This distribution must be defined by the existing evidence. In this example a good distribution for $p$ is a binomial distribution. Then, by considering a uniform distribution as our prior information (we do not know anything about $p$) we have that the probability of having two heads is
 \[
 P(2heads|D)=\frac{B(13,5)}{B(11,5)}=0.485
 \]
-where $B(x,y)$ is the beta function. This distribution appears given the fact that $B(1,1)$ is the uniform distribution which we consider as our prior \textcolor{red}{(reescribir esta oracion, pero no se me ocurre como :,c)}.
+where $B(x,y)$ is the beta function. This distribution appears given the fact that $B(1,1)$ is the uniform distribution which we assume as our prior. This example and the use of the beta function will be better explained in the following section. 
 \end{itemize}
 
-We can see that both approximations arrive at different results. In one of them, since we consider probability as a frequency of events we have a bigger probability to have two heads in a row than when we consider probability as our knowledge about the experiment, however, in both cases, the probability differs from the real one ($P(2heads)=0.25$) because we don't have enough data for our estimations.
+We can see that both approximations arrive at different results. In the first case, since we adopt the probability as a frequency of events we have a bigger probability to get two heads in a row than when taking the probability as our knowledge about the experiment. However, in both cases, the probability differs from the real one ($P(2heads)=0.25$) because we don't have enough data for our estimations.
 
-\textit{Note}: If you are not familiarized with Bayesian statistics, please don't be scared of the last example. In the next section we will introduce the basic concepts to understand the bayesian part and then we will go back to this example to solve it using the new tools acquired.   
+\textit{Note}: If you are not unfamiliar with Bayesian statistics, please don't be scared of the last example. In the next section we will introduce the basic concepts to understand the Bayesian part and then we will go back to this example to solve it using the new tools acquired.   
 
 \textcolor{red}{(Tratar de escribir esta parte un poco m\'as bonito)}
 %\subsection{Summary}
@@ -160,38 +173,42 @@ We can see that both approximations arrive at different results. In one of them,
 
 \section{A first look at Bayesian statistics}
 
-Before we start with the applications of bayesian statistics in cosmology it's necessary to learn the most important tools for the bayesian analysis. In this section, we review them in an informal way, keeping in mind that the reader can look for the formal treatment in literature.   
+Before we start with the applications of Bayesian statistics in cosmology it is necessary to learn the most important. In this section, we review them in an informal way, keeping in mind that the reader can look for the formal treatment in literature.   
 
 \subsection{Bayes theorem, priors, posteriors and all that stuff}\label{BTPP}
 
-When a statistician is interested in working with the Bayes framework, there are several concepts that are necessary to understand before he can interpret the results obtained. In this section we quickly review these concepts and then we take back the example about the coin toss given in the last section. 
+When a statistician is interested in working with the Bayes framework, there are several concepts necessary to understand before interpreting the results. In this section we quickly review these concepts and then we take back the example about the coin toss given in the last section. 
 
-\textit{The Bayes theorem.} The Bayes theorem is a direct consequence of the axioms of probability \eqref{rules}. We can see that, from \eqref{rule4}, without loss of generality, we can rewrite $P(x_2,x_1)=P(x_2)P(x_2|x_1)$. Considering that the relation $P(x_1,x_2)=P(x_2,x_1)$ has to be fulfilled, we arrive at the Bayes formula   
+\textit{The Bayes theorem.} The Bayes theorem is a direct consequence of the axioms of probability \eqref{rules}. We can see that, from \eqref{rule4}, without loss of generality, we can rewrite $P(x_2,x_1)=P(x_2)P(x_2|x_1)$. Taking into account that the relation $P(x_1,x_2)=P(x_2,x_1)$ has to be fulfilled, we arrive at the Bayes formula   
 \begin{equation}
-P(x_2|x_1)=\frac{P(x_2)P(x_1|x_2)}{P(x_1)}
+P(x_2|x_1)=\frac{P(x_1|x_2)P(x_2)}{P(x_1)}.
 \end{equation}
-As it was mentioned, in the Bayes framework, data and model are part of the same space. In this manner, considering $x_1\rightarrow D$ as a set of data, and $x_2\rightarrow H$ as our "hypothesis", we can rewrite the above equation in Bayesian statistics as
+As already mentioned, in the Bayes framework data and model are part of the same space. Given a model (or hypothesis) $H$, considering $x_1\rightarrow D$ as a set of data, and $x_2\rightarrow \theta$ as the parameter vector of said hypothesis, we can rewrite the above equation as
 \begin{equation}\label{BayesT}
-P(\theta,H|D)=\frac{P(\theta,H)P(D|\theta,H)}{P(D)}
+P(\theta|D, H)=\frac{P(D|\theta,H)P(\theta|H)}{P(D|H)}.
 \end{equation}
-Here we have added the extra term $\theta$ in order to specify that our hypothesis can depend on one or several parameters. 
-The above equation is the so-called \textit{Bayes theorem} and it's the most important tool in a Bayesian inference procedure. In this result, $P(\theta,H|D)$ is called the \textit{posterior} probability for the model. $L(D;\theta)\equiv P(D|\theta,H)$ is called the \textit{Likelihood} and it will be our main focus in a future section. $P(D|\theta,H)$ is called the \textit{prior} and expresses what we know about our model before acquiring the data. This prior can be fixed depending on either previous experiment results or the theory that we are working with. $P(D)$ is the evidence of our model. We notice that this evidence acts only as a normalizing factor
+The above equation is the so-called \textit{Bayes theorem} and the most important tool in a Bayesian inference procedure. In this result, $P(\theta|D, H)$ is called the \textit{posterior} probability for the model. $L(D;\theta)\equiv P(D|\theta,H)$ is called the \textit{Likelihood} and it will be our main focus in a future section. $P(\theta|H)\equiv \pi(\theta)$ is called the \textit{prior} and expresses the knowledge about our model before acquiring the data. This prior can be fixed depending on either previous experiment results or the theory that we are working with. $P(D|H)$ is the evidence of our model. We notice that this evidence acts only as a normalizing factor
 \begin{equation}\label{PD}
-P(D)=\int d\theta P(D|\theta,H)P(\theta,H).
+P(D|H)=\int d\theta P(D|\theta,H)P(\theta|H).
 \end{equation}
-This quantity is usually ignored for practical reasons when testing the parameter space of a unique model. On the other side, if what we are interested in is a comparison between 2 or more models, the evidence plays an important role when we choose which model is more likely to be the ``real one'', whatever the parameters are. For the purpose of this work, we are not interested in this scenario and we will ignore it at all times.
+This quantity is usually ignored for practical reasons when testing the parameter space of a unique model. On the other hand, for model comparison, the evidence plays an important role when choosing the model which best ``predicts'' the data, whatever the parameters are. This is known as \textit{model selection} and it uses the \textbf{Bayes' Factor}
 
-The reader can notice that we have added here a new ingredient in our Bayes description: the hypothesis. An hypothesis is our best guess at which model best fits the data, $H=Q_{best}$.
+\begin{equation}\label{bayesfactor}
+\frac{P(D\vert H_0)}{P(D\vert H_1)}= \frac{\int P(\theta_0\vert H_0)P(D\vert\theta_0, H_0)d\theta_0}{\int P(\theta_1\vert H_1)P(D\vert\theta_1, H_1)d\theta_1}=K,
+\end{equation}
+where $\theta_i$ is a parameter vector for the hypothesis $H_i$ and $i=0,1$. This ratio between evidences tells us how probable is one model with respect to the other, and to evaluate this we use a criteria known as Jeffreys' scale (TABLE \ref{evidence}). 
 
-We can see that Bayes theorem has an enormous implication with respect to an statistical inferential point of view. In a typical scenario we can collect some data and hope to interpret it with a given model, however, what we can usually do is the opposite, that is, first we have a set of data and then we can confront a model considering what is the probability that our model fits the data. As we can see from \eqref{BayesT}, Bayes theorem gives us a tool that allows us to relate both scenarios. Then, thanks to the Bayes theorem, in principle, we can know what is the ``real" model that best fits the data. 
+The reader can notice that we have added a new ingredient in our Bayes description: the hypothesis. An hypothesis is our best guess at which model best fits the data, $H=Q_{best}$.
 
-\textit{Example}.- We consider again the example shown in the last section: the coin toss. What we are interested in is knowing what is the probability $P(2heads|D)$ ($D=$ the previous 14 coin tosses acting as data) to have 2 heads in a row given the data. For simplicity, we do not update $p$ between the two tosses and we assume that both tosses are independent from each other. To obtain the result that we expect we need to calculate
+We can see that Bayes theorem has an enormous implication with respect to an statistical inferential point of view. In a typical scenario we can collect some data and hope to interpret it with a given model, however, what we can usually do is the opposite, that is, first we have a set of data and then we can confront a model considering what is the probability that our model fits the data. As we can see from \eqref{BayesT}, Bayes theorem gives us a tool that allows us to relate both scenarios. Then, thanks to the Bayes theorem, in principle, we can know the ``real" model that best fits the data. 
+
+\textit{Example}.- We go back to the example shown in the last section: the coin toss. We are interested in knowing the probability $P(2heads|D)$ ($D=$ the previous 14 coin tosses acting as data) to have 2 heads in a row given the data. For simplicity, we do not update $p$ between the two tosses and we assume that both tosses are independent from each other. To obtain the result we need to calculate
 \begin{equation}\label{ex}
-P(2heads|D)=\int^1_0 P(2heads|p)P(p|D)dp
+P(2heads|D)=\int^1_0 P(2heads|p)P(p|D)dp,
 \end{equation}
-where $P(p|D)$ is the probability of the data given our model $p$ and $P(2heads|p)$ is the probability of our model $p$ given that we had 2 heads. Since we are considering that both tries are independent we have
+where $P(p|D)$ is the probability of the data given the probability of model $p$ and $P(2heads|p)$ is the probability of our model $p$ given that we had 2 heads. Since we are considering that both tries independent, we have
 \begin{equation}
-P(2heads|p)=[P(head|p)]^2
+P(2heads|p)=[P(head|p)]^2 ,
 \end{equation}
 where $P(head|p)$ is the probability of our model $p$ given that we obtained heads once. A good model for our experiment, given the data, is a binomial distribution
 \begin{equation}\label{ex2}
@@ -199,15 +216,15 @@ P(D|p)=\binom{14}{10}p^{10}(1-p)^4
 \end{equation}
 Then 
 \begin{equation}\label{ex1}
-P(head|p)=p\Rightarrow P(2head|p)=p^2
+P(head|p)=p\Rightarrow P(2head|p)=p^2.
 \end{equation}
 Now we need to compute $P(p|D)$. Using the bayes theorem we have
 \begin{equation}
-P(p|D)=\frac{P(D|p)P(p)}{P(D)}
+P(p|D)=\frac{P(D|p)P(p)}{P(D)}.
 \end{equation}
 A very convenient prior distribution for this scenario is the \textit{beta distribution} $Beta(p;a,b)$ defined as
 \begin{equation}\label{ex3}
-Beta(p;a,b)=\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}p^{a-1}(1-p)^{b-1}
+Beta(p;a,b)=\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}p^{a-1}(1-p)^{b-1},
 \end{equation}
 where $\Gamma$ is the gamma function. So
 \begin{equation}\label{ex4}
@@ -215,17 +232,16 @@ P(p)=Beta(p;a,b)
 \end{equation}
 We are interested in the explicit form of $P(p|D)$ in such case we need to compute $P(D)$. Introducing \eqref{ex2} and \eqref{ex4} into \eqref{PD} we have
 \begin{equation}
-P(D)=B(10+a,4+b)\equiv \frac{\Gamma(10+a)\Gamma(4+b)}{\Gamma((10+a)+(4+b))}
+P(D)=B(10+a,4+b)\equiv \frac{\Gamma(10+a)\Gamma(4+b)}{\Gamma((10+a)+(4+b))},
 \end{equation}
 and then
 \begin{equation}\label{ex5}
-P(p|D)=\frac{p^{10+a-1}(1-p)^{4+b-1}}{B(10+a,4+b)}
+P(p|D)=\frac{p^{10+a-1}(1-p)^{4+b-1}}{B(10+a,4+b)}.
 \end{equation}
 
-\textcolor{red}{(revisar todo este ejemplo de la moneda, hay algo que no me quedo claro)}
 
-Now we need to know the values of $a$ and $b$. If we assume that we know nothing about $p$, we can consider our prior as a uniform distribution, this means that $a=b=1$. 
-Notice that, from figure \ref{coin0}, our posterior result \eqref{ex4} doesn't agree with the real result (p=0.5). We would expect that our posterior distribution is centered at $p=0.5$ with a very thin distribution. This disagreement can be fixed if we increase our experimental data.\\ $ $\\
+Now we need to know the values of $a$ and $b$. If we assume that we know nothing about $p$, we can assume our prior as a uniform distribution, this means that $a=b=1$. 
+Notice from figure \ref{coin0}, our posterior result \eqref{ex4} doesn't agree with the real result (p=0.5). We would expect that our posterior distribution is centered at $p=0.5$ with a very narrow distribution. This disagreement can be fixed if we increase our experimental data.\\ $ $\\
 \begin{minipage}{\textwidth}
 \centering
 \includegraphics[height=8cm]{Figures/coin0.png}
@@ -235,16 +251,16 @@ Notice that, from figure \ref{coin0}, our posterior result \eqref{ex4} doesn't a
 \\$ $ \\
 Solving the integral in \eqref{ex} with \eqref{ex1} and \eqref{ex4} we arrive at the final result obtained in the previous section
 \begin{equation}
-P(2heads|D)=\frac{B(13,5)}{B(11,5)}=0.485
+P(2heads|D)=\frac{B(13,5)}{B(11,5)}=0.485.
 \end{equation}
 %
 %
 %
 \subsection{Updating the probability distribution for a model} 
 
-As seen in the coin example, we couldn't arrive to the real value of $p$ because we didn't have enough data. If we want to be closer to the real value, we would have to keep flipping the coin until the amount of data was big enough. Let's continue with the coin example: after throwing it 100 times we obtain, let's say, 56 heads, or after throwing it 500 times we obtain 246 heads, we should obtain a tinier distribution with the center close to $p=0.5$ (see fig. \ref{coin1}). Given this, it is clear that, in order to confront a parameter model and be more accurate about the most probable (or ``real") value of said parameter, it is necessary to increase the amount of data (and the precision) in any experiment. 
+As seen in the coin example, we could not arrive to the real value of $p$ because we didn't have enough data. If we want to be closer to the real value, we would have to keep flipping the coin until the amount of data was big enough. Let's continue with the coin example: after throwing it 100 times we obtain, let's say, 56 heads, or after throwing it 500 times we obtain 246 heads, we should obtain a smaller distribution with the center close to $p=0.5$ (see fig. \ref{coin1}). Given this, it is clear that, in order to confront a parameter model and be more accurate about the most probable (or ``real") value of said parameter, it is necessary to increase the amount of data (and the precision) in any experiment. 
 %For example, in the cosmological context, there are a lot of experiments like the ones associated with the barionic acoustic oscilations (BAO), the cosmic microwave background (CMB), the neutrinos background radiation, the redshift survey, etc. (if you are interested in knowing a pedagogical explanation of the different experiments, you can look for \cite{observ}), that can help us to confront our model's parameters (or models) and discriminate them in a more accurately way. 
-Then, what we have here are some model's parameters that have to be confronted with different set of data. This can be done in two ways: first one is, regarding the sum of all the sets of data that we have; second one is, consider each data set as the new data, but our prior information has to be set by what we know about the previous information. The important thing in Bayesian statistics is that it doesn't matter which one of the 2 possibilities we choose. In the coin toss example it means that it is equivalent to start with the prior given in figure \ref{coin1}-a and considering the 500 data we can arrive at the posterior \ref{coin1}-d, or start with \ref{coin1}-c as our prior and consider the last 400 data to obtain the same posterior \ref{coin1}-d. \\ $ $ \\
+Then, we have some model parameters that have to be confronted with different set of data. This can be done in two ways: first one is, regarding the sum of all the sets of data that we have; second one is, consider each data set as the new data, but our prior information has to be set by what we know about the previous information. The important thing in Bayesian statistics is that it doesn't matter which one of the two possibilities we choose. In the coin toss example it means that it is equivalent to start with the prior given in figure \ref{coin1}-a and considering the 500 data we can arrive at the posterior \ref{coin1}-d, or start with \ref{coin1}-c as our prior and consider the last 400 data to obtain the same posterior \ref{coin1}-d. \\ $ $ \\
 \begin{minipage}{\textwidth}
 \centering
 \includegraphics[height=10cm]{Figures/coin1.png}
@@ -264,15 +280,15 @@ P(\theta,H|D'I')=\frac{P(\theta,H|I)P(DD'|\theta,HI)}{P(DD'|I)}=P(\theta,H|[DD']
 where we can explicitly see the equivalence of the 2 different options. 
 \subsection{About the Likelihood}
 
-We mentioned that the evidence in the Bayes theorem is usually not important when we try to do any inference procedure in the parameter space of a single model. Then, we can fix it as $P(D)=1$ without lost of generality. If we ignore the prior\footnote{It is expected that the real value of a given parameter is independent of the prior.} we can identify the likelihood with $P(D|H)=L(D;H)$ and thus, by maximizing it, we can find the most probable model (or model's parameters) for the given data. However, having ignored $P(D)$ and the prior, this approach cannot give a good of fit and thus cannot give an absolute probability for a given model, but it can give relative probabilities. On the other side, it is possible to report results independently of the prior by using the \textit{Likelihood ratio}. The likelihood at a particular point in the parameter space can be compared with the one that best fit the observations, $L_{max}$. Then we can say that a model is acceptable if the likelihood ratio
+We mentioned that the evidence in the Bayes theorem is usually setting apart when doing any inference procedure in the parameter space of a single model. Then, we can fix it as $P(D)=1$ without lost of generality. If we ignore the prior\footnote{It is expected that the real value of a given parameter is independent of the prior.} we can identify the likelihood with $P(D|\theta, H)=L(D|\theta, H)$ and thus, by maximizing it, we can find the most probable model (or model parameters) for given data. However, having ignored $P(D|H)$ and the prior, this approach cannot give a goodness of fit and thus cannot give an absolute probability for a given model, but it can give relative probabilities. On the other hand, it is possible to report results independently of the prior by using the \textit{Likelihood ratio}. The likelihood at a particular point in the parameter space can be compared with the one that best fit the observations, $L_{max}$. Then we can say that a model is acceptable if the likelihood ratio
 \begin{equation}
-\Lambda=-2\ln\left[\frac{L(D;H)}{L_{max}}\right]
+\Lambda=-2\ln\left[\frac{L(D|\theta, H)}{L_{max}}\right],
 \end{equation}
 is bigger than a given value.
 
-On the other side, let us assume we have a posterior distribution, which is single-peaked. We consider that $\hat \theta$ is the peak of the distribution (most probable value) or the mean
+Let us assume we have a posterior distribution, which is single-peaked. We consider that $\hat \theta$ is the peak of the distribution (most probable value) or the mean
 \begin{equation}
-\hat \theta =\int d\theta \theta P(\theta,H|D).
+\hat \theta =\int d\theta \theta P(\theta|D, H).
 \end{equation}
 If our model is well-specified and the expectation value of $\hat \theta$ corresponds with the real value $\theta_0$
 \begin{equation}
@@ -280,62 +296,62 @@ If our model is well-specified and the expectation value of $\hat \theta$ corres
 \end{equation}
 then we say that $\hat \theta$ is \textit{unbiased}. Considering a Taylor expansion of the \textit{log likelihood}
 \begin{equation}
-\ln L(D;H)=\ln L(D;H_0)+\frac{1}{2}(\theta_\alpha-\theta_{0\alpha})\frac{\partial^2\ln L}{\partial\theta_\alpha \partial\theta_\beta}(\theta_\beta-\theta_{0\beta})+...
+\ln L(D|\theta, H)=\ln L(D|\theta_0, H_0)+\frac{1}{2}(\theta_\alpha-\theta_{0\alpha})\frac{\partial^2\ln L}{\partial\theta_\alpha \partial\theta_\beta}(\theta_\beta-\theta_{0\beta})+...,
 \end{equation}
-where $H_0$ corresponds with the real model (and/or parameter of the model). In this manner, we have that the likelihood can be expressed as a multi-variable likelihood given by 
+where $H_0$ corresponds with the real model (and $\theta_0$ with the parameter of the real model). In this manner, we have that the likelihood can be expressed as a multi-variable likelihood given by 
 \begin{equation}\label{GLik}
-L(D;H)=L(D;H_0)\exp \left[-\frac{1}{2}(\theta_\alpha-\theta_{0\alpha})H_{\alpha\beta}(\theta_\beta-\theta_{0\beta})\right]
+L(D|\theta, H)=L(D\theta_0, H_0)\exp \left[-\frac{1}{2}(\theta_\alpha-\theta_{0\alpha})H_{\alpha\beta}(\theta_\beta-\theta_{0\beta})\right],
 \end{equation}
 where 
 \begin{equation}
-H_{\alpha\beta}=\frac{\partial^2\ln L}{\partial\theta_\alpha \partial\theta_\beta}
+H_{\alpha\beta}=\frac{\partial^2\ln L}{\partial\theta_\alpha \partial\theta_\beta},
 \end{equation}
 is called the \textit{Hessian matrix} and it controls whether the estimates of $\theta_\alpha$ and $\theta_\beta$ are correlated or not. If it is diagonal, these estimates are uncorrelated.
 
-The above expression for the likelihood is a good approximation as long as our posterior distribution possesses a single-peak. However, in a general way, the likelihood may not be well described by a gaussian expression at levels which set the interesting credibility levels. It is worth mentioning that, if the data errors are normally distributed, then the likelihood for the data will be a Gaussian function as well.  In fact, this is always true if the model is linearly dependent on the parameters \cite{LiV}. On the other side, if the data is not normally distributed we can resort to the central limit theorem. In this way, the central limit theorem will tell us that the resulting distribution will be best approximated by a multi-variate Gaussian distribution \cite{LiV}.
+The above expression for the likelihood is a good approximation as long as our posterior distribution possesses a single-peak. However, in a general way, the likelihood may not be well described by a gaussian expression at levels which set the interesting credibility levels. It is worth mentioning that, if the data errors are normally distributed, then the likelihood for the data will be a Gaussian function as well.  In fact, this is always true if the model is linearly dependent on the parameters \cite{LiV}. On the other hand, if the data is not normally distributed we can resort to the central limit theorem. In this way, the central limit theorem will tell us that the resulting distribution will be best approximated by a multi-variate Gaussian distribution \cite{LiV}.
 \subsection{Justifying the neglect of the priors}
 
-In this section we are interested in justifying the neglection of the prior in the Bayes theorem. For this, we follow the example given in \cite{RobT}. In this example there are 2 persons, A and B, that are interested in the measurement of a given physical quantity $\theta$. A and B have different prior beliefs regarding the possible value of $\theta$. This discrepancy could be given by the experience, such as the possibility that A and B have made the same measurement at different times. Let us denote their priors by $P(\theta|I_i)$, $(i=A,B)$, and let us assume that they are described by two Gaussian distributions with mean $\mu_i$ and variance $\Sigma_i^2$. Now, A and B make a measurement together and they obtain the value $\theta_0=m_1$. If we consider that the experiment is such that our parameters are uncorrelated we can rewrite \eqref{GLik} as
+In this section we present an argument for neglecting the prior in the Bayes theorem. For this, we follow the example given in \cite{RobT}. In this example there are two persons, A and B, that are interested in the measurement of a given physical quantity $\theta$. A and B have different prior beliefs regarding the possible value of $\theta$. This discrepancy could be given by the experience, such as the possibility that A and B have made the same measurement at different times. Let us denote their priors by $P(\theta|I_i)$, $(i=A,B)$, and assume they are described by two Gaussian distributions with mean $\mu_i$ and variance $\Sigma_i^2$. Now, A and B make a measurement together and they obtain the value $\theta_0=m_1$. If we consider that the experiment is such that our parameters are uncorrelated we can rewrite \eqref{GLik} as
 \begin{equation}\label{LikG}
-L(D;HI)=L_0\exp\left[-\frac{1}{2}\frac{(\theta-m_1)^2}{\sigma^2}\right].
+L(D|\theta, HI)=L_0\exp\left[-\frac{1}{2}\frac{(\theta-m_1)^2}{\sigma^2}\right].
 \end{equation}
 By replacing the hypothesis $H$ by the continuous variable $\theta$ the Bayes theorem for the model of A and B becomes
 \begin{equation}
-P(\theta|m_1)=\frac{L(m_1;\theta I_i)P(\theta|I_i)}{P(m_1|I_i)}
+P(\theta|m_1)=\frac{L(m_1|\theta I_i)P(\theta|I_i)}{P(m_1|I_i)},
 \end{equation}
 where we have used the notation given in \eqref{BayesTI}. Then, the posterior of A and B are (again) Gaussian with mean
 \begin{equation}
-\hat \mu_i = \frac{m_1+(\sigma/\Sigma_i)^2\mu_i}{1+(\sigma/\Sigma_i)^2}
+\hat \mu_i = \frac{m_1+(\sigma/\Sigma_i)^2\mu_i}{1+(\sigma/\Sigma_i)^2},
 \end{equation}
 and variance 
 \begin{equation}
-\tau_i^2=\frac{\sigma^2}{1+(\sigma/\Sigma_i)^2}, \ \ (i=A,B)
+\tau_i^2=\frac{\sigma^2}{1+(\sigma/\Sigma_i)^2}, \ \ (i=A,B).
 \end{equation}
 Thus, if the likelihood is more informative than the prior i.e. $(\sigma/\Sigma)\ll 1$ the posterior means of A and B will converge towards the measured value, $m_1$. As more and more data are obtained one can simply replace the value of $m_1$ in the above equation by the mean $\langle m\rangle$ and $\sigma^2$ by $\sigma^2/N$ \textcolor{red}{(que es sigma minuscula?)}. Then, we can see that the initial prior $\mu_i$ of A and B will progressively be overridden by the data. This process is ilutrated in figure \ref{gausian1}.
 \begin{minipage}{\textwidth}
 \centering
 \includegraphics[height=4.5cm]{Figures/g1.png}
 \includegraphics[height=4.5cm]{Figures/g2.png}
-\captionof{figure}{\footnotesize{Converging views in Bayes inference, taken from \cite{RobT}. A and B have different priors $P(\theta|I_i)$ about a value of $\theta$ (panel (a)). Then, they observe one datum with likelihood $L(\theta;HI)$ (panel (b)), after which their posteriors $P(\theta|m_1)$ (panel (c)) are obtained. Then, after observing 100 data, it can be seen how both posteriors are practically indistinguishable (panel (d))}}
+\captionof{figure}{\footnotesize{Converging views in Bayes inference, taken from \cite{RobT}. A and B have different priors $P(\theta|I_i)$ about a value of $\theta$ (panel (a)). Then, they observe one datum with likelihood $L(\theta;HI)$ (panel (b)), after which their posteriors $P(\theta|m_1)$ (panel (c)) are obtained. Then, after observing 100 data, it can be seen how both posteriors are practically indistinguishable (panel (d))}.}
 \label{gausian1}
 \end{minipage}
 \subsection{Chisquare and goodness of fit}
 
 We mentioned that it is necessary to maximize the likelihood in order to obtain the most probable model (or model parameters) given the data. If we consider the Gaussian approximation given in \eqref{LikG} we can see that the likelihood will be maximum if the quantity
 \begin{equation}\label{chi2}
-\chi^2\equiv(\theta_\alpha-\theta_{0\alpha})H_{\alpha\beta}(\theta_\beta-\theta_{0\beta})
+\chi^2\equiv(\theta_\alpha-\theta_{0\alpha})H_{\alpha\beta}(\theta_\beta-\theta_{0\beta}),
 \end{equation}
-is minimum. The quantity $\chi^2$ is usually called \textit{chi-square} and is related to the Gaussian likelihood via $L=L_0e^{-\chi^2/2}$. We can say that the maximizing of a Gaussian likelihood procedure and the minimizing of a chisquare procedure are equivalent. However, as we mentioned before, there are some circumstances where the likelihood can't be well specified by a Gaussian distribution, in those cases the chi-square and the likelihood are no longer equivalent. 
+is minimum. The quantity $\chi^2$ is usually called \textit{chi-square} and is related to the Gaussian likelihood via $L=L_0e^{-\chi^2/2}$. We can say that maximizing the Gaussian likelihood and minimizing the chisquare are equivalent. However, as we mentioned before, there are some circumstances where the likelihood can't be well specified by a Gaussian distribution, in those cases the chi-square and the likelihood are no longer equivalent. 
 
 We can consider a probability distribution for different values of $\chi^2$ around its minimum. This is the $\chi^2$ distribution for $v=n-M$ degrees of freedom where $n$ is the number of independent data points and $M$ the number of parameters. Hence, we can calculate the probability that an observed $\chi^2$ exceeds by chance a value $\hat \chi$ for the correct model. This probability is given by \cite{NR} $Q(v,\hat\chi)=1-\Gamma(v/2,\hat\chi/2)$, where $\Gamma$ is the incomplete Gamma function. Then, the probability that the observed $\chi^2$ (even the correct model) is less than a given value $\hat\chi^2$ is $1-Q$. This statement is strictly true if the errors are Gaussian and the model is a linear function of the likelihood, i.e., for Gaussian likelihoods.
 
-If we evaluate the quantity $Q$ in the best-fit chi-square (i.e. its minimum) we can have a measure of the goodness of the fit. If $Q$ is small (small probability) we can interpret it as:
+If we evaluate the quantity $Q$ in the best-fit chi-square (i.e. its minimum) we can have a measure of the goodness of fit. If $Q$ is small (small probability) we can interpret it as:
 \begin{itemize}
 \item The model is wrong and can be rejected
 \item The errors are underestimated 
 \item The measurement errors are not normally distributed.
 \end{itemize}
-On the other side, if $Q$ is too large there are some reasons that could cause such overestimation:
+On the other hand, if $Q$ is too large there are some reasons that could cause such overestimation:
 \begin{itemize}
 \item Errors have been overestimated
 \item Data are correlated or non-independent
@@ -343,9 +359,9 @@ On the other side, if $Q$ is too large there are some reasons that could cause s
 \end{itemize}
 \subsection{Contour plots and confidence regions}
 
-Once the best fit parameter values are obtained we would like to know if there are confidence regions where other values could be considered as good candidates for our model. The most logical election is to consider values inside a compact region around the best fit value. Then, a natural choice is to consider regions with constant $\chi^2$ boundaries. In the case that $\chi^2$ possesses more than 1 minimum, it is said that we have more than one non-connected confidence region. For multi-variate Gaussian distributions (as the likelihood approximation \eqref{LikG}) these are ellipsoidal regions. In this section we exemplify how to calculate the confidence regions following \cite{LiV}. 
+Once the best fit parameter values are obtained we would like to know the confidence regions where values could be considered good candidates for our model. The most logical election is to take values inside a compact region around the best fit value. Then, a natural choice are regions with constant $\chi^2$ boundaries. When $\chi^2$ possesses more than 1 minimum, it is said that we have more than one non-connected confidence region, for multi-variate Gaussian distributions (as the likelihood approximation \eqref{LikG}) these are ellipsoidal regions. In this section we exemplify how to calculate the confidence regions following \cite{LiV}. 
 
-We can consider a little perturbation from the best fit of chisquare $\Delta\chi^2=\chi^2-\chi^2_{best}$. Then we can use the properties of $\chi^2$ distribution to define confidence regions for variations on $\chi^2$ to its minimum. In Table \ref{tableerrors} we can see the typical $68.3 \%$, $95.4\%$ and $99.5\%$ confidence levels as a function of number of parameters for the joint confidence level. In the case of Gaussian distribution (as the likelihood) these correspond to the conventional 1, 2 and 3 $\sigma$ \textcolor{red}{(revisar esta parte y la tabla)}.
+We consider a little perturbation from the best fit of chisquare $\Delta\chi^2=\chi^2-\chi^2_{best}$. Then we use the properties of $\chi^2$ distribution to define confidence regions for variations on $\chi^2$ to its minimum. In Table \ref{tableerrors} we see the typical $68.3 \%$, $95.4\%$ and $99.5\%$ confidence levels as a function of number of parameters for the joint confidence level. In the case of Gaussian distribution (as the likelihood) these correspond to the conventional 1, 2 and 3 $\sigma$ \textcolor{red}{(revisar esta parte y la tabla)}.
 \begin{table}[h!]
 \centering
 \begin{tabular}{||l|l|l|l|l||} 
@@ -360,7 +376,7 @@ $3\sigma$ & $99.73\%$ & $9.00$ & $11.8$ & $14.20$\\
 \caption{\footnotesize{$\Delta \chi^2$ for the conventional $68.3\%$, $95.4\%$ and $99.73\%$ as a function of the number of parameters for the joint confidence level.}}\label{tableerrors}
 \end{table}
 
-The general cooking recipe to compute constant $\chi^2$ confidence regions is as follows: After finding the best fit by minimizing $\chi^2$ (or maximizing the likelihood) and if $Q$ for the best parameters is acceptable, then:
+The general cooking recipe to compute constant $\chi^2$ confidence regions is as follows: after finding the best fit by minimizing $\chi^2$ (or maximizing the likelihood) and if $Q$ for the best parameters is acceptable, then:
 \begin{enumerate}
 \item Let $M$ be the number of parameters, $n$ the number of data and $p$ be the confidence limit desired.
 \item Solve the equation:
@@ -371,7 +387,7 @@ Q(n-M,min(\chi^2)+\Delta\chi^2)=p
 \end{enumerate}
 \subsection{Marginalization}
 
-It is clear that a model can (in general) depend on more than one parameter. However, most of this parameters $\theta_i$ may be uninteresting. For example, these parameters can correspond to nuisance parameters like calibration factors or it may be that we are interested in constraints on only one parameter at a time rather than on the joint constraints on 2 or more parameters simultaneously. Then we marginalize over the uninteresting parameters by
+It is clear that a model can (in general) depend on more than one parameter. However, most of these parameters $\theta_i$ may be less interesting. For example, these parameters can correspond to nuisance parameters like calibration factors or it may be that we are interested in constraints on only one parameter at a time rather than on the joint constraints on 2 or more parameters simultaneously. Then we marginalize over the uninteresting parameters by
 \begin{equation}
 P(\theta_1,...,\theta_j,H|D)=\int d\theta_{j+1}...d\theta_{m}P(\theta,H|D)
 \end{equation}
@@ -381,15 +397,15 @@ where $m$ is the total number of parameters in our model and $\theta_1$,...,$\th
 
 Once we have a set of data it is important to know how to accurately estimate parameters. Fisher \cite{Fisher} proposed a way to solve this issue 70 years ago. In this section we review the main results of his work following the procedure given in \cite{LiV}.
 
-First of all, we consider again a gaussian likelihood. As we can notice, the Heissian matrix $H_{\alpha\beta}$ has information on the parameters' errors and their covariance. More specifically, when all parameters are fixed except one (e.g. the ith parameter), the error on that one parameter is $1/\sqrt{H_{ii}}$. These errors are called conditional errors, although they are rarely used.
+First of all, we consider again a gaussian likelihood. As we notice, the Heissian matrix $H_{\alpha\beta}$ has information on the parameter errors and their covariance. More specifically, when all parameters are fixed except one (e.g. the $i$-th parameter), the error on that one parameter is $1/\sqrt{H_{ii}}$. These errors are called conditional errors, although they are rarely used.
 
 A quantity that arises naturally with gaussian likelihoods to forecast the precision of a model is the so-called \textit{Fisher information matrix}
 \begin{equation}
-F_{ij}=-\left\langle \frac{\partial^2 \mathcal{L}}{\partial \theta_\alpha \partial \theta_\beta}\right\rangle
+F_{ij}=-\left\langle \frac{\partial^2 \mathcal{L}}{\partial \theta_\alpha \partial \theta_\beta}\right\rangle,
 \end{equation}
 where 
 \begin{equation}
-\mathcal{L}=\ln L
+\mathcal{L}=\ln L.
 \end{equation}
 It's clear that $F=\langle H\rangle$. The average is made with observational data. 
 
@@ -397,17 +413,17 @@ As we can see from eq. \eqref{rule4}, when we have independent data sets, the co
 
 A pedagogical and easy case is the one with one-parameter $\theta_i$ considering a gaussian likelihood. In this scenario we have that
 \begin{equation}
-\Delta \mathcal{L}=\frac{1}{2}F_{ii}(\theta_i- \theta_{0i})^2
+\Delta \mathcal{L}=\frac{1}{2}F_{ii}(\theta_i- \theta_{0i})^2,
 \end{equation}
-when $2\Delta\mathcal{L}=1$ and by identifying it with the $\Delta \chi^2$ corresponding to $68\%$ confidence level, we notice that $1/\sqrt{F_{ii}}$ yields the $1-\sigma$ displacement for $\theta_i$. In the general case
+when $2\Delta\mathcal{L}=1$ and identifying the $\Delta \chi^2$ corresponding to $68\%$ confidence level, we notice that $1/\sqrt{F_{ii}}$ yields the $1-\sigma$ displacement for $\theta_i$. In the general case
 \begin{equation}\label{rao}
-\sigma_{ij}^2 \geq (F^{-1})_{ij}
+\sigma_{ij}^2 \geq (F^{-1})_{ij}.
 \end{equation}
 Thus, when all parameters are estimated simultaneously from the data, the marginalized error is
 \begin{equation}
-\sigma_{\theta_i}\geq (F^{-1})^{1/2}_{ii}
+\sigma_{\theta_i}\geq (F^{-1})^{1/2}_{ii}.
 \end{equation}
-The beauty of the Fisher matrix approach is that there is a simple prescription for setting it up knowing only the model and measurement uncertainties, and that, under the assumption of a gaussian likelihood, the Fisher matrix is the inverse of the covariance matrix. So, all you have to do is set up the Fisher matrix and then invert it to obtain the covariance matrix (that is, the uncertainties on your model parameters). In addition, if it can be computed quickly, it also enables one to explore different experimental set ups and optimize the experiment.
+The beauty of the Fisher matrix approach is that there is a simple prescription for setting it up knowing only the model and measurement uncertainties, and under the assumption of a gaussian likelihood the Fisher matrix is the inverse of the covariance matrix. So, all you have to do is set up the Fisher matrix and then invert it to obtain the covariance matrix (that is, the uncertainties on your model parameters). In addition, if it can be computed quickly, it also enables one to explore different experimental set ups and optimize the experiment.
 
 The whole point of the Fisher matrix formalism is to predict how well the experiment will be able to constrain the parameters of the model before doing the experiment and without even simulating the experiment in any detail. We can then forecast the results of different experiments and look at trade-offs such as precision versus cost. In other words, we can engage in experimental design.
 
@@ -421,7 +437,7 @@ Suppose we are interested in computing the expectation value $\mu_f=E_p[f(X)]$, 
 \begin{equation}
 \mu_f = \int f(x)p(x)dx=\int f(x)\frac{p(x)}{q(x)}q(x)dx=E_q[f(X)w(x)]
 \end{equation}
-where $w(x)=p(x)/q(x)$, and now we have an average over $q$. So, if we have a collection of different draws $x^{(1)},...,x^{(m)}$ from $q(x)$, we can estimate $\mu_f$ using this draws as
+where $w(x)=p(x)/q(x)$, and now we have an average over $q$. So, if we have a collection of different draws $x^{(1)},...,x^{(m)}$ from $q(x)$, we can estimate $\mu_f$ using these draws as
 \begin{equation}
 \hat \mu_f = \frac{1}{m}\sum_{j=1}^m w(x^{(j)})f(x^{(j)})
 \end{equation}
@@ -440,7 +456,7 @@ where the samples $\lbrace\theta_n\rbrace$ are drawn from $P(\theta|D)$.
 An important result for importance sampling is that, if we have a new set of data which is broadly consistent with the current data (in the sense that the posterior only shrinks), we can make use of importance sampling in order to quickly calculate a new posterior including the new data.
 \subsection{Combining datasets: Hyperparameter method}
 
-Suppose we are dealing with multiple datasets,  $\lbrace D_1,...,D_N\rbrace$, coming from a collection of different surveys $\left\lbrace S_1,...,S_N\right\rbrace$. Of course we can't be sure that, a priori, all our data surveys are consistent with one another, or if there is one or more that are likely to be erroneous. If we were sure that all this datasets are consistent, then it should be enough to update the probability as was seen in [Updating the probability distribution for a model] in order to calculate the new posterior distribution for the parameters that we are interested in. However, because we are usually not sure about this, a way to have any information about how useful is a data survey is by introducing the \textbf{hyperparameter method}. This method was first proposed by \cite{hiperp} and \cite{hiperp1} in order to perform a joint estimation of cosmological parameters from combined datasets and it can be used as long as we can consider every survey independent from each other.
+Suppose we are dealing with multiple datasets,  $\lbrace D_1,...,D_N\rbrace$, coming from a collection of different surveys $\left\lbrace S_1,...,S_N\right\rbrace$. Of course we can't be sure that, a priori, all our data surveys are consistent with each other, or there could be one or more that are likely to be erroneous. If we were sure that all datasets are consistent, then it should be enough to update the probability as seen in [Updating the probability distribution for a model] in order to calculate the new posterior distribution for the parameters we are interested in. However, because we are usually not sure about this, a way to have any information about how useful is a data survey is by introducing the \textbf{hyperparameter method}. This method was initially proposed by \cite{hiperp} and \cite{hiperp1} in order to perform a joint estimation of cosmological parameters from combined datasets and it can be used as long as we can consider every survey independent from each other.
 
 In this section we review the main steps necessary to understand the hyperparameter method following ref. \cite{hiperp1}. If the reader is interested in a more explicit explanation of it, they can consult \cite{hiperp} or \cite{hiperp1}.
 
@@ -448,15 +464,15 @@ The main feature of this process is the introduction of a new set of ``hyperpara
 \begin{equation}
 P(\theta,H|D)=\frac{1}{P(D)}\int P(D|\theta,\alpha,H)P(\theta,\alpha,H)d\alpha
 \end{equation}
-where we have used the Bayes theorem. Now, it is necessary for the method to assume that the hyperparameters $\alpha$ and the parameters of interest $\theta$ are independent, i.e. $P(\theta,\alpha,H)=P(\alpha)P(\theta,H)$, it is also necessary to assume that each hyperparameter $\alpha_k$ is independent from other hyperparameters, i.e. $P(\alpha)=P(\alpha_1)P(\alpha_2)...P(\alpha_N)$. In this way we can rewrite the above expression as
+where we have used the Bayes theorem. Now, it is necessary for the method to assume that the hyperparameters $\alpha$ and the parameters of interest $\theta$ are independent, i.e. $P(\theta,\alpha,H)=P(\alpha)P(\theta,H)$, it is also necessary to assume that each hyperparameter $\alpha_k$ is independent from each other, i.e. $P(\alpha)=P(\alpha_1)P(\alpha_2)...P(\alpha_N)$. In this way we can rewrite the above expression as
 \begin{equation}
 P(\theta,H|D)=\frac{P(\theta,H)}{P(D|H)}\left[\prod_{k=1}^N\int P(D_k|\theta,\alpha_k,H)P(\alpha_k)d\alpha_k\right]
 \end{equation}
 Here, the quantity inside square brackets is the marginalized likelihood over hyperparameters $L(D;\theta,H)$, and then we can identify the quantity inside the integration as the individual likelihood $L(D_k;\theta,\alpha,H)$, for every $\alpha_k$ and $D_k$; $P(D|H)$ is the evidence and, in a typical parameter inference procedure, works as a normalized function, i.e. $P(D|H)=\int P(\theta,H)L(D;\theta,H)$. Notice that, by considering $P(a_k)=\delta(\alpha_k-1)$, we rely on the standard approach, where no hyperparameters are used.  
 
-We add this hyperparameters in order to, in a way, weight every dataset and take away the importance of the data that doesn't seem to be consistent with other ones. Then, how can we know whether the data support the introduction of hyperparameters? Of course, if the datasets are consistent, the introduction of hyperparameters could make it difficult to make our estimation or give rise to large uncertainties. A way to answer this question is given by the bayesian evidence.
+We add these hyperparameters in order to, in a way, weight every dataset and take away the importance of the data that doesn't seem to be consistent with other ones. Then, how can we know whether the data support the introduction of hyperparameters? Of course, if the datasets are consistent, the introduction of hyperparameters could make difficult the estimation or give rise to large uncertainties. A way to answer this question is given by the Bayesian evidence.
 
-Suppose that we have two models, one that considers the introduction of hyperparameters, called $H_1$, while the second one doesn't, called $H_0$. The bayesian evidence $P(D|H_i)$ is an important quantity if we are interested in making a comparison between two different models. In fact, by defining the ratio between two Bayesian evidences
+Suppose that we have two models, one with the introduction of hyperparameters, called $H_1$, while the second one doesn't, called $H_0$. The Bayesian evidence $P(D|H_i)$ is an important quantity if we are interested in making a comparison between two different models. In fact, by using the Bayes factor
 \begin{equation}
 K=\frac{P(D|H_1)}{P(D|H_0)}
 \end{equation}
@@ -479,11 +495,12 @@ we can estimate if it's necessary to introduce the hyperparameters to our model 
 \hline
 $>100$ & Decisive\\ [1ex] 
  \hline
-\end{tabular}\label{evidence}
-\caption{Criteria for the ratio between two Bayesian evidences, taken from \cite{hiperp2}.}
+\end{tabular}
+\caption{Criteria for the ratio between two Bayesian evidences known as \textit{Jeffreys' Scale}, taken from \cite{hiperp2}.}
+\label{evidence}
 \end{table}
 
-If we consider a gaussian likelihood and a maximum entropy prior, and assuming that, on average, the hyperparameters' weight are unity, we can rewritte the marginalized likelihood function $L(D;\theta,H_1)$ for model $H_1$ as
+If we consider a gaussian likelihood and a maximum entropy prior, and assuming average, the hyperparameters' weight are unity, we can rewrite the marginalized likelihood function $L(D;\theta,H_1)$ for model $H_1$ as
 \begin{equation}
 P(D;\theta,H_1)=\prod_{k=1}^N\frac{2\Gamma(\frac{n_k}{2}+1)}{\pi^{n_k/2}|V_k|^{1/2}}(\chi_k^2+2)^{-\left(\frac{n_k}{2}+1\right)}
 \end{equation}
@@ -503,37 +520,37 @@ Here, $\chi_k$ is the one given by \ref{chi2} for every dataset and $n_k$ is the
 
 \section{Numerical tools}
 
-In a typical scenario it's not possible to compute the posterior distribution analytically. It's important to know the numerical tools at our disposal that can help us in our parameter estimation. Of course we have several candidates that could help us in this task, but in this section we present only the usual one (and the easiest) used in cosmology: the Markov Chain Monte Carlo (MCMC) with the Metropolis Hasting algorithm (MHA). Additionally, in this section we present some useful details that we have to take into account if we want to make efficient our computation \textcolor{red}{(no se si cambiar la palabra ``computation'')}. 
+In a typical scenario it's not possible to compute the posterior distribution analytically. It's important to know the numerical tools at our disposal that can help us in our parameter estimation. Of course we have several candidates that could help us in this task, but in this section we present only the usual one (and the easiest) used in cosmology: the Markov Chain Monte Carlo (MCMC) with the Metropolis Hasting algorithm (MHA). Additionally, in this section we present some useful details that we have to take into account if we want to make efficient our computation. 
 
 \subsection{MCMC techniques for parameter inference}
 
-The purpose of a MCMC algorithm is to build a sequence of points (called ``chain") in a parameter space in order to evaluate the posterior of eq. \eqref{BayesT} for the usual case where analytical solutions do not exist or are insufficiently accurate. In this section we review the basic results for this procedure in a simplistic way, but for curious readers it is recommendable to check \cite{mcmc1},\cite{mcmc2}, \cite{mcmc3}, or \cite{mcmc4} only for Markov chains.
+The purpose of a MCMC algorithm is to build a sequence of points (called ``chain") in a parameter space in order to evaluate the posterior of eq. \eqref{BayesT} for the usual case where analytical solutions do not exist or are insufficiently accurate. In this section we review the basic results for this procedure in a simplistic way, but for curious readers it is recommendable to check \cite{mcmc1, mcmc2, mcmc3, mcmc4} for Markov chain theory.
 
-A sequence $X_1,X_2,...$ of random elements of some set is a \textit{Markov chain} if the conditional distribution of $X_{n+1}$ given $X_1,...,X_n$ depends on $X_n$ only. In other words, a Markov chain is a process where we can do predictions of the future based only in the information given at the present. An important property of a Markov chain is that they can be shown to converge to a stationary state were successive elements of the chain are samples from the target distribution, in our case it converges to the posterior $P(\theta,H|D)$. In this way we can estimate all the usual quantities of interest from it (mean, variance, etc). The number of points required to get good estimates in MCMC is said to scale linearly with the number of parameters, so this method becomes much faster than grids as the dimensionality increases.
+A sequence $X_1,X_2,...$ of random elements of some set is a \textit{Markov chain} if the conditional distribution of $X_{n+1}$ given $X_1,...,X_n$ depends on $X_n$ only. In other words, a Markov chain is a process where we can do predictions of the future based only in the information given at the present. An important property of a Markov chain is that they converge to a stationary state were successive elements of the chain are samples from the target distribution, in our case it converges to the posterior $P(\theta,H|D)$. In this way we can estimate all the usual quantities of interest from it (mean, variance, etc). The number of points required to get good estimates in MCMC is said to scale linearly with the number of parameters, so this method becomes much faster than grids as the dimensionality increases.
 
 The target density is approximated by a set of delta functions
 \begin{equation}
-p(\theta,H|D)\simeq \frac{1}{N}\sum_{i=1}^N \delta(\theta-\theta_i)
+p(\theta,H|D)\simeq \frac{1}{N}\sum_{i=1}^N \delta(\theta-\theta_i).
 \end{equation}
 Then, the posterior mean is calculated as
 \begin{equation}
-\langle\theta\rangle=\int d\theta \theta P(\theta,H|D)\simeq \frac{1}{N}\sum_{i=1}^N\theta_i
+\langle\theta\rangle=\int d\theta \theta P(\theta,H|D)\simeq \frac{1}{N}\sum_{i=1}^N\theta_i ,
 \end{equation}
-where $\simeq$ follows because the samples $\theta_i$ are generated from the posterior by construction. Then, we can estimate any integrals (such as the mean, variance, etc) as
+where $\simeq$ follows because the samples $\theta_i$ are generated from the posterior by construction. Then, we can estimate any integrals (such as the mean, variance, etc.) as
 \begin{equation}
 \langle f(\theta)\rangle \simeq\frac{1}{N}\sum_{i=1}^N f(\theta_i)
 \end{equation}
 
-As was mentioned, in a Markov chain it is necessary to generate a new point $\theta_{i+1}$ in our chain from the present point $\theta_i$. However, as it is expected, we need a criteria for accepting (or refusing) this new point depending on if it turns out to be better for our model or not. On the other side, if this new step is worse than the previous one, we may accept it, since it could be the case that, if we only accept steps with better probability, we could be converging into a local maximum in our parameter space and, therefore, not completely mapping it. The simplest algorithm that contains all this information in its methodology is known as the Metropolis-Hastings algorithm and now we will explain it.
+As was mentioned, in a Markov chain it is necessary to generate a new point $\theta_{i+1}$ in our chain from the present point $\theta_i$. However, as it is expected, we need a criteria for accepting (or refusing) this new point depending on if whether it turns out to be better for our model or not. On the other hand, if this new step is worse than the previous one, we may accept it, since it could be the case that, if we only accept steps with better probability, we could be converging into a local maximum in our parameter space and, therefore, not completely mapping it. The simplest algorithm that contains all this information in its methodology is known as the Metropolis-Hastings algorithm and now we will explain it.
 \subsubsection{Metropolis-Hastings algorithm}
 
 In the \textit{Metropolis-Hastings algorithm} (MHA) \cite{metr} it is neccesary to start from a random initial point $\theta_0$, with an associated posterior probability $p_0=p(\theta_0,H|D)$. We need to propose a candidate $\theta_c$ by drawing from the \textit{proposal distribution} $q(\theta_0,\theta_c)$. Then, the probability of acceptance of a new point is given by
 \begin{equation}
-p(acceptance)=min\left[1,\frac{p_cq(\theta_c,\theta_0)}{p_0q(\theta_0,\theta_c)}\right]
+p(acceptance)=min\left[1,\frac{p_cq(\theta_c,\theta_0)}{p_0q(\theta_0,\theta_c)}\right].
 \end{equation}
 If the proposal distribution is symmetric the algorithm is reduced to the \textit{Metropolis algorithm}
   \begin{equation}
-  p(acceptance)=min\left[1,\frac{p_c}{p_0}\right]
+  p(acceptance)=min\left[1,\frac{p_c}{p_0}\right].
   \end{equation}
 In this way the complete algorithm can be expressed by the following steps:
 \begin{enumerate}
@@ -547,7 +564,7 @@ In this way the complete algorithm can be expressed by the following steps:
 \subsubsection{A first example in parameter inference using a MCMC technique with a MHA}
 
 In order to exemplify the numerical tools learned in this section, let us 
-go back to the coin toss example seen in subsection [Bayes theorem, prior and posterior distributions]. Since it's of our interest that the reader understands what is the basic procedure given in this section, let us try to estimate what is the value of $p$ (or region of values for $p$) that best matches our data (the 14 times that the coin was thrown). For it we will calculate the posterior distribution \eqref{ex4} using the MHA. 
+go back to the coin toss example seen in subsection [Bayes theorem, prior and posterior distributions]. Since it's of our interest that the reader understands the basic procedure given in this section, let us try to estimate the value of $p$ (or region of values for $p$) that best matches our data (the 14 times that the coin was thrown). To calculate the posterior distribution \eqref{ex4} we use the MHA. 
 
 As before, we consider a Likelihood given by a binomial distribution \eqref{ex2} and a normal distributed prior \eqref{ex3} ($a=b=1$). As our first ``guess" for $p$ we take $p_0=0.1$. We generate a new candidate $p_c$ as $p_c=p_i+G(p_i,\sigma)$, where $G(p_i,\sigma)$ is our proposed gaussian distribution centered at $p_i$ and with variance $\sigma=0.1$; $p_i$ is the current value of $p$, for our first step is $p_i=p_0$. Then, we compute the Metropolis-Hastings algorithm in a Python code as can be seen in appendix [A]. Our final result,  fig. \ref{posteriord}, was a posterior distribution that matches very well the posterior that was calculated analytically. Notice that we have plotted our $95\%$ confidence regions (black line). 
 
@@ -570,10 +587,10 @@ As before, we consider a Likelihood given by a binomial distribution \eqref{ex2}
 \label{chain1}
 \end{minipage}\\ $ $ \\
 
-Note: In appendix [A] we computed our MCMC algorithm using an explicit code of the MCMC process. However, in Python there are some modules that can help us simplify this task. For example, PyMC is a Python module that implements statistical models and fitting algorithms, including the MCMC algorithm. We use this module at the end of this section .Applying the tools learned in a complete work session.
+Note: In appendix [A] we computed our MCMC algorithm using an explicit code of the MCMC process. However, in Python there are some modules that can help us to simplify this task. For example, PyMC is a Python module that implements statistical models and fitting algorithms, including the MCMC algorithm. We use this module at the end of this section. Applying the tools learned in a complete work session.
 
 \subsubsection{Convergence test} 
-It is clear that we need a test to know when our chain has converged. However, we need to be warned that the point in our chain is not in a "false convergent point" or a locally maximum point. In this sense, we need that our rule takes into account this possible difficulty. The simplest way (the informal way) to know if our chain is converging is running several chains starting with different proposal initial points for the parameter that we are interested in estimating. Then, if we see, by naked eye, that all the chains seem to converge in a single region of the possible value for our parameter, we may consider that our chains are converging to that region. 
+It is clear that we need a test to know when our chains have converged. We need to be warned that the point in our chain is not in a "false convergent point" or a locally maximum point. In this sense, we need that our rule takes into account this possible difficulty. The simplest way (the informal way) to know if our chain is converging is running several chains starting with different initial proposal points for the parameter we are interested in estimating. Then, if we see, by naked eye, that all the chains seem to converge in a single region of the possible value for our parameter, we may consider that our chains are converging to that region. 
 
  Taking yet again the example of the coins, we can run several chains for the above example and try to estimate if the value (the region) of $p$ that we found is an stationary value (region). In figure \ref{chain2} we plotted 5 different Markov chains with initial ``guess" condition $p=0.2,0.3,0.5,0.7,0.9$. As we expected from the analytical result, all the chains seem to concentrate near the same value.
 
@@ -587,7 +604,7 @@ It is clear that we need a test to know when our chain has converged. However, w
 
 The convergence method above is very informal and we would like to have a better way to ensure that our result is correct. The classical test used for this is the \textit{Gelman-Rubin} (1992) convergence criterion. This is (following \cite{LicV2}, \cite{AlanH}) by starting with $M$ chains with very different initial points and $N$ points per chain, if $\theta_i^j$ is a point in the parameter space of position $i$ and belonging to the chain $j$, we need to compute the mean of each chain 
 \begin{equation}
-\langle\theta^j\rangle =\frac{1}{N}\sum_{i=1}^N \theta_i^j
+\langle\theta^j\rangle =\frac{1}{N}\sum_{i=1}^N \theta_i^j,
 \end{equation}
 and the mean of all the chains
 \begin{equation}
@@ -595,13 +612,13 @@ and the mean of all the chains
 \end{equation}
 Then the chain-to-chain variance $B$ is
 \begin{equation}
-B=\frac{1}{M-1}\sum_{j=1}^M(\langle\theta^j\rangle-\langle\theta\rangle)^2
+B=\frac{1}{M-1}\sum_{j=1}^M(\langle\theta^j\rangle-\langle\theta\rangle)^2 ,
 \end{equation}
 and the average variance of each chain is
 \begin{equation}
-W=\frac{1}{M(N-1)}\sum_{i=1}^N\sum_{j=1}^M(\theta_i^j-\langle\theta^j\rangle)^2
+W=\frac{1}{M(N-1)}\sum_{i=1}^N\sum_{j=1}^M(\theta_i^j-\langle\theta^j\rangle)^2 .
 \end{equation}
-If our chains converge, $W$ and $B/N$ must agree. In fact we say that the chain converges when the quantity
+If our chains converge, $W$ and $B/N$ must agree. In fact we say that the chains converge when the quantity
 \begin{equation}
 \hat R=\frac{\frac{N-1}{N}W+B(1+\frac{1}{M})}{W},
 \end{equation}
@@ -609,7 +626,7 @@ which is the ratio of the two estimates, approach to unity. A typical convergenc
 
 \subsubsection{Some useful details}
 
-\textit{About the proposal distribution.} The choice of a proposal distribution $q$ is crucial for the efficient exploration of the posterior. In our example we used a Gaussian-like distribution with a variance (step) $\sigma=0.1$. This value was taken because we explored, by hand, different values for $\sigma$ and we took the one that looked to approach more quickly to the real main value of $p$. If the scale of $q$ is too small compared to the scale of the target (in the sense that the typical jump is small), then the chain may take a very long time to explore the target distribution (left side of the plot) which imply that the algorithm will be very inefficient. As we can see in figure \ref{chainprop} (left side), considering a prior for $p=0.8$, the number of points that we plot are not enough for the system to move to its ``real'' posterior distribution. On the other side, if the scale of $q$ is too large, the chain gets stuck and it does not jump very frequently (right side of the figure) which implies that we will have different "picks" in our posterior distribution.    
+\textit{About the proposal distribution.} The choice of a proposal distribution $q$ is crucial for the efficient exploration of the posterior. In our example we used a Gaussian-like distribution with a variance (step) $\sigma=0.1$. This value was taken because we explored, by hand, different values for $\sigma$ and we took the one that looked to approach more quickly to the real main value of $p$. If the scale of $q$ is too small compared to the scale of the target (in the sense that the typical jump is small), then the chain may take a very long time to explore the target distribution (left side of the plot) which implies that the algorithm will be very inefficient. As we can see in figure \ref{chainprop} (left side), considering a prior for $p=0.8$, the number of points that we plot are not enough for the system to move to its ``real'' posterior distribution. On the other side, if the scale of $q$ is too large, the chain gets stuck and it does not jump very frequently (right side of the figure) which implies that we will have different "picks" in our posterior distribution.    
 
 \begin{minipage}{\textwidth}
 \centering
@@ -621,7 +638,7 @@ which is the ratio of the two estimates, approach to unity. A typical convergenc
 
 In order to fix this issue in a more efficient way, it is recommendable to run an exploratory MCMC, compute the covariance matrix from the samples, and then re-run with this covariance matrix as the covariance of a multivariate Gaussian proposal distribution. Of course, this process can be computed a couple of times before running the ``real" MCMC.\\
 
-\textit{About the burn-in.} It is important to notice that when we start a chain we will have a region of points outside the stationary region where the chain converges (in our chain we could consider those points as the ones inside the ellipse in figure \ref{chain1}). This early part of the chain (called ``burn-in") must be ignored, this means that the dependence on the starting point must be lost. For it, it is important to have a convergence test which can help us to know when the chain has converged.\\
+\textit{About the burn-in.} It is important to notice that when we start a chain we will have a region of points outside the stationary region where the chain converges (in our chain we could consider those points as the ones inside the ellipse in figure \ref{chain1}). This early part of the chain (called ``burn-in") must be ignored, this means that the dependence on the starting point must be lost. Thus, it is important to have a convergence test which can help us to know when the chain has converged.\\
 
  \textit{Thinning the chains}.- There are several bayesian statisticians that usually thin their MCMC, this means that they do not prefer to save every step given by the MCMC; instead, they prefer to save a new step each time $n$ steps have taken place. An obvious consequence that follows by thinning the chains is that the amount of autocorrelation is reduced. However, as long as the chains are thinned, the precision for the estimated parameters is reduced \cite{thin}. Thinning the chains can be useful in other kind of circumstances like, for example, if we have limitations in memory. Notice that thinning a chain does not yield incorrect results; it yields correct results but less efficient than using the full chains.       
 \\
@@ -630,7 +647,7 @@ In order to fix this issue in a more efficient way, it is recommendable to run a
 \begin{equation}
 \rho_k=\frac{Cov(X_t,X_{t+k})}{\sqrt{Var(X_t)Var(X_{t+k})}}=\frac{E[(X_t-X)(X_{t+k}-X)]}{\sqrt{E[(X_t-X)^2]E[(X_{t+k}-X)^2]}}
 \end{equation}
-where $X_i$ is the i-th sample and $X$ is the mean of the samples. This autocorrelation should become smaller as long as $k$ increases (this means that samples start to become independent).\\
+where $X_i$ is the $i$-th sample and $X$ is the mean of the samples. This autocorrelation should become smaller as long as $k$ increases (this means that samples start to become independent).\\
 
 \textit{Metropolis Coupled Markov Chain Monte Carlo ($MC^3$)}\textcolor{red}{(No estoy seguro si dejarlo o no)}.- It is easy to see that it could be a little problematic if our likelihoods possess local maxima. The $MC^3$ is a modification of the standard MCMC algorithm that consists in running several Markov Chains in parallel to explore the target distribution for different  ``temperatures", and then simplify the way we sample our parameter space and help us to avoid this local maxima. In this little section we exemplify the basic idea of this algorithm following \cite{mcmcmc}. If you are interested in a more extensive explanation of this algorithm, or a modification to make the temperature of the chains dynamical, please consult reference \cite{mcmcmc}.
 
@@ -656,11 +673,11 @@ We can see that, since the hottest chain $T_{max}$ can access to all the modes o
  
  \subsection{A first complete session work: Adjusting a straight-line}
 
-In this section we apply everything we have learned until now to the simplest example: adjusting a straight-line. This is, we assume that we have a certain theory where our measurements should be in a straight line. Then, in order to apply our techniques, we simulate several datasets along a given line. One of the principal topics that we want to analyse is the hyperparameter method and how it works, so we will apply our analysis for two different examples: first, we consider that we have 2 datasets taken from the same straight-line but with different errors; while in the second case we consider that we have two datasets but now we simulate both of them from different straight-lines and different errors. In our analysis we used the PyMC3 module [red] implemented in Python. Our complete code can be seen in ref. [ref]. This code is so simple to use and can be modified very easily if a new model would be tested. We recommend the archive called ``new model" where the reader can find a blank project where the data and model can be put and, by running all the notebook, obtain all the analysis that we will see in this section. One can find too in the same archive several notes that will help in programming the model with PyMC3. 
+In this section we apply everything we have learned until now to the simplest example: fitting a straight-line. This is, we assume that we have a certain theory where our measurements should be in a straight line. Then, in order to apply our techniques, we simulate several datasets along a given line. One of the principal topics that we want to analyse is the hyperparameter method and how it works, so we will apply our analysis for two different examples: first, we consider that we have 2 datasets taken from the same straight-line but with different errors; while in the second case we consider that we have two datasets but now we simulate both of them from different straight-lines and different errors. In our analysis we used the PyMC3 module [red] implemented in Python. Our complete code can be seen in ref. [ref]. This code is so simple to use and can be modified very easily if a new model would be tested. We recommend the file called ``new model" where the reader can find a blank project where the data and model can be put and, by running all the notebook, obtain all the analysis that we will see in this section. One can find too in the same file several notes that will help in programming the model with PyMC3. 
 
 \subsubsection{Case 1}
 
-In this example we start by considering that our measurements for a given theory where a straight-line $y=a+bx$ is the one that is expected to be given by the data shown in figure \ref{data_1}. We call this case \textit{Case 1}. This two datasets, D1 and D2, were generated from the line $y=3+2x$, adding a gaussian error to each data in our datasets. For D1 we add an error with a standard deviation $\sigma_1 = 0.3$, while for D2 we add $\sigma_2 = 0.2$. Then, what we would like to estimate are the parameters of the model, i. e. $a$ and $b$. We will analyse this data with and without the hyperparameter method and discuss in detail our results.
+In this example we start by considering that our measurements for a given theory where a straight-line $y=a+bx$ is the one that is expected to be given by the data shown in figure \ref{data_1}. We call this case \textit{Case 1}. These two datasets, D1 and D2, were generated from the line $y=3+2x$, adding a gaussian error to each point. For D1 we add an error with a standard deviation $\sigma_1 = 0.3$, while for D2 we add $\sigma_2 = 0.2$. Then, we would like to estimate the parameters of the model, i. e. $a$ and $b$. We will analyse this data with and without the hyperparameter method and discuss in detail our results.
 
 \begin{minipage}{\textwidth}
 \centering
@@ -839,104 +856,96 @@ K = 37
 \end{equation}
 which means that we have a very strong evidence that $H_1$ is better that $H_0$.
 
-\section{Bayesian statistic and Cosmology}
+\section{Bayesian statistics and Cosmology}
 
 %Along the new age of cosmology, observational experiments have been very helpful to confront, eliminate or refined several cosmological models. On this period it has been necessary to improve sensitivity to the experiments in order to achieve stronger constraints on the different models and model's parameters. For example, on CMB satellite experiments, there was a factor of 10 better in sensitive from \textit{COBE} to $WMAP$ and from $WMAP$ to Planck \cite{cmbex}.  On redshift surveys experiments which are interested to map the universe in redshift space, we can compare the 18,000 redshift bright galaxies that were measured by the CfA2 Redshift Survey on 1995 with the \textcolor{red}{[number]} of galaxies that the Sloan Digital Sky Survey (SDSS) measured on \textcolor{red}{(year)} \cite{observ}. In addition there are several new cosmological observations that pretend to update and make our data more precise and that we will need to confront with our models or model's parameters. Such experiments are, for example \textcolor{red}{(Nuevos experimentos. Explicarlos un poco. Aqu\'i entonces comenzar a hablar de que estos nuevos datos se pueden utilizar para constre\~nir par\'ametros).}
 
+Bayesian statistics are used in Cosmology to constrain parameters in different models using observational data in order to determine which of all these models best describes the Universe. In this section we will present the necessary \lp{ser\'ia mejor decir que son los t\'opicos b\'asicos?} topics of Cosmology in order to understand the application of Bayesian statistics. We will use natural units \footnote{Natural units. $c=\hbar=1$}.
 
-In this section we will present the necessary topics of Cosmology in order to understand the application of Bayesian Statistics. We will use natural units.
-
-\subsection{The metric.}
-To study the Universe we consider that it is homogeneous and isotropic at large scales. This is known as \textbf{Cosmological Principle}. Isotropic means that the galaxies distribution doesn't depend on the direction, and homogeneous means that it is independent of the position. In addition,we will use the formalism of General Relativity. It studies the interaction between the geometry and matter contained in the space-time. The curvature of the space-time produces physical effects on the matter it contains, these effects are associated with a gravitational field. On the other hand, the curvature is related to the matter contained by an energy-momentum tensor. The above can be summarized by saying that matter tells space-time how to curve and, in turn, geometry tells matter how to move. We can write the above in the Einstein equation:
+\subsection{The metric.\lp{Einstein equations and the geometry of the Universe?}}
+To study the Universe \lp{it is usually considered?}we consider that it is homogeneous and isotropic at large scales. This is known as \textbf{Cosmological Principle}. Isotropic means that the galaxies distribution doesn't depend on the direction, and homogeneous means that it is independent of the position. 
+%
+In addition,we will use the formalism of General Relativity. It studies the interaction between the geometry and matter contained in the space-time. The curvature of the space-time produces physical effects on the matter it contains, these effects are associated with a gravitational field. On the other hand, the curvature is related to the matter contained by an energy-momentum tensor. The above can be summarized by saying that matter tells space-time how to curve and, in turn, geometry tells matter how to move. We can write the above in the Einstein equation:
 
 \begin{equation}
 \label{einstein}
 G_{\mu \nu} = 8\pi G T_{\mu \nu}.
 \end{equation}
-
 Where $G_{\mu \nu}$ is the Einstein tensor (geometry of the space-time), $T_{\mu \nu}$ is the energy-momentum tensor (matter contained in the Universe) and $G$ is the gravitational constant \cite{baumann}, \cite{wald}.
 
-The distance between two points in a curved space-time can be measured using:
+The distance between two points in a curved space-time can be measured \lp{by?} using:
 
 \begin{equation}
-ds^2 = g_{\mu \nu}dx^{\mu}dx^{\nu}.
+ds^2 = g_{\mu \nu}dx^{\mu}dx^{\nu},
 \end{equation}
+where $g_{\mu \nu}$ is the metric tensor which contains all the information about the structure of the space-time. The values that the indices $\mu$ and $\nu$ can take depend on the dimensions of the space-time.
 
-Where $g_{\mu \nu}$ is the metric tensor which contains all the information about the structure of the space-time. The values that the indices $\mu$ and $\nu$ can take depend on the dimensions of the space-time.
-
-To study the Universe we use the Friedmann-Lema\^itre-Robertson-Walker metric (\textbf{FLRW}). This describes a homogeneous, isotropic and expanding Universe.
-
+To study the Universe we use the Friedmann-Lema\^itre-Robertson-Walker metric (\textbf{FLRW})\lp{Creo que estar\'ia mejor en esta parte la m\'etrica}. This describes a homogeneous, isotropic and expanding Universe.
 \begin{equation}
 \label{m2}
 ds^2 = dt^2 -a^2(t)\gamma_{ij}dx^idx^j ,
 \end{equation}
-
 where
-
 \begin{equation}
 \label{m3}
 \gamma_{ij} \equiv \delta_{ij} + \kappa \frac{x_i x_j}{1 - \kappa \left(x_k x^k\right)}.
 \end{equation}
 
-In equation (\ref{m3}), $\kappa$ describes the curvature. In (\ref{m2}) $a$ is the scale factor which depends on time. By convention we set $a(t_0) \equiv 1$ today \cite{cambridge}.
-
+In equation (\ref{m3}), $\kappa$ describes the curvature \lp{of the space-time}. In (\ref{m2}) $a$ is the scale factor which depends on time. By convention we set $a(t_0) \equiv 1$ today \cite{cambridge}.
 \subsection{Friedmann and continuity equations.}
-With the Cosmological Principle, the energy-momentum tensor describes a perfect fluid \cite{cambridge}
-
+With the Cosmological Principle, the energy-momentum tensor describes a perfect fluid \cite{cambridge}\lp{Esta linea suena rara. Se puede mantener el principio cosmol\'ogico y no necesariamente tener un fluido perfecto}
 \begin{equation}
 \label{tensorfluidoperfecto}
 T_{\mu \nu} = (\rho + P)U_{\mu}U_{\nu} - Pg_{\mu \nu} .
 \end{equation} 
+Where $\rho$ is the energy density, $P$ is the fluid pressure and $U_{\mu}$ is the 4-velocity relative to the observer. If we take the velocity as $U^{\mu} = \left(1,0,0,0\right)$ (comoving observer), the energy-momentum tensor reduces to \cite{cambridge}:
 
-Where $\rho$ is the energy density, $P$ is the fluid pressure and $U^{\mu}$ is the 4-velocity relative to the observer. Using equations (\ref{einstein}) and (\ref{tensorfluidoperfecto}) we can deduce Friedmann and continuity equations. This last equation is given by
+\begin{equation}
+T^{\mu}_{\nu} = g^{\mu \lambda} T_{\lambda \nu} = \begin{pmatrix}
+\rho & 0 & 0 & 0 \\
+0 & -P & 0 & 0 \\
+0 & 0 & -P & 0 \\
+0 & 0 & 0 & -P \\
+\end{pmatrix} 
+\end{equation}
 
+Using equations (\ref{einstein}) and (\ref{tensorfluidoperfecto}) we can deduce \lp{the?} Friedmann and continuity equations\lp{: (poner aqu\'i las ecuaciones y mejor describirlas abajo.)}. This last equation is given by
 \begin{equation}
 \label{continuidad}
 \dot{\rho} + 3 \frac{\dot{a}}{a} \left(\rho + P\right) = 0.
 \end{equation}
-
 Equation (\ref{continuidad}) implies energy conservation. On the other hand, Friedmann equations describe the expansion of the Universe. These are
-
 \begin{equation}
 \label{friedmann1}
 H^2 = \left(\frac{\dot{a}}{a}\right)^2 = \frac{8 \pi G}{3} \sum_{i}\rho_{i} - \frac{k}{a^2} ,
 \end{equation}
-
 \begin{equation}
 \frac{\ddot{a}}{a} = -\frac{4 \pi G}{3} \sum_{i}\left(\rho_i + 3P_i\right) .
 \end{equation}
-
-Where $H \equiv \frac{\dot{a}}{a}$ is the Hubble parameter. Using the dimensionless parameters \footnote{$\rho_{crit}$ is the condition to have a flat Universe.}
-
-\begin{eqnarray}
-\Omega_{i} &\equiv& \frac{\rho_i}{\rho_{crit}},\\
-\rho_{crit} &=& \frac{3H_0^2}{8 \pi G}
-\end{eqnarray} 
-
+Where $H \equiv \frac{\dot{a}}{a}$ is the Hubble parameter. Using the dimensionless parameters \footnote{$\rho_{crit}$ is the condition necessary to have a flat Universe.}
+\begin{equation}
+\Omega_{i} \equiv \frac{\rho_i}{\rho_{crit}}, \ \rho_{crit} = \frac{3H_0^2}{8 \pi G}
+\end{equation} 
 we can rewrite (\ref{friedmann1}) as
-
 \begin{equation}
 \frac{H^2}{H_0^2} = \Omega_r a^{-4} + \Omega_m a^{-3} + \Omega_k a^{-2} + \Omega_{\Lambda} .
 \end{equation}
-
-Where $\Omega_r$ is the radiation dimensionless density parameter, $\Omega_m$ corresponds to the matter, $\Omega_k$ with curvature and $\Omega_{\Lambda}$ corresponds to Cosmological Constant. $H_0$ is the Hubble parameter value today.
+\lp{La ecuaci\'on 71 no se reescribe como la ecuaci\'on anterior. Aqu\'i ya est\'as escribiendo de que forma depende cada una de las componentes y hasta este punto nisiquiera hemos dicho que son. Adem\'as, si mal no recuerdo, las ecuaciones no se reescriben con respecto al $\rho_{c0}\propto H_0^2$, sino respecto a $\rho_c\propto H^2$ para que 74 sea igual a 1.}Where $\Omega_r$ is the radiation dimensionless density parameter, $\Omega_m$ corresponds to the matter, $\Omega_k$ with curvature and $\Omega_{\Lambda}$ corresponds to Cosmological Constant. $H_0$ is the Hubble parameter value today\lp{De nuevo, este p\'arrafo ser\'ia diferente porque a\'un no hemos especificado de qu\'e est\'a hecho el Universo}.
 
 \subsection{Content of the Universe.}
-
+\lp{Sugerencia: Poner un peque\~no p\'arrafo donde se diga que una vez que se conocen las ecuaciones que rigen al Universo, es necesario conocer los componentes de este mismo.}
 \begin{itemize}
-	\item \textbf{Matter:} It has no pressure and its energy density takes the form $\rho \propto a^{-3}.$ Matter can be baryons (ordinary matter) or dark matter. This dark matter is proposed to explain a lot of observations like the dynamics of the galaxies in Coma cluster or the rotation curves of galaxies. This kind of matter only interacts gravitationally with the rest of the Universe.
+	\item \textbf{Matter:} It has no pressure and its energy density takes the form $\rho \propto a^{-3}.$ Matter can be baryons (ordinary matter) or dark matter. This dark matter is proposed to explain a lot of observations like the dynamics of the galaxies in Coma cluster or the rotation curves of galaxies \lp{referencias}. This kind of matter only interacts gravitationally with the rest of the Universe.
 	\item \textbf{Radiation:} It is everything that meets the relation $P = \frac{1}{3} \rho$. This implies a density of the form $\rho \propto a^{-4}$. We consider photons and neutrinos as radiation.
-	\item \textbf{Dark Energy:} We don't know what it is but we propose it in order to explain the accelerating expansion of the Universe. Dark energy can be vacuum energy or cosmological constant.
+	\item \textbf{Dark Energy:} It is proposed in order to explain the accelerating expansion of the Universe. Dark energy can be vacuum energy or cosmological constant (this is a correction in Einstein equations $-\Lambda g_{\mu \nu}$).
 \end{itemize}
 
 We can describe the above using the following state equation
-
 \begin{equation}
 \label{ecdeestado}
-\omega = \frac{P}{\rho}.
+\omega = \frac{P}{\rho},
 \end{equation}
-(\ref{ecdeestado}) is called bariotropic equation because the density only depends on pressure.
-
+Eq. (\ref{ecdeestado}) is called barotropic equation. The state equation for each component is showed in table \ref{state}.
 \begin{table} [htbp]
 	\begin{center}
 		\begin{tabular}{|l|l|}
@@ -950,31 +959,179 @@ We can describe the above using the following state equation
 			Cosmological constant & -1 \\
 			\hline
 		\end{tabular}
+		\caption{State equation for the different components of the Universe. Source: \cite{cambridge}.}
+		\label{state}
 	\end{center}
 \end{table} 
+\subsection{Cosmological observables, parameters and experiments.}
+\lp{Checar las memorias que hicimos con Beto. Ah\'i tiene una secci\'on de los par\'ametros cosmol\'ogicos que creo que deber\'ias agregar. Tambi\'en creo que ser\'ia mejor dividir en 2 subsecci\'ones, una con par\'ametros y otra con datos}
 
-\subsection{Cosmological observables and parameters.}
-To explain the Universe we use the dimensionless density parameter of each component ($\Omega_i$), the Hubble constant $H_0$ and the optical depth to
-scattering $\tau$. Although there are more parameters that can be used, these can be derived from the previous ones.
+To explain the Universe we use the dimensionless density parameter of each component ($\Omega_i$) and the Hubble constant $H_0$. Although there are more parameters that can be used, these can be derived from the previous ones.
 
-In the beginning of this section we mentioned that the FLRW metric describes a Universe with some curvature but the cosmological observations indicate a flat Universe. So the curvature density parameter is zero $\Omega_k = 0$.
+\lp{Esto ir\'ia m\'as adelante, hasta donde lo muestras}In the beginning of this section we mentioned that the FLRW metric describes a Universe with some curvature but the cosmological observations indicate a flat Universe. We will show, using Bayesian statistic, that this is true.\\
+
+\textbf{Hubble Constant:} \lp{Este es un par\'ametros y luego hablas de puras observaciones. Se ve raro.} It is the slope between the recessional velocity and the proper distance from the galaxy to the observer found by Edwin Hubble in 1929. The Hubble Space Telescope found \cite{hubble2016}:
+
+\begin{equation}
+H_0 = 73.24 \pm 1.74 kms^{-1} Mpc^{-1}.
+\end{equation}
+
+On the other hand, Planck Collaboration found another value \cite{planck}:
+
+\begin{equation}
+H_0 = 67.3 \pm 1.2 kms^{-1} Mpc^{-1}.
+\end{equation}
+
+The discrepancy between these values ​​is still a research issue.\\
+
+\lp{Aqu\'i empezar\'ian la secci\'on de datos}
+
+\lp{Seguir mejor la estructura de las memorias. Es decir, primero dar una peque\~na explicaci\'on de que son los datos de los que se est\'an hablando, luego hablar de los experimentos que miden de lo que se est\'a hablando y finalmente mostrar los datos (y no figuras como la figura 18), como se muestran en la figura 1 de las memorias. }
+
+\textbf{Supernovas:} The most accepted explanation is that they are white dwarfs in which thermonuclear processes occur. Empirically, the peak luminosity of the type Ia supernovas (SNIa) can be used as a distance indicator using the relation between redshift and distance\cite{parametros}. 
+
+\lp{No meterse a como se constri\~nen las cosas con las observaciones (Eq. 78). Eso lo sacaremos nosotros en nuestros ejemplos}Using them, the Supernova Cosmology Project and High-z Supernova Search Team both found evidence that the Universe is expanding \cite{supernova1}, \cite{supernova2}, \cite{supernova3}. When this results and CMB data are combined we obtain \cite{parametros}:
+\begin{equation}
+\Omega_m \approx 0.3, \ \Omega_{\Lambda} \approx 0.7 .
+\end{equation}
+This means that matter (ordinary and dark) occupies $30 \%$ of the content of the Universe and dark energy occupies the remaining $70 \%$. 
+
+The experiment that we use in this work is \textbf{Joint Light-curve Analysis (JLA).} It is a collaboration to analyze the data from SDSS-II and SNLS experiment \cite{jla}. SDSS-II is the previous version of BOSS and SNLS is the SuperNova Legacy Survey. SNLS used the Canada-France-Hawaii telescope (CFHT), located in Hawaii, to detect type Ia supernovas at high redshift \cite{snls}. The collaboration used 740 samples. \\
+
+%Figure \ref{jla} shows the Hubble diagram obtained by the collaboration.
+%
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=10cm]{FiguresCosmo/snls_fig2.png}	
+%	\caption{Hubble diagram from 740 type Ia supernovae. Published by SNLS and SDSS Source: \cite{snls}.}
+%	\label{jla}
+%\end{figure}
+
+\textbf{Cosmic Microwave Background (CMB):} Discovered in 1965, they are the radiation that permeates all the Universe. Before recombination, baryons and photons were tightly coupled. After uncoupling, baryons collapsed due to the effects of gravity and the photons were free and they started traveling. This radiation contains information of last scattering epoch, gravitational lensing, among others. This is because CMB has been traveling throughout the Universe and the interaction with everything they have found in their path leaves a trace that can be detected until our days.
+
+CMB shows anisotropies that are studied using an angular power spectrum in terms of spherical harmonics.
+% See figure \ref{CMBgraf}.
+
+\begin{equation}
+T(\theta, \phi) = \sum_{lm} a_{lm} Y_{lm} \left(\theta, \phi \right) .
+\end{equation}
+
+Where $a_{lm}$ is constant and $l$ is the multipole moment. This power spectrum is very similar to black body radiation with a temperature $T = 2.725K$ \cite{CMB1}, \cite{CMB2}.
+
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=12cm]{FiguresCosmo/espectro_temperatura_CMB.png}	
+%	\caption{CMB anisotropies power spectrum. Horizontal axis changes from logarithmic scale to linear scale in $l = 50$. Solid line shows the best fit considering $\Lambda CDM$. Source: \cite{parametros}.}
+%	\label{CMBgraf} 
+%\end{figure}
+
+One of the most important collaboration \lp{Cuales m\'as? Meterlas y citarlas} that studies CMB is \textbf{Planck.} It is a European Space Agency ESA's mission whose main objective is to measure the temperature, polarization and anisotropies of the CMB over the entire sky. These results would allow to determine the properties of the Universe at large scales, the nature of dark matter and dark energy. As well as test inflation theories, determine if the Universe is homogenous or not and obtain maps of galaxies in the microwave. Figure \ref{CMBPlanck} shows the last CMB anisotropies picture obtained by Planck this year\cite{Planck1}, \cite{Planck2}, \cite{Planck3}.\\
+\lp{Meter los datos}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=10cm]{FiguresCosmo/CMB.jpg}	
+	\caption{CMB anisotropies obtained by Planck 2018. Source:\cite{Planck4}}
+	\label{CMBPlanck}
+\end{figure}
+
+\textbf{Baryon Acoustic Oscillations (BAO's):} We know Universe was almost uniform in the beginning, it contained small fluctuations where the density matter was greater than the average. The gravitational force made these denser regions collapse \textcolor{red}{little by little} until this happened at large scales. But radiation pressure pushed back these regions against the collapse. The pressure causes the baryons and photons move away from the overdensity region forming a spherical wave. Since dark matter only interacts gravitationally, it remains in the wave center. After photon decoupling there wasn't radiation pressure so only remained overdensity in the wave center and a shell of baryonic matter at a fixed radius. This radius is called sound horizon and is used as a standard unit of distance. 
+
+The experiments that showed evidence of BAO's were the 2-degree Field (2dF) Galaxy Redshift Survey \cite{BAO3} and the Sloan Digital Sky Survey (SDSS) \cite{BAO4}. The experiment Baryon Oscillation Spectroscopic Survey (BOSS) found that dark energy state equation is $\omega = 1 \pm 0.06$. On the other hand, the Baryon Oscillation Spectroscopic Survey (\textbf{BOSS}) is part of the third stage of the Sloan Digital Sky Survey (SDSS). BOSS was in charge of mapping the spatial distribution of luminous red galaxies (LRGs) and quasars when detecting the mark left by baryon acoustic oscillations in the early Universe, whose objective is to prove the existence of dark energy. BOSS is a spectroscopic collection of redshifts of 1.5 million LRG's and Lyman-alpha absorption of more than 160000 quasars with high redshifts. BOSS is a telescope with spectroscopic instruments \cite{boss}.\\
+
+\lp{Meter datos}
+
+\textbf{Large Red Galaxies:} These are the most massive galaxies for each redshift and contain the oldest star population. These kind of galaxies are used to estimate the Hubble factor because they contain little stardust which makes it easier to get their spectrum. 
+
+Two galaxies at different redshift between $z \sim 0-2$ are chosen\footnote{For example galaxies at $z=0$ and $z \sim 0.2$} and the upper cut in its age distributions is compared. We obtain the difference of ages $\Delta t$ and redshifts $\Delta z$ so we can infer $\frac{dz}{dt}$. This quantity is related with the Hubble factor and dark energy state equation as \cite{H1}, \cite{H2}
+\begin{eqnarray}
+H(z) &=& \frac{-1}{(1+z)} \frac{dz}{dt},\\
+\omega_{DE} &\propto& \frac{d^2z}{dt^2}.
+\end{eqnarray}
+\lp{Experimentos y datos.}
+
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=10cm]{FiguresCosmo/BAO_cartoon.jpg}	
+%	\caption{BAO's and sound horizon cartoon. Source: \url{http://www.astro.ucla.edu/~wright/BAO-cartoon.jpg.}}
+%	\label{cartoon}
+%\end{figure}
+
+%\subsection{What do the observations say?}
+%In table \ref{tablaparam} we show the values of the parameters (described above) obtained by the experiments \cite{parametros}:
+%
+%\begin{table} [htbp]
+%	\begin{center}
+%		\begin{tabular}{|l|l|l|l|}
+%			\hline
+%			Parmeter & Planck+WP+highL & Planck+WP+highL+BAO & WMAP9+eCMB+BAO\\
+%			\hline
+%			$\Omega_b h^2$ & $0.02207 \pm 0.00027$  & $0.02214 \pm 0.00024$ & $0.02211 \pm 0.00034$\\
+%			\hline
+%			$\Omega_c h^2$& $0.1198 \pm 0.0026$ & $0.1187 \pm 0.0017$ & $0.1162 \pm 0.0020$ \\
+%			\hline
+%			$n_s$ & $0.958 \pm 0.007$ & $0.961 \pm 0.005$ & $0.958 \pm 0.008$ \\
+%			\hline
+%			$\tau$ & $0.091^{+0.013}_{-0.014}$ & $0.092 \pm 0.013$ & $0.079^{+0.011}_{-0.012}$ \\
+%			\hline
+%			h & $0.673 \pm 0.012$ & $0.678 \pm 0.008$ & $0.688 \pm 0.008$ \\
+%			\hline
+%			$\Omega_m$ & $0.315^{+0.016}_{-0.017}$ & $0.308 \pm 0.010$ & $0.293 \pm 0.010$ \\
+%			\hline
+%			$\Omega_{\Lambda}$ & $0.685^{+0.017}_{-0.016}$ & $0.692 \pm 0.010$ & $0.707 \pm 0.010$ \\
+%			\hline
+%		\end{tabular}
+%		\caption{This table shows the values of the cosmological parameters using different experiments.}
+%		\label{tablaparam}
+%	\end{center}
+%\end{table} 
+%
+%The data used were obtained from Planck collaboration, Wilkinson Microwave Anisotropy Probe (WMAP), Atacama Cosmology Telescope (ACT), South Pole Telescope (SPT) and eCMB for CMB. For BAO's we have SDSS, BOSS, 6dF and WiggleZ. We assume $\Lambda CDM$ \footnote{We will explain this model later.}, a flat Universe and cosmological constant as dark energy.
+
+\subsection{$\Lambda$ Cold Dark Matter ($\Lambda$CDM).}
+\lp{Suena repetitivo con la secci\'on de contenido del Universo. De hecho ese contenido est\'a basado en LCDM. Creo que ser\'ia mejor unir ambas secciones.}Also know as the Cosmological Standard Model, it is the most accepted model to describe the Universe. This model considers an expanding flat Universe that is fourteen billion years old. \lp{model, model, model...}
+
+The components in this model are \cite{liddle}:
 
 \begin{itemize}
-	\item \textbf{Hubble Constant:} It is the slope between the recessional velocity and the proper distance from the galaxy to the observe.
+	\item \textbf{Radiation:} It is the CMB.
+	
+	\begin{equation}
+	\Omega_{rad 0}h^2 \simeq 2.47 \times 10^{-5} .
+	\end{equation}
+	
+	\item \textbf{Relativistic:} We assume the existence of a Cosmic Neutrino Background.
+	
+	\begin{equation}
+	\Omega_{rel 0}h^2 \simeq 4 \times 10^{-5} .
+	\end{equation}
+	
+	\item \textbf{Baryons:} They are the ordinary matter. 
+	
+	\item \textbf{Dark Matter:} It has no other interactions than gravitational with the rest of the Universe. This model considers cold dark matter, this means that it is non-relativistic at the moment they stop interacting with the rest of the matter.
+	%	
+	%	\begin{equation}
+	%	\Omega_{dm 0} \simeq 0.3
+	%	\end{equation}
+	
+	\item \textbf{Cosmological constant:} We consider it as dark energy to explain the accelerating expansion of the Universe. The idea of Cosmological Constant comes out as a correction to Einstein equations.
 \end{itemize}
+
 
 
 \subsection{A first example in parameter inference for Cosmology}
 
+\lp{Yo completo esta parte}
+
 The simplest way to understand how all these concepts can be useful in cosmology is applying them to an example. We consider the typical example in cosmology for parameter inference, which is, we estimate the value of the Hubble parameter $H_0$ at our present time and the density of matter in the Universe $\Omega_m$, considering a $\Lambda CDM$ cosmology. In this section we present the results of a complete work session. We wrote our own Python code using the PyMC Python's module [ref]. For interested readers, the code can be seen in appendix [B]. Notice that this can be used not only in cosmology but also in whatever model that you most prefer; what you need to do in order to prove a new model is only specify it in "pm.model()". 
 
-\subsubsection{What is the model and the theory?}
+%\subsubsection{What is the model and the theory?}
+%
+%The standard $\Lambda CDM$ cosmology considers a flat Universe which contains around $\sim 31\%$ of ordinary matter plus dark matter and $\sim 68\%$ of dark energy. In this $\Lambda CDM$ model it is consider that the matter component of the universe follows an equation of state given by $p=0$, while the dark energy is a cosmological constant, i.e. $p=-\rho$. Considering this components, the Universe's dynamics would be given by the Friedmann equation
+%\begin{equation}
+%H^2\equiv\left(\frac{\dot a}{a}\right)=H_0^2[\Omega_m(1+z)^3+\Omega_{\Lambda}]
+%\end{equation}
+%and the acceleration equation\footnote{We do not show this equation because it is not necessary for our estimation and we do not want to confuse the reader.}. Here $H$ is the Hubble parameter, $H_0$ corresponds with the Hubble parameter at present, $\Omega_m$ and $\Omega_\Lambda$ is the matter and dark energy densities at our epoch and follows the constraining condition $\Omega_m+\Omega_\Lambda=1$, and $z$ is the redshift which is associated with a time parameter; $z=0$ is at present. Notice that thanks to the constraining condition we can rewrite $\Omega_\Lambda=1-\Omega_m$ and then we can reduce by one the number of parameters in the model. 
 
-The standard $\Lambda CDM$ cosmology considers a flat Universe which contains around $\sim 31\%$ of ordinary matter plus dark matter and $\sim 68\%$ of dark energy. In this $\Lambda CDM$ model it is consider that the matter component of the universe follows an equation of state given by $p=0$, while the dark energy is a cosmological constant, i.e. $p=-\rho$. Considering this components, the Universe's dynamics would be given by the Friedmann equation
-\begin{equation}
-H^2\equiv\left(\frac{\dot a}{a}\right)=H_0^2[\Omega_m(1+z)^3+\Omega_{\Lambda}]
-\end{equation}
-and the acceleration equation\footnote{We do not show this equation because it is not necessary for our estimation and we do not want to confuse the reader.}. Here $H$ is the Hubble parameter, $H_0$ corresponds with the Hubble parameter at present, $\Omega_m$ and $\Omega_\Lambda$ is the matter and dark energy densities at our epoch and follows the constraining condition $\Omega_m+\Omega_\Lambda=1$, and $z$ is the redshift which is associated with a time parameter; $z=0$ is at present. Notice that thanks to the constraining condition we can rewrite $\Omega_\Lambda=1-\Omega_m$ and then we can reduce by one the number of parameters in the model. 
 \subsubsection{The observables and the data}
 
 It is possible to measure $H(z)$ by using what it is known as the \textit{cosmic chronometer} approach \cite{Hz}. We use the data reported in \cite{Hzdata} as our data for our estimation. A plot of them can be seen in figure \ref{HzData}.
@@ -1001,7 +1158,7 @@ H_0\sim U[10,100]
 
 \textcolor{red}{Una vez de que ya entedimos los procedimientos para la inferencia de par\'ametros, hablar de que el siguiente paso es saber que hay varios c\'odigos que ya hacen todo lo que vimos (tanto la cosmolog\'ia, como la estad\'istica) y que es mejor aprender a moverles que andar haciendo nuestro propio código (quiz\'as)}
 %\subsubsection{Cosmological codes}
-
+\lp{Meter los c\'odigos cosmol\'ogicos que tenemos a nuestra disposici\'on. Seg\'un yo ya hab\'ia hecho esta parte y no s\'e por qu\'e se quit\'o. Recomiendan que no est\'e?}
 %Now a days there are a lot of cosmological Boltzmann codes that are free on the web and can help us to prove our cosmological models. The most popular of them are: CMBFAST \cite{cmbfast1}, CMBEASY \cite{cmbeasy}, CAMB \cite{camb1} (some useful references for CAMB: \cite{camb2,camb3,camb4}) and CLASS \cite{class1} (a useful reference for CLASS: \cite{mont1}). All of them are used for calculating the linear CMB anisotropy spectra based on integration over the sources along the photon past light cone.
 
 %\subsubsection{CMBFAST}
@@ -1031,6 +1188,177 @@ The code contains several sampling methods available: Metropolis-Hastings, Neste
 
 \subsection{Some examples}
 \textcolor{red}{Examples of cosmology}
+\subsection{Cosmological example.}
+\lp{Este es un comentario/sugerencia general para toda esta secci\'on: Explicar m\'as sobre lo que se est\'a haciendo. Hablar de que ecuaci\'on se va a utilizar para ajustar los par\'ametros y referenciarla (si es una cantidad que no se ha mencionado, sacarla en este espacio para poder decir \textbf{esta es la ecuaci\'on que vamos a ajustar}), qu\'e par\'ametros se piensan ajustar en esa ecuaci\'on, cu\'ales son las observables en la ecuaci\'on, cu\'ales son los datos que se utiliar\'an y se\~nalarlos en el paper (si no est\'an en el paper, agregarlos), cuales son los priors que se utilizan, la forma del Likelihood y tratar de obtener lo m\'as posible de lo que se obtuvo para el ejemplo de la linea recta. Citar ecuaciones en el paper para que se vaya viendo que todo es consistente.  Se pueden meter hiperpar\'ametros? Se puede meter importance sampling? etc; sino se puede, pues nimodo.}
+
+\lp{Extender explicaciones. Aqu\'i es donde se va a hacer la conexi\'on de la estad\'istica y la cosmolog\'ia. Hablas mucho de que se reducen las regiones conforme aumentas los datos, a qu\'e se debe esta reducci\'on? C\'omo se puede conectar con lo que se ha visto hasta este punto en el paper?}
+
+\lp{Que las figuras y gr\'aficas no queden tan apartadas del lugar donde son citadas.}
+
+In this section we show a few examples on Cosmology. We start with the model $\Lambda$CDM where we have set curvature to zero. The figure \ref{LCDM} shows the confidence regions to 1,2-$\sigma$. To obtain this graphs we use first BAO's data. Then we combine it with Planck's data and finally we use BAO, Planck and JLA. It can be seen that increasing the number of data reduces the size of the confidence regions. For example, if we see the first graph, using only BAO's we see that the confidence region is bigger than that the obtained using BAO's plus Planck data.
+\begin{figure}[htp]
+	\centering
+	\includegraphics[width=7cm]{FiguresCosmo/h_Om_LCDM_todas.pdf}	
+	\includegraphics[width=7cm]{FiguresCosmo/Obh2_Om_LCDM_todas.pdf}
+	\caption{Constrictions to cosmological parameters in $\Lambda$CDM usign observational data. Vertical axis corresponds to matter density parameter ($\Omega_m$). In horizontal axis we have Hubble parameter ($h$) and ordinary matter density parameter times $h^2$ ($\Omega_b h^2$).}
+	\label{LCDM}
+\end{figure}
+
+In the figure \ref{cLCDM} we fit the parameters in $\Lambda$CDM but we let $\Omega_k$ as a free parameter to be fitted using the observational data. Again we see that the size of the confidence regions depends on the number of data we use. The last graph of \ref{cLCDM} shows that the best fit to the curvature density parameter is zero.
+\begin{figure}[htp]
+	\centering
+	\includegraphics[width=7cm]{FiguresCosmo/h_Om_cLCDM_todas.pdf}	
+	\includegraphics[width=7cm]{FiguresCosmo/Obh2_Om_cLCDM_todas.pdf}
+	\includegraphics[width=7cm]{FiguresCosmo/Ok_Om_cLCDM_todas.pdf}
+	\caption{Constrictions to cosmological parameters in $\Lambda$CDM usign observational data. Vertical axis corresponds to matter density parameter ($\Omega_m$). In horizontal axis we have Hubble parameter ($h$), ordinary matter density parameter times $h^2$ ($\Omega_b h^2$) and curvature density parameter ($\Omega_k$).}
+	\label{cLCDM}
+\end{figure}
+
+\lp{Ser\'ia bueno agregar una secci\'on posterior a LCDM y el inventario c\'osmico que se llamara algo as\'i como "Alternativas al modelo LCDM" o "Estensiones al modelo estandar de la cosmolog\'ia". Luego, en esa secci\'on hablar sobre que existen varios modelos cosmol\'ogicos que intentan explicar las observaciones de diferente manera (podr\'ias citar alg\'un review si es que encuentras), ya sea con diferentes contenidos de materia y con correcciones a las teor\'ias que tenemos. Luego, decir que un ejemplo de ello podr\'ia ser una modificaci\'on al componente de energ\'ia oscura. Decir que a modo de ejemplo y dado que m\'as adelante se har\'a una comparaci\'on entre LCDM y este nuevo modelo, se presentar\'a la parametrizaci\'on CPL. Luego meter la f\'isica del modelo y las ecuaciones, para que en esta secci\'on puedas meter las figuras que est\'as metiendo.}
+Just to show a different example to $\Lambda$CDM, and because it is used in the cosmological chronometers, we used the CPL parameterization of dark energy state equation. This model considers that dark energy is not a cosmological constant \footnote{For more information see references \cite{CPL1} and \cite{CPL2}}. CPL is the first two terms in the series expansion of the dark energy state equation. This is the simplest parameterization which considers dynamics in dark energy.
+
+\begin{equation}
+\omega = \omega_0 + \omega_a\left(\frac{z}{1 + z}\right) = \omega_0 + \omega_a\left(1 - a\right).
+\end{equation}
+
+Where $z$ is the redshift, $a$ the scale factor, $\omega_0$ and $\omega_a$ are the coefficients of the expansion.
+
+In figure \ref{cosmo1}, we fit the parameters in a cosmological model with cold dark matter and the CPL parameterization (dark energy) using the data from Planck collaboration (CMB), BOSS (BAO's) and JLA (Supernovas). It can be seen that increasing the number of data reduces the size of the confidence regions. We show the confidence region to 1,2-$\sigma$. We did the same with the CPL parameterization ($\omega_0$ and  $\omega_a$) in horizontal axis. In vertical axis we have the total matter density parameter.
+
+\begin{figure}[htp]
+	\centering
+	\includegraphics[width=7cm]{FiguresCosmo/Obh2_Om_owaCDM_todas.pdf}	
+	\includegraphics[width=7cm]{FiguresCosmo/h_Om_owaCDM_todas.pdf}
+	\includegraphics[width=7cm]{FiguresCosmo/Ok_Om_owaCDM_todas}
+	\includegraphics[width=7cm]{FiguresCosmo/w0_wa_owaCDM_todas}
+	\caption{Constrictions to cosmological parameters using observational data. We consider cold dark matter and CPL parameterization (dark energy). Vertical axis corresponds to matter density parameter ($\Omega_m$). In horizontal axis we have curvature density parameter ($\Omega_k$), $w_a$ and $w_0$ are the CPL parameters.}
+	\label{cosmo1}
+\end{figure}
+
+Table \ref{tablaLCDM} shows the best fit for the total matter dimensionless density parameter ($\Omega_m$), baryon dimensionless density parameter times square Hubble constant ($\Omega_b h^2$) and Hubble constant ($h$) in $\Lambda$CDM model considering no curvature. In the first column we have the best fit using only BAO's data, in the second column we combine BAO's and Planck data and, in the last column, we use BAO's, Planck and Supernova's data.
+\begin{table} [htbp]
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|}
+			\multicolumn{5}{c}{\textbf{$\Lambda$CDM}}\\
+			\hline
+			Parameter & BBAO & BBAO+Planck & BBAO+Planck+SN & BBAO+Planck+SN+HD\\
+			\hline
+			$\Omega_m$ & $2.85 \times 10^{-1} \pm 1.99 \times 10^{-2}$  & $3.02 \times 10^{-1} \pm 3.10 \times 10^{-2}$ & $3.02 \times 10^{-1} \pm 8.03 \times 10^{-3}$ & $2.99 \times 10^{-1} \pm 7.80 \times 10^{-3}$\\
+			\hline
+			$\Omega_b h^2$& $2.20 \times 10^{-2} \pm 4.61 \times 10^{-4}$ & $2.23 \times 10^{-2} \pm 2.69 \times 10^{-4}$ & $2.23 \times 10^{-2} \pm 2.67 \times 10^{-4}$ & $2.24 \times 10^{-2} \pm 2.66 \times 10^{-4}$\\
+			\hline
+			$h$ & $6.66 \times 10^{-1} \pm 1.30 \times 10^{-2}$ & $6.82 \times 10^{-1} \pm 6.63 \times 10^{-3}$ & $6.82 \times 10^{-1} \pm 6.43 \times 10^{-3}$ & $6.84 \times 10^{-1} \pm 6.33 \times 10^{-3}$ \\
+			\hline
+			$\chi^2$ & $12.38$ & $13.77$ & $47.01$ & $73.57$ \\
+			\hline
+		\end{tabular}
+		\caption{This table shows the best fit for the parameters in $\Lambda$CDM model.}
+			\label{tablaLCDM}
+	\end{center}
+\end{table} 
+
+To obtain table \ref{tablacLCDM} we consider the curvature as a free parameter in $\Lambda$CDM model. So we find the best fit for $\Omega_m$, $\Omega_b h^2$, $h$ and the curvature dimensionless density parameter ($\Omega_k$). Table \ref{tablacLCDM} has the same structure as table \ref{tablaLCDM}.
+
+\begin{table} [htbp]
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|}
+			\multicolumn{5}{c}{\textbf{$\Lambda$CDM}}\\
+			\hline
+			Parameter & BBAO & BBAO+Planck & BBAO+Planck+SN & BBAO+Planck+SN+HD \\
+			\hline
+			$\Omega_m$ & $2.98 \times 10^{-1} \pm 3.23 \times 10^{-2}$  & $3.01 \times 10^{-1} \pm 8.34 \times 10^{-3}$ & $3.00 \times 10^{-1} \pm 8.12 \times 10^{-3}$ & $2.98 \times 10^{-1} \pm 7.80 \times 10^{-3}$ \\
+			\hline
+			$\Omega_b h^2$& $2.20 \times 10^{-2} \pm 4.56 \times 10^{-4}$ & $2.25 \times 10^{-2} \pm 3.46 \times 10^{-4}$ & $2.25 \times 10^{-2} \pm 3.39 \times 10^{-4}$ & $2.27 \times 10^{-2} \pm 3.32 \times 10^{-4}$\\
+			\hline
+			$h$ & $6.97 \times 10^{-1} \pm 6.02 \times 10^{-2}$ & $6.78 \times 10^{-1} \pm 7.27 \times 10^{-3}$ & $6.79 \times 10^{-1} \pm 7.21 \times 10^{-3}$ & $6.79 \times 10^{-1} \pm 7.12 \times 10^{-3}$ \\
+			\hline
+			$\Omega_k$ & $-8.11 \times 10^{-2} \pm 1.52 \times 10^{-1}$ & $-2.66 \times 10^{-3} \pm 3.08 \times 10^{-3}$ & $-2.60 \times 10^{-3} \pm 3.06 \times 10^{-3}$ & $-4.14 \times 10^{-3} \pm 2.86 \times 10^{-3}$\\
+			\hline
+			$\chi^2$ & $12.09$ & $13.03$ & $46.25$ & $71.59$ \\
+			\hline
+		\end{tabular}
+		\caption{This table shows the best fit for the parameters in $\Lambda$CDM model when curvature is a free parameter.}
+		\label{tablacLCDM}
+	\end{center}
+\end{table} 
+
+In table \ref{tablaowaCDM} we consider a cosmological model with cold dark matter and CPL parameterization for dark energy. We show the best fit for the parameters $\Omega_m$, $\Omega_b h^2$, $h$, $\Omega_k$ and the CPL parameters ($\omega_0$ and $\omega_a$). Table \ref{tablaowaCDM} has the same structure as table \ref{tablaLCDM}.
+
+\begin{table} [htbp]
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|}
+			\multicolumn{4}{c}{\textbf{CDM and CPL parameterization.}}\\
+			\hline
+			Parameter & BBAO & BBAO+Planck & BBAO+Planck+SN & BBAO+Planck+SN+HD \\
+			\hline
+			$\Omega_m$ & $1.98 \times 10^{-1} \pm 7.61 \times 10^{-2}$  & $3.65 \times 10^{-1} \pm 2.33 \times 10^{-2}$ & $3.07 \times 10^{-1} \pm 1.09 \times 10^{-2}$ & $3.06 \times 10^{-1} \pm 1.08 \times 10^{-2}$\\
+			\hline
+			$\Omega_b h^2$& $2.21 \times 10^{-2} \pm 4.64 \times 10^{-4}$ & $2.25 \times 10^{-2} \pm 3.52 \times 10^{-4}$ & $2.25 \times 10^{-2} \pm 3.52 \times 10^{-4}$ & $2.26 \times 10^{-2} \pm 3.41 \times 10^{-4}$\\
+			\hline
+			$h$ & $4.78 \times 10^{-1} \pm 6.99 \times 10^{-2}$ & $6.16 \times 10^{-1} \pm 2.28 \times 10^{-2}$ & $6.71 \times 10^{-1} \pm 1.15 \times 10^{-2}$ & $6.70 \times 10^{-1} \pm 1.13 \times 10^{-2}$ \\
+			\hline
+			$\Omega_k$ & $-2.46 \times 10^{-1} \pm 1.73 \times 10^{-1}$ & $-3.60 \times 10^{-3} \pm 4.52 \times 10^{-3}$ & $-5.00 \times 10^{-3} \pm 4.31 \times 10^{-3}$ & $-5.96 \times 10^{-3} \pm 3.34 \times 10^{-3}$\\
+			\hline
+			$\omega_0$ & $-5.49 \times 10^{-1} \pm 1.99 \times 10^{-1}$ & $-3.09 \times 10^{-1} \pm 2.02 \times 10^{-1}$ & $-8.84 \times 10^{-1} \pm 1.29 \times 10^{-1}$ & $-8.63 \times 10^{-1} \pm 1.13 \times 10^{-1}$\\
+			\hline
+			$\omega_a$ & $2.31 \times 10^{-1} \pm 7.00 \times 10^{-1}$ & $-1.82 \pm 5.42 \times 10^{-1}$ & $-4.90 \times 10^{-1} \pm 6.30 \times 10^{-1}$ & $-5.29 \times 10^{-1} \pm 5.15 \times 10^{-1}$\\
+			\hline
+			$\chi^2$ & $4.91$ & $9.73$ & $45.47$ & $69.68$ \\
+			\hline
+		\end{tabular}
+		\caption{This table shows the best fit for the parameters in a model with cold dark matter and CPL parameterization (dark energy).}
+		\label{tablaowaCDM}
+	\end{center}
+\end{table} 
+
+In figure \ref{bestfit}, each graph shows and compares the probability distribution function for common parameters for the different models used here. The peak in the distribution functions is the value of the best fit for the parameters. These peaks correspond to the values showed in the tables \ref{tablaLCDM}, \ref{tablacLCDM} and \ref{tablaowaCDM} using BAO's, CMB, Supernovas and H(z) (BBAO+Planck+SN+HD).
+
+\begin{figure}[htp]
+	\centering
+	\includegraphics[width=7cm]{FiguresCosmo/Om_best_fit.pdf}	
+	\includegraphics[width=7cm]{FiguresCosmo/Obh2_best_fit.pdf}
+	\includegraphics[width=7cm]{FiguresCosmo/h_best_fit.pdf}
+	\includegraphics[width=7cm]{FiguresCosmo/Ok_best_fit.pdf}
+	\caption{Probability distribution functions for the common parameters in the models used. We obtained them using the data from BAO, Planck, Supernovas and H(z). Here c$\Lambda$CDM refers to $\Lambda$CDM with curvature as free parameter and owaCDM is the CPL parameterization of dark energy.}
+	\label{bestfit}
+\end{figure}
+
+Table \ref{tablapriors} shows the priors of the parameters in the models used here.
+
+\begin{table} [htbp]
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\multicolumn{2}{c}{\textbf{Priors of the parameters.}}\\
+			\hline
+			Parameter & Prior \\
+			\hline
+			$\Omega_m$ & $\left(0.05, 1.5\right)$  \\
+			\hline
+			$\Omega_b h^2$ & $\left(0.02, 0.025\right)$ \\
+			\hline
+			$h$ & $\left(0.4, 1\right)$ \\
+			\hline
+			$\Omega_k$ & $\left(-1.5, 1.5\right)$ \\
+			\hline
+			$\omega_0$ & $\left(-2.0, 0.0\right)$ \\
+			\hline
+			$\omega_a$ & $\left(-2.0, 2.0\right)$\\
+			\hline
+		\end{tabular}
+		\caption{This table shows the priors of the parameters in the models used in this paper.}
+		\label{tablapriors}
+	\end{center}
+\end{table} 
+
+In figure \ref{examplechain} we show an example chain corresponding to the parameter $\Omega_m$ using BAO's, CMB, Supernovas and H(z) data applied to $\Lambda$CDM.
+
+\begin{figure}[htp]
+	\centering
+	\includegraphics[width=8cm]{FiguresCosmo/chain_cosmo.pdf}	
+	\caption{Example of a chain.}
+	\label{examplechain}
+\end{figure}
+
 \subsection{Conclusions}
 \appendix
 \section{A. A simple MCMC python code}
@@ -1128,6 +1456,56 @@ reys H.,
 The Theory of Probability
 , Oxford University Press, 1961.
 \bibitem{importancesampling}Surya T Tokdar and Robert E Kass, Importance sampling: A Review, DOI: 10.1002/wics.56
+
+\bibitem{baumann} Baumann D., \textit{Cosmology. Part III Mathematical Tripos.,} University of Cambridge.
+
+\bibitem{wald} Wald R. M., \textit{General Relativity,} The University of Chicago Press (1984).
+
+\bibitem{cambridge} D. Baumann, {\em Cosmology. Part III Mathematical Tripos.}, University of Cambridge.
+
+\bibitem{hubble2016} Riess A. G. et al., 2016, arXiv: 1604.01424.
+
+\bibitem{planck} Ade P.A.R. et al., 2013, arXiv:1303.5076
+
+\bibitem{parametros} Lahav O., Liddle A. R., 2014, arXiv: 1401.1389v1.
+
+\bibitem{supernova1} Riess A. G. et al., 1998, 	arXiv:astro-ph/9805201.
+
+\bibitem{supernova2} Garnavich P. et al., 1998, arXiv:astro-ph/9806396. 
+
+\bibitem{supernova3} Perlmutter S. et al., 1999, arXiv:astro-ph/9805201
+
+\bibitem{CMB1} Scott D.,  Smoot G. F., {\em Cosmic Microwave Background}, University of British Columbia, 2003. \url{http://pdg.lbl.gov/2004/reviews/microwaverpp.pdf} 
+
+\bibitem{CMB2} Eidelman S. et al. (Particle Data Group), 2004, Phys. Lett. B 592, 1.
+
+\bibitem{BAO3} Cole S. et al., 2005, MNRAS 362, 505.
+
+\bibitem{BAO4} Eisenstein D. et al., 2011, Astrophys. J., 633, 560.
+
+\bibitem{Planck1} {\em Planck}, European Space Agency. \url{https://www.esa.int/Our_Activities/Space_Science/Planck}
+
+\bibitem{Planck2} {\em Plack Science Team Home}, European Space Agency. \url{https://www.cosmos.esa.int/web/planck/home}
+
+\bibitem{Planck3}{\em Looking back to the dawn of time Planck.}, European Space Agency. \url{http://people.na.infn.it/~barbarin/MaterialeDidattico/0+approfondimenti%20corso%20Fisica%20astroparticellare/1-CMB/Planck-div.pdf}
+	
+\bibitem{Planck4}\url{http://www.esa.int/spaceinimages/Images/2018/07/Planck_s_view_of_the_cosmic_microwave_background2}.
+
+\bibitem{boss} Dawson K.S. et al., 2013, Astronomical Journal.
+
+\bibitem{jla} Betoule M. et al., 2014, arXiv: 1401.4064v2.
+
+\bibitem{snls} \url{http://irfu.cea.fr/en/Phocea/Vie_des_labos/Ast/ast_technique.php?id_ast=2289}
+
+\bibitem{liddle} A. Liddle, {\em An Introduction to Modern Cosmology}, John Wiley and Sons Ltd, Second Edition (2003).
+
+\bibitem{CPL1} Linden S., Virey J., 2008, arXiv: 0804.0389.
+
+\bibitem{CPL2} Scherrer R. J., 2015, arXiv: 1505.05781.
+
+\bibitem{H1} Stern D. et al., 2009, arXiv: 0907.3152v1.
+
+\bibitem{H2} Stern D. et al., 2009, arXiv: 0907.3149v1.
 
 \end{thebibliography}
 \end{document}
