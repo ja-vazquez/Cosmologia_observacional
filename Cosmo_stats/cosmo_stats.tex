@@ -855,56 +855,45 @@ K = 37
 \end{equation}
 which means that we have a very strong evidence that $H_1$ is better that $H_0$.
 
-\section{Bayesian statistic and Cosmology}
+\section{Bayesian statistics and Cosmology.}
 
-%Along the new age of cosmology, observational experiments have been very helpful to confront, eliminate or refined several cosmological models. On this period it has been necessary to improve sensitivity to the experiments in order to achieve stronger constraints on the different models and model's parameters. For example, on CMB satellite experiments, there was a factor of 10 better in sensitive from \textit{COBE} to $WMAP$ and from $WMAP$ to Planck \cite{cmbex}.  On redshift surveys experiments which are interested to map the universe in redshift space, we can compare the 18,000 redshift bright galaxies that were measured by the CfA2 Redshift Survey on 1995 with the \textcolor{red}{[number]} of galaxies that the Sloan Digital Sky Survey (SDSS) measured on \textcolor{red}{(year)} \cite{observ}. In addition there are several new cosmological observations that pretend to update and make our data more precise and that we will need to confront with our models or model's parameters. Such experiments are, for example \textcolor{red}{(Nuevos experimentos. Explicarlos un poco. Aqu\'i entonces comenzar a hablar de que estos nuevos datos se pueden utilizar para constre\~nir par\'ametros).}
+Bayesian statistics are used in Cosmology to constrain parameters in different models using observational data in order to determine which of all these models best describes the Universe. In this section we will present the basic topics of Cosmology in order to understand the application of Bayesian statistics. We will use natural units \footnote{Natural units. $c=\hbar=1$}.
 
-Bayesian statistics are used in Cosmology to constrain parameters in different models using observational data in order to determine which of all these models best describes the Universe. So in this section we will present the necessary topics of Cosmology in order to understand the application of Bayesian statistics. We will use natural units \footnote{Natural units. $c=\hbar=1$}.
+\subsection{The metric: Einstein equations and the geometry of the Universe.}
+To study the Universe we consider that it is homogeneous and isotropic at large scales. This is known as \textbf{Cosmological Principle}. Isotropic means that the galaxies distribution doesn't depend on the direction, and homogeneous means that it is independent of the position. 
 
-\subsection{The metric.}
-To study the Universe we consider that it is homogeneous and isotropic at large scales. This is known as \textbf{Cosmological Principle}. Isotropic means that the galaxies distribution doesn't depend on the direction, and homogeneous means that it is independent of the position. In addition,we will use the formalism of General Relativity. It studies the interaction between the geometry and matter contained in the space-time. The curvature of the space-time produces physical effects on the matter it contains, these effects are associated with a gravitational field. On the other hand, the curvature is related to the matter contained by an energy-momentum tensor. The above can be summarized by saying that matter tells space-time how to curve and, in turn, geometry tells matter how to move. We can write the above in the Einstein equation:
-
+In addition,we will use the formalism of General Relativity. It studies the interaction between the geometry and matter contained in the space-time. The curvature of the space-time produces physical effects on the matter it contains, these effects are associated with a gravitational field. On the other hand, the curvature is related to the matter contained by an energy-momentum tensor. The above can be summarized by saying that matter tells space-time how to curve and, in turn, geometry tells matter how to move. We can write the above in the Einstein equation:
 \begin{equation}
 \label{einstein}
 G_{\mu \nu} = 8\pi G T_{\mu \nu}.
 \end{equation}
-
 Where $G_{\mu \nu}$ is the Einstein tensor (geometry of the space-time), $T_{\mu \nu}$ is the energy-momentum tensor (matter contained in the Universe) and $G$ is the gravitational constant \cite{baumann}, \cite{wald}.
 
 The distance between two points in a curved space-time can be measured using:
-
 \begin{equation}
-ds^2 = g_{\mu \nu}dx^{\mu}dx^{\nu}.
+ds^2 = g_{\mu \nu}dx^{\mu}dx^{\nu},
 \end{equation}
+where $g_{\mu \nu}$ is the metric tensor which contains all the information about the structure of the space-time. The values that the indices $\mu$ and $\nu$ can take depend on the dimensions of the space-time.
 
-Where $g_{\mu \nu}$ is the metric tensor which contains all the information about the structure of the space-time. The values that the indices $\mu$ and $\nu$ can take depend on the dimensions of the space-time.
-
-To study the Universe we use the Friedmann-Lema\^itre-Robertson-Walker metric (\textbf{FLRW}). This describes a homogeneous, isotropic and expanding Universe.
-
+To study the Universe we use the Friedmann-Lema\^itre-Robertson-Walker metric (\textbf{FLRW}). This describes a homogeneous, isotropic and expanding Universe. The line element in the FLRW metric is:
 \begin{equation}
 \label{m2}
 ds^2 = dt^2 -a^2(t)\gamma_{ij}dx^idx^j ,
 \end{equation}
-
 where
-
 \begin{equation}
 \label{m3}
 \gamma_{ij} \equiv \delta_{ij} + \kappa \frac{x_i x_j}{1 - \kappa \left(x_k x^k\right)}.
 \end{equation}
-
-In equation (\ref{m3}), $\kappa$ describes the curvature. In (\ref{m2}) $a$ is the scale factor which depends on time. By convention we set $a(t_0) \equiv 1$ today \cite{cambridge}.
+In equation (\ref{m3}), $\kappa$ describes the curvature of space-time. In (\ref{m2}) $a$ is the scale factor which depends on time. By convention we set $a(t_0) \equiv 1$ today \cite{cambridge}.
 
 \subsection{Friedmann and continuity equations.}
-With the Cosmological Principle, the energy-momentum tensor describes a perfect fluid \cite{cambridge}
-
+We consider such a energy-momentum tensor that describes a perfect fluid \footnote{This tensor complies with the Cosmological Principle.} \cite{cambridge}
 \begin{equation}
 \label{tensorfluidoperfecto}
 T_{\mu \nu} = (\rho + P)U_{\mu}U_{\nu} - Pg_{\mu \nu} .
 \end{equation} 
-
 Where $\rho$ is the energy density, $P$ is the fluid pressure and $U_{\mu}$ is the 4-velocity relative to the observer. If we take the velocity as $U^{\mu} = \left(1,0,0,0\right)$ (comoving observer), the energy-momentum tensor reduces to \cite{cambridge}:
-
 \begin{equation}
 T^{\mu}_{\nu} = g^{\mu \lambda} T_{\lambda \nu} = \begin{pmatrix}
 \rho & 0 & 0 & 0 \\
@@ -913,55 +902,35 @@ T^{\mu}_{\nu} = g^{\mu \lambda} T_{\lambda \nu} = \begin{pmatrix}
 0 & 0 & 0 & -P \\
 \end{pmatrix} 
 \end{equation}
-
-Using equations (\ref{einstein}) and (\ref{tensorfluidoperfecto}) we can deduce Friedmann and continuity equations. This last equation is given by
-
+Using equations (\ref{einstein}) and (\ref{tensorfluidoperfecto}) we can deduce Friedmann and continuity equations:
 \begin{equation}
 \label{continuidad}
-\dot{\rho} + 3 \frac{\dot{a}}{a} \left(\rho + P\right) = 0.
+\dot{\rho} + 3 \frac{\dot{a}}{a} \left(\rho + P\right) = 0,
 \end{equation}
-
-Equation (\ref{continuidad}) implies energy conservation. On the other hand, Friedmann equations describe the expansion of the Universe. These are
-
 \begin{equation}
 \label{friedmann1}
 H^2 = \left(\frac{\dot{a}}{a}\right)^2 = \frac{8 \pi G}{3} \sum_{i}\rho_{i} - \frac{k}{a^2} ,
 \end{equation}
-
 \begin{equation}
+\label{friedmann2}
 \frac{\ddot{a}}{a} = -\frac{4 \pi G}{3} \sum_{i}\left(\rho_i + 3P_i\right) .
 \end{equation}
-
-Where $H \equiv \frac{\dot{a}}{a}$ is the Hubble parameter. Using the dimensionless parameters \footnote{$\rho_{crit}$ is the condition to have a flat Universe.}
-
-\begin{equation}
-\Omega_{i} \equiv \frac{\rho_i}{\rho_{crit}}, \ \rho_{crit} = \frac{3H_0^2}{8 \pi G}
-\end{equation} 
-
-we can rewrite (\ref{friedmann1}) as
-
-\begin{equation}
-\frac{H^2}{H_0^2} = \Omega_r a^{-4} + \Omega_m a^{-3} + \Omega_k a^{-2} + \Omega_{\Lambda} .
-\end{equation}
-
-Where $\Omega_r$ is the radiation dimensionless density parameter, $\Omega_m$ corresponds to the matter, $\Omega_k$ with curvature and $\Omega_{\Lambda}$ corresponds to Cosmological Constant. $H_0$ is the Hubble parameter value today.
+Where $H \equiv \frac{\dot{a}}{a}$ is the Hubble parameter. Equation (\ref{continuidad}) implies energy conservation. On the other hand, Friedmann equations, (\ref{friedmann1}) and (\ref{friedmann2}), describe the expansion of the Universe. 
 
 \subsection{Content of the Universe.}
-
+Once the equations describing the Universe are known, it is necessary to know the content of the Universe.
 \begin{itemize}
-	\item \textbf{Matter:} It has no pressure and its energy density takes the form $\rho \propto a^{-3}.$ Matter can be baryons (ordinary matter) or dark matter. This dark matter is proposed to explain a lot of observations like the dynamics of the galaxies in Coma cluster or the rotation curves of galaxies. This kind of matter only interacts gravitationally with the rest of the Universe.
+	\item \textbf{Matter:} It has no pressure and its energy density takes the form $\rho \propto a^{-3}.$ Matter can be baryons (ordinary matter) or dark matter. This dark matter is proposed to explain a lot of observations like the dynamics of the galaxies in Coma cluster or the rotation curves of galaxies \cite{liddle}, \cite{retos}. This kind of matter only interacts gravitationally with the rest of the Universe.
 	\item \textbf{Radiation:} It is everything that meets the relation $P = \frac{1}{3} \rho$. This implies a density of the form $\rho \propto a^{-4}$. We consider photons and neutrinos as radiation.
 	\item \textbf{Dark Energy:} It is proposed in order to explain the accelerating expansion of the Universe. Dark energy can be vacuum energy or cosmological constant (this is a correction in Einstein equations $-\Lambda g_{\mu \nu}$).
 \end{itemize}
 
 We can describe the above using the following state equation
-
 \begin{equation}
 \label{ecdeestado}
 \omega = \frac{P}{\rho},
 \end{equation}
 (\ref{ecdeestado}) is called barotropic equation. The state equation for each component is showed in table \ref{state}.
-
 \begin{table} [htbp]
 	\begin{center}
 		\begin{tabular}{|l|l|}
@@ -980,63 +949,50 @@ We can describe the above using the following state equation
 	\end{center}
 \end{table} 
 
+Using the dimensionless parameters \footnote{$\rho_{crit}$ is the condition to have a flat Universe.}
+\begin{equation}
+\Omega_{i} \equiv \frac{\rho_i}{\rho_{crit}}, \ \rho_{crit} = \frac{3H_0^2}{8 \pi G}
+\end{equation} 
+we can rewrite (\ref{friedmann1}) as
+\begin{equation}
+\frac{H^2}{H_0^2} = \Omega_r a^{-4} + \Omega_m a^{-3} + \Omega_k a^{-2} + \Omega_{\Lambda} .
+\end{equation}
+Where $\Omega_r$ is the radiation dimensionless density parameter, $\Omega_m$ corresponds to the matter, $\Omega_k$ with curvature and $\Omega_{\Lambda}$ corresponds to Cosmological Constant. $H_0$ is the Hubble parameter value today. \textcolor{red}{Nota para Padilla: En las notas de Cambridge de Cosmolog\'ia lo hacen con $\rho_{crit, 0}$}
+
 \subsection{Cosmological observables, parameters amd experiments.}
 To explain the Universe we use the dimensionless density parameter of each component ($\Omega_i$) and the Hubble constant $H_0$. Although there are more parameters that can be used, these can be derived from the previous ones.
-
-In the beginning of this section we mentioned that the FLRW metric describes a Universe with some curvature but the cosmological observations indicate a flat Universe. We will show, using Bayesian statistic, that this is true.\\
+\textcolor{red}{Solo puse los par\'ametros que se usan en los ejemplos posteriores.}
+%In the beginning of this section we mentioned that the FLRW metric describes a Universe with some curvature but the cosmological observations indicate a flat Universe. We will show, using Bayesian statistic, that this is true.\\
 
 \textbf{Hubble Constant:} It is the slope between the recessional velocity and the proper distance from the galaxy to the observer found by Edwin Hubble in 1929. The Hubble Space Telescope found \cite{hubble2016}:
-
 \begin{equation}
 H_0 = 73.24 \pm 1.74 kms^{-1} Mpc^{-1}.
 \end{equation}
-
 On the other hand, Planck Collaboration found another value \cite{planck}:
-
 \begin{equation}
 H_0 = 67.3 \pm 1.2 kms^{-1} Mpc^{-1}.
 \end{equation}
-
 The discrepancy between these values ​​is still a research issue.\\
 
 \textbf{Supernovas:} The most accepted explanation is that they are white dwarfs in which thermonuclear processes occur. Empirically, the peak luminosity of the type Ia supernovas (SNIa) can be used as a distance indicator using the relation between redshift and distance\cite{parametros}. 
 
-Using them, the Supernova Cosmology Project and High-z Supernova Search Team both found evidence that the Universe is expanding \cite{supernova1}, \cite{supernova2}, \cite{supernova3}. When this results and CMB data are combined we obtain \cite{parametros}:
-
-\begin{equation}
-\Omega_m \approx 0.3, \ \Omega_{\Lambda} \approx 0.7 .
-\end{equation}
-
-This means that matter (ordinary and dark) occupies $30 \%$ of the content of the Universe and dark energy occupies the remaining $70 \%$. 
-
-The experiment that we use in this work is \textbf{Joint Light-curve Analysis (JLA).} It is a collaboration to analyze the data from SDSS-II and SNLS experiment \cite{jla}. SDSS-II is the previous version of BOSS and SNLS is the SuperNova Legacy Survey. SNLS used the Canada-France-Hawaii telescope (CFHT), located in Hawaii, to detect type Ia supernovas at high redshift \cite{snls}. The collaboration used 740 samples. \\
-
-%Figure \ref{jla} shows the Hubble diagram obtained by the collaboration.
+Using them, the Supernova Cosmology Project and High-z Supernova Search Team both found evidence that the Universe is expanding \cite{supernova1}, \cite{supernova2}, \cite{supernova3}. 
+%When this results and CMB data are combined we obtain \cite{parametros}:
 %
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=10cm]{FiguresCosmo/snls_fig2.png}	
-%	\caption{Hubble diagram from 740 type Ia supernovae. Published by SNLS and SDSS Source: \cite{snls}.}
-%	\label{jla}
-%\end{figure}
+%\begin{equation}
+%\Omega_m \approx 0.3, \ \Omega_{\Lambda} \approx 0.7 .
+%\end{equation}
+%
+%This means that matter (ordinary and dark) occupies $30 \%$ of the content of the Universe and dark energy occupies the remaining $70 \%$. 
+The experiment that we use in this work is \textbf{Joint Light-curve Analysis (JLA).} It is a collaboration to analyze the data from SDSS-II and SNLS experiment \cite{jla}. SDSS-II is the previous version of BOSS and SNLS is the SuperNova Legacy Survey. SNLS used the Canada-France-Hawaii telescope (CFHT), located in Hawaii, to detect type Ia supernovas at high redshift \cite{snls}. The collaboration used 740 samples. \\
 
 \textbf{Cosmic Microwave Background (CMB):} Discovered in 1965, they are the radiation that permeates all the Universe. Before recombination, baryons and photons were tightly coupled. After uncoupling, baryons collapsed due to the effects of gravity and the photons were free and they started traveling. This radiation contains information of last scattering epoch, gravitational lensing, among others. This is because CMB has been traveling throughout the Universe and the interaction with everything they have found in their path leaves a trace that can be detected until our days.
 
 CMB shows anisotropies that are studied using an angular power spectrum in terms of spherical harmonics.
-% See figure \ref{CMBgraf}.
-
 \begin{equation}
 T(\theta, \phi) = \sum_{lm} a_{lm} Y_{lm} \left(\theta, \phi \right) .
 \end{equation}
-
 Where $a_{lm}$ is constant and $l$ is the multipole moment. This power spectrum is very similar to black body radiation with a temperature $T = 2.725K$ \cite{CMB1}, \cite{CMB2}.
-
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=12cm]{FiguresCosmo/espectro_temperatura_CMB.png}	
-%	\caption{CMB anisotropies power spectrum. Horizontal axis changes from logarithmic scale to linear scale in $l = 50$. Solid line shows the best fit considering $\Lambda CDM$. Source: \cite{parametros}.}
-%	\label{CMBgraf} 
-%\end{figure}
 
 One of the most important collaboration that studies CMB is \textbf{Planck.} It is a European Space Agency ESA's mission whose main objective is to measure the temperature, polarization and anisotropies of the CMB over the entire sky. These results would allow to determine the properties of the Universe at large scales, the nature of dark matter and dark energy. As well as test inflation theories, determine if the Universe is homogenous or not and obtain maps of galaxies in the microwave. Figure \ref{CMBPlanck} shows the last CMB anisotropies picture obtained by Planck this year\cite{Planck1}, \cite{Planck2}, \cite{Planck3}.\\
 
@@ -1054,78 +1010,27 @@ The experiments that showed evidence of BAO's were the 2-degree Field (2dF) Gala
 \textbf{Large Red Galaxies:} These are the most massive galaxies for each redshift and contain the oldest star population. These kind of galaxies are used to estimate the Hubble factor because they contain little stardust which makes it easier to get their spectrum. 
 
 Two galaxies at different redshift between $z \sim 0-2$ are chosen\footnote{For example galaxies at $z=0$ and $z \sim 0.2$} and the upper cut in its age distributions is compared. We obtain the difference of ages $\Delta t$ and redshifts $\Delta z$ so we can infer $\frac{dz}{dt}$. This quantity is related with the Hubble factor and dark energy state equation as \cite{H1}, \cite{H2}
-
 \begin{eqnarray}
 H(z) &=& \frac{-1}{(1+z)} \frac{dz}{dt},\\
 \omega_{DE} &\propto& \frac{d^2z}{dt^2}.
 \end{eqnarray}
 
-
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=10cm]{FiguresCosmo/BAO_cartoon.jpg}	
-%	\caption{BAO's and sound horizon cartoon. Source: \url{http://www.astro.ucla.edu/~wright/BAO-cartoon.jpg.}}
-%	\label{cartoon}
-%\end{figure}
-
-%\subsection{What do the observations say?}
-%In table \ref{tablaparam} we show the values of the parameters (described above) obtained by the experiments \cite{parametros}:
-%
-%\begin{table} [htbp]
-%	\begin{center}
-%		\begin{tabular}{|l|l|l|l|}
-%			\hline
-%			Parmeter & Planck+WP+highL & Planck+WP+highL+BAO & WMAP9+eCMB+BAO\\
-%			\hline
-%			$\Omega_b h^2$ & $0.02207 \pm 0.00027$  & $0.02214 \pm 0.00024$ & $0.02211 \pm 0.00034$\\
-%			\hline
-%			$\Omega_c h^2$& $0.1198 \pm 0.0026$ & $0.1187 \pm 0.0017$ & $0.1162 \pm 0.0020$ \\
-%			\hline
-%			$n_s$ & $0.958 \pm 0.007$ & $0.961 \pm 0.005$ & $0.958 \pm 0.008$ \\
-%			\hline
-%			$\tau$ & $0.091^{+0.013}_{-0.014}$ & $0.092 \pm 0.013$ & $0.079^{+0.011}_{-0.012}$ \\
-%			\hline
-%			h & $0.673 \pm 0.012$ & $0.678 \pm 0.008$ & $0.688 \pm 0.008$ \\
-%			\hline
-%			$\Omega_m$ & $0.315^{+0.016}_{-0.017}$ & $0.308 \pm 0.010$ & $0.293 \pm 0.010$ \\
-%			\hline
-%			$\Omega_{\Lambda}$ & $0.685^{+0.017}_{-0.016}$ & $0.692 \pm 0.010$ & $0.707 \pm 0.010$ \\
-%			\hline
-%		\end{tabular}
-%		\caption{This table shows the values of the cosmological parameters using different experiments.}
-%		\label{tablaparam}
-%	\end{center}
-%\end{table} 
-%
-%The data used were obtained from Planck collaboration, Wilkinson Microwave Anisotropy Probe (WMAP), Atacama Cosmology Telescope (ACT), South Pole Telescope (SPT) and eCMB for CMB. For BAO's we have SDSS, BOSS, 6dF and WiggleZ. We assume $\Lambda CDM$ \footnote{We will explain this model later.}, a flat Universe and cosmological constant as dark energy.
-
 \subsection{$\Lambda$ Cold Dark Matter ($\Lambda$CDM).}
-Also know as the Cosmological Standard Model, it is the most accepted model to describe the Universe. This model considers an expanding flat Universe that is fourteen billion years old. 
+Also know as the Cosmological Standard Model, it is the most accepted to describe the Universe. This considers an expanding flat Universe that is fourteen billion years old. 
 
-The components in this model are \cite{liddle}:
-
+The components of the Universe in this model are \cite{liddle}:
 \begin{itemize}
 	\item \textbf{Radiation:} It is the CMB.
-	
-	\begin{equation}
-	\Omega_{rad 0}h^2 \simeq 2.47 \times 10^{-5} .
-	\end{equation}
-	
+%	\begin{equation}
+%	\Omega_{rad 0}h^2 \simeq 2.47 \times 10^{-5} .
+%	\end{equation}
 	\item \textbf{Relativistic:} We assume the existence of a Cosmic Neutrino Background.
-	
-	\begin{equation}
-	\Omega_{rel 0}h^2 \simeq 4 \times 10^{-5} .
-	\end{equation}
-	
-	\item \textbf{Baryons:} They are the ordinary matter. 
-	
-	\item \textbf{Dark Matter:} It has no other interactions than gravitational with the rest of the Universe. This model considers cold dark matter, this means that it is non-relativistic at the moment they stop interacting with the rest of the matter.
-	%	
-	%	\begin{equation}
-	%	\Omega_{dm 0} \simeq 0.3
-	%	\end{equation}
-	
-	\item \textbf{Cosmological constant:} We consider it as dark energy to explain the accelerating expansion of the Universe. The idea of Cosmological Constant comes out as a correction to Einstein equations.
+%	\begin{equation}
+%	\Omega_{rel 0}h^2 \simeq 4 \times 10^{-5} .
+%	\end{equation}
+	\item \textbf{Baryons:} Ordinary matter. 	
+	\item \textbf{Dark Matter:} This model considers cold dark matter, this means that it is non-relativistic at the moment they stop interacting with the rest of the matter.	
+	\item \textbf{Cosmological constant:} We consider it as dark energy.
 \end{itemize}
 
 
@@ -1503,6 +1408,8 @@ The Theory of Probability
 \bibitem{snls} \url{http://irfu.cea.fr/en/Phocea/Vie_des_labos/Ast/ast_technique.php?id_ast=2289}
 
 \bibitem{liddle} A. Liddle, {\em An Introduction to Modern Cosmology}, John Wiley and Sons Ltd, Second Edition (2003).
+
+\bibitem{retos} Vázquez-González A., Matos T., Rev. Mex. Fís. E 54 (2) (2008) 193–202.
 
 \bibitem{CPL1} Linden S., Virey J., 2008, arXiv: 0804.0389.
 
