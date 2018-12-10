@@ -499,11 +499,11 @@ K=\frac{P(D|H_1)}{P(D|H_0)}
 we can estimate if it's necessary to introduce the hyperparameters to our model using the criteria given in table \ref{evidence}.
 
 If we consider a gaussian likelihood and a maximum entropy prior, and assuming that  inaverage the hyperparameters' weight are unity, we can rewrite the marginalized likelihood function $L(D;\theta,H_1)$ for model $H_1$ as
-\begin{equation}
+\begin{equation}\label{hyperlik}
 P(D;\theta,H_1)=\prod_{k=1}^N\frac{2\Gamma(\frac{n_k}{2}+1)}{\pi^{n_k/2}|V_k|^{1/2}}(\chi_k^2+2)^{-\left(\frac{n_k}{2}+1\right)}
 \end{equation}
 obtaining an explicitly functional form for $K$ given by
-\begin{equation}
+\begin{equation}\label{bayesfactork}
 K=\prod_{k=1}^N\frac{2^{n_k/2+1}\Gamma(n_k/2+1)}{\chi^2_k+2}e^{-\chi_k^2/2}.
 \end{equation}
 Here, $\chi_k$ is given by \ref{chi2} for every dataset and $n_k$ is the number of points contained in $D_k$. Notice that, if we have a set of independent samples for $H_0$, we can compute an estimate for $K$ with the help of equation \eqref{importanceratio}. 
@@ -694,7 +694,7 @@ L(D;line)\propto \exp\left[-\sum_d \frac{(y_d-y)^2}{2\sigma_d^2}\right]
 \end{equation}
 where $y_d$ is our data taken from the dataset $D=D_1+D_2$ and $\sigma_d$ its errors.
 
-Now we can generate our MCMC with the MHA. In our analysis we ran 6 chains with 10,000 steps for each one. We ran each chain with a temperature $T=2$ and we thinned them every 50 steps. We can see our results in table \ref{tabla1} and figure \ref{chain}. Notice that there are some regions where the frequency of events in our sample is increased. So we can say that such parameter regions look to be more likely to match with the data. Additionally we compute the Gelman-Rubin criterion for each variable in order to verify that our results converged. We see from table \ref{tabla1} that this number is very similar to 1, so our convergence criterion is fulfilled.
+Now we can generate our MCMC with the MHA. In our analysis we ran 5 chains with 10,000 steps for each one. We ran each chain with a temperature $T=2$ and we thinned them every 50 steps. We can see our results in table \ref{tabla1} and figure \ref{chain}. Notice that there are some regions where the frequency of events in our sample is increased. So we can say that such parameter regions look to be more likely to match with the data. Additionally we compute the Gelman-Rubin criterion for each variable in order to verify that our results converged. We see from table \ref{tabla1} that this number is very similar to 1, so our convergence criterion is fulfilled.
 
 \begin{table}[h!]
 \centering
@@ -702,9 +702,9 @@ Now we can generate our MCMC with the MHA. In our analysis we ran 6 chains with 
  \hline
  & \textbf{Mean} & \textbf{Std. Dev.} & \textbf{Gelman-Rubin} \\ [0.5ex] 
  \hline\hline
-$a$ & 2.982407 & 0.047978 & 1.000200 \\
+$a$ & 2.982560 & 0.047898 & 1.000017 \\
 \hline
-$b$ & 1.994251 & 0.013490 & 1.000352\\ [1ex] 
+$b$ & 1.994103 & 0.013469 & 1.000291\\ [1ex] 
  \hline
 \end{tabular}
 \caption{\footnotesize{Our means obtained in the Bayesian estimation for model $H_0$. We also calculated the Gelman-Rubin criterion for each parameter.}}
@@ -737,15 +737,11 @@ Finally in figure \ref{contour_1} we show the typical $1-4\ \sigma$ confidence r
 \label{contour_1}
 \end{minipage}\\ $ $
 
-\textit{Case with hyperparameters. Model $H_1$.-} Now it is time to prove our h. Hyperparameter method. In this case our likelihood can be written from [ref] as
-\begin{equation}
-L(D;\theta,H_1)=\prod_{k=1}^N\frac{2\Gamma(\frac{n_k}{2}+1)}{\pi^{n_k/2}|V_k|^{1/2}}\left[\frac{(y_d-y)^2}{2\sigma_k^2}+2\right]^{-\left(\frac{n_k}{2}+1\right)}
-\end{equation}
-Now, same as the last procedure, we compute the posterior with our flat priors and using 6 chains with 10,000 steps for each one. Our results and autocorrelation plots can be seen in table \ref{tab} and figure \ref{autocorr_2}. Comparing tables \ref{tabla1} and \ref{tab} we can notice that both procedures look very similar. In fact, the confidence regions for both approximations, fig. \ref{contour_1} and \ref{contour_2}, are similar as well. So, what method is better? We could say that the method with hyperparameters is as good as the one without them, but in order to be sure of it we need to compute the ratio $K$ between both models. We obtained from [eq] 
+\textit{Case with hyperparameters. Model $H_1$.-} Now it is time to prove our Hyperparameter method. In this case our likelihood can be written as Eq. \eqref{hyperlik}. Now, same as the last procedure, we compute the posterior with our flat priors and using 5 chains with 10,000 steps for each one. Our results and autocorrelation plots can be seen in table \ref{tab} and figure \ref{autocorr_2}. Comparing tables \ref{tabla1} and \ref{tab} we can notice that both procedures look very similar. In fact, the confidence regions for both approximations, fig. \ref{contour_1} and \ref{contour_2}, are similar as well. So, what method is better? We could say that the method with hyperparameters is as good as the one without them, but in order to be sure of it we need to compute the ratio $K$ between both models. We obtained from \eqref{bayesfactork} 
 \begin{equation}
 K = 3
 \end{equation}
-Then, comparing with table [ref] we can say that the evidence for $H_1$ to be better than $H_0$ is weak. In such a case it should better to work with $H_0$ as we explained before.
+Then, comparing with table \ref{evidence} we can say that the evidence for $H_1$ to be better than $H_0$ is weak. In such a case it should be better to work with $H_0$ as we explained before.
 
 \begin{table}[h!]
 \centering
@@ -753,9 +749,9 @@ Then, comparing with table [ref] we can say that the evidence for $H_1$ to be be
  \hline
  & \textbf{Mean} & \textbf{Std. Dev.} & \textbf{Gelman-Rubin} \\ [0.5ex] 
  \hline\hline
-$a$ & 2.974059 	 & 0.038583 & 1.000229 \\
+$a$ & 2.974002 	 & 0.038531 & 1.000113 \\
 \hline
-$b$ & 1.995189 & 0.010611 	 & 1.000044\\ [1ex] 
+$b$ & 1.995114 & 0.010577 	 & 1.000155\\ [1ex] 
  \hline
 \end{tabular}
 \caption{\footnotesize{Our means obtained in the Bayesian estimation for model $H_1$. We also calculated the Gelman-Rubin criterion for each parameter.}}
@@ -821,22 +817,22 @@ $b$ & 1.795464 & 0.014116 	 	 & 1.000393\\ [1ex]
 \label{contour_3}
 \end{minipage}\\ $ $
 
-\textit{Case with hyperparameters. Model $H_1$.-} We can see in table \ref{tab3} the results of our estimation. In figure \ref{contour_4} we plotted our posterior. What we can see immediately is that both approximations are very different in our posterior. While for model $H_0$ we obtained a single region far away of the real values of our data, for model $H_1$ we obtained two locally maximum regions near the real values for our datasets.  
+\textit{Case with hyperparameters. Model $H_1$.-} In figure \ref{contour_4} we plotted our posterior. What we can see immediately is that both approximations are very different. While for model $H_0$ we obtained a single region far away of the real values of our data, for model $H_1$ we obtained two locally maximum regions near the real values for our datasets. For this example we do not calculate the typical mean and standar deviation for our results given that by the form the posterior is distributed, it should be not correct to canlculate it.  
 
-\begin{table}[h!]
-\centering
-\begin{tabular}{||l|l|l|l||} 
- \hline
- & \textbf{Mean} & \textbf{Std. Dev.} & \textbf{Gelman-Rubin} \\ [0.5ex] 
- \hline\hline
-$a$ & 3.528359 	 & 0.056511 & 1.000153 \\
-\hline
-$b$ & 1.795464 & 0.014116 	 	 & 1.000393\\ [1ex] 
- \hline
-\end{tabular}
-\caption{\footnotesize{Means obtained in the Bayesian estimation for model $H_1$. We also calculated the Gelman-Rubin criterion for each parameter.}}
-\label{tab3}
-\end{table}
+%\begin{table}[h!]
+%\centering
+%\begin{tabular}{||l|l|l|l||} 
+ %\hline
+ %& \textbf{Mean} & \textbf{Std. Dev.} & \textbf{Gelman-Rubin} \\ [0.5ex] 
+ %\hline\hline
+%$a$ & 3.528359 	 & 0.056511 & 1.000153 \\
+%\hline
+%$b$ & 1.795464 & 0.014116 	 	 & 1.000393\\ [1ex] 
+% \hline
+%\end{tabular}
+%\caption{\footnotesize{Means obtained in the Bayesian estimation for model $H_1$. We also calculated the Gelman-Rubin %criterion for each parameter.}}
+%\label{tab3}
+%\end{table}
 
 \begin{minipage}{\textwidth}
 \centering
@@ -845,12 +841,21 @@ $b$ & 1.795464 & 0.014116 	 	 & 1.000393\\ [1ex]
 \label{contour_4}
 \end{minipage}\\ $ $
 
-Finally, we only need to say which method is better. Given the fact that we know \textit{a priori} the real values of our parameters for this example, we could immediately say that the method with hyperparameters is a better approximation than the case without them. However, we confirm this assumption by calculating the ratio $K$ between both models. We obtain
+As the last example we need to say which method is better. Given the fact that we know \textit{a priori} the real values of our parameters for this example, we could immediately say that the method with hyperparameters is a better approximation than the case without them. However, we confirm this assumption by calculating the ratio $K$ between both models. We obtain
 \begin{equation}
 K = 37
 \end{equation}
 which means that we have a very strong evidence that $H_1$ is better that $H_0$.
 
+Finally, we can plot the stright-line inferred by model $H_0$ and the two inferred by model $H_1$. Considering parameters inside the two regions in figure \eqref{contour_4} we obtain figure 
+\\
+
+\begin{minipage}{\textwidth}
+\centering
+\includegraphics[height=8cm]{Figures/stright2.png}
+\captionof{figure}{\footnotesize{Stright-lines for Case 2 inferred by our procedure confronted with data.}}
+\label{contour_4}
+\end{minipage}
 \section{Bayesian statistics and Cosmology}
 
 %Along the new age of cosmology, observational experiments have been very helpful to confront, eliminate or refined several cosmological models. On this period it has been necessary to improve sensitivity to the experiments in order to achieve stronger constraints on the different models and model's parameters. For example, on CMB satellite experiments, there was a factor of 10 better in sensitive from \textit{COBE} to $WMAP$ and from $WMAP$ to Planck \cite{cmbex}.  On redshift surveys experiments which are interested to map the universe in redshift space, we can compare the 18,000 redshift bright galaxies that were measured by the CfA2 Redshift Survey on 1995 with the \textcolor{red}{[number]} of galaxies that the Sloan Digital Sky Survey (SDSS) measured on \textcolor{red}{(year)} \cite{observ}. In addition there are several new cosmological observations that pretend to update and make our data more precise and that we will need to confront with our models or model's parameters. Such experiments are, for example \textcolor{red}{(Nuevos experimentos. Explicarlos un poco. Aqu\'i entonces comenzar a hablar de que estos nuevos datos se pueden utilizar para constre\~nir par\'ametros).}
