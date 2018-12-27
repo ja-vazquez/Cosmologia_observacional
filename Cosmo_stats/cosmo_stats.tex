@@ -862,7 +862,7 @@ Finally, we can plot the stright-line inferred by model $H_0$ and the two inferr
 Bayesian statistics are used in Cosmology to constrain parameters in different models using observational data in order to determine which of all these models best describes the Universe. In this section we will present the basic topics of Cosmology in order to understand the application of Bayesian statistics. We will use natural units \footnote{Natural units. $c=\hbar=1$}.
 
 \subsection{The metric: Einstein equations and the geometry of the Universe.}
-To study the Universe we consider that it is homogeneous and isotropic at large scales. This is known as \textbf{Cosmological Principle}. Isotropic means that the galaxies distribution doesn't depend on the direction, and homogeneous means that it is independent of the position. 
+In this review we consider that the Universe is homogeneous and isotropic at large scales. This is known as \textbf{Cosmological Principle}. Isotropic means that the galaxies distribution doesn't depend on the direction, and homogeneous means that it is independent of the position. 
 
 In addition,we will use the formalism of General Relativity. It studies the interaction between the geometry and matter contained in the space-time. The curvature of the space-time produces physical effects on the matter it contains, these effects are associated with a gravitational field. On the other hand, the curvature is related to the matter contained by an energy-momentum tensor. The above can be summarized by saying that matter tells space-time how to curve and, in turn, geometry tells matter how to move. We can write the above in the Einstein equation:
 \begin{equation}
@@ -957,6 +957,7 @@ Using the dimensionless parameters \footnote{$\rho_{crit}$ is the condition to h
 \end{equation} 
 we can rewrite (\ref{friedmann1}) as
 \begin{equation}
+\label{friedmann3}
 \frac{H^2}{H_0^2} = \Omega_r a^{-4} + \Omega_m a^{-3} + \Omega_k a^{-2} + \Omega_{\Lambda} .
 \end{equation}
 Where $\Omega_r$ is the radiation dimensionless density parameter, $\Omega_m$ corresponds to the matter, $\Omega_k$ with curvature and $\Omega_{\Lambda}$ corresponds to Cosmological Constant. $H_0$ is the Hubble parameter value today. \textcolor{red}{Nota para Padilla: En las notas de Cambridge de Cosmolog\'ia lo hacen con $\rho_{crit, 0}$}
@@ -964,7 +965,6 @@ Where $\Omega_r$ is the radiation dimensionless density parameter, $\Omega_m$ co
 \subsection{Cosmological observables, parameters amd experiments.}
 To explain the Universe we use the dimensionless density parameter of each component ($\Omega_i$) and the Hubble constant $H_0$. Although there are more parameters that can be used, these can be derived from the previous ones.
 \textcolor{red}{Solo puse los par\'ametros que se usan en los ejemplos posteriores.}
-%In the beginning of this section we mentioned that the FLRW metric describes a Universe with some curvature but the cosmological observations indicate a flat Universe. We will show, using Bayesian statistic, that this is true.\\
 
 \textbf{Hubble Constant:} It is the slope between the recessional velocity and the proper distance from the galaxy to the observer found by Edwin Hubble in 1929. The Hubble Space Telescope found \cite{hubble2016}:
 \begin{equation}
@@ -996,20 +996,20 @@ T(\theta, \phi) = \sum_{lm} a_{lm} Y_{lm} \left(\theta, \phi \right) .
 \end{equation}
 Where $a_{lm}$ is constant and $l$ is the multipole moment. This power spectrum is very similar to black body radiation with a temperature $T = 2.725K$ \cite{CMB1}, \cite{CMB2}.
 
-One of the most important collaboration that studies CMB is \textbf{Planck.} It is a European Space Agency ESA's mission whose main objective is to measure the temperature, polarization and anisotropies of the CMB over the entire sky. These results would allow to determine the properties of the Universe at large scales, the nature of dark matter and dark energy. As well as test inflation theories, determine if the Universe is homogenous or not and obtain maps of galaxies in the microwave. Figure \ref{CMBPlanck} shows the last CMB anisotropies picture obtained by Planck this year\cite{Planck1}, \cite{Planck2}, \cite{Planck3}.\\
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=10cm]{FiguresCosmo/CMB.jpg}	
-	\caption{CMB anisotropies obtained by Planck 2018. Source:\cite{Planck4}}
-	\label{CMBPlanck}
-\end{figure}
+One of the most important collaboration that studies CMB is \textbf{Planck}\footnote{There are other experiments like COBE \cite{COBE} and WMAP \cite{WMAP}}. It is a European Space Agency ESA's mission whose main objective is to measure the temperature, polarization and anisotropies of the CMB over the entire sky. These results would allow to determine the properties of the Universe at large scales, the nature of dark matter and dark energy. As well as test inflation theories, determine if the Universe is homogeneous or not and obtain maps of galaxies in the microwave \cite{Planck1}, \cite{Planck2}, \cite{Planck3}.\\
+%Figure \ref{CMBPlanck} shows the last CMB anisotropies picture obtained by Planck this year
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=10cm]{FiguresCosmo/CMB.jpg}	
+%	\caption{CMB anisotropies obtained by Planck 2018. Source:\cite{Planck4}}
+%	\label{CMBPlanck}
+%\end{figure}
 
 \textbf{Baryon Acoustic Oscillations (BAO's):} We know Universe was almost uniform in the beginning, it contained small fluctuations where the density matter was greater than the average. The gravitational force made these denser regions collapse \textcolor{red}{little by little} until this happened at large scales. But radiation pressure pushed back these regions against the collapse. The pressure causes the baryons and photons move away from the overdensity region forming a spherical wave. Since dark matter only interacts gravitationally, it remains in the wave center. After photon decoupling there wasn't radiation pressure so only remained overdensity in the wave center and a shell of baryonic matter at a fixed radius. This radius is called sound horizon and is used as a standard unit of distance. 
 
 The experiments that showed evidence of BAO's were the 2-degree Field (2dF) Galaxy Redshift Survey \cite{BAO3} and the Sloan Digital Sky Survey (SDSS) \cite{BAO4}. The experiment Baryon Oscillation Spectroscopic Survey (BOSS) found that dark energy state equation is $\omega = 1 \pm 0.06$. On the other hand, the Baryon Oscillation Spectroscopic Survey (\textbf{BOSS}) is part of the third stage of the Sloan Digital Sky Survey (SDSS). BOSS was in charge of mapping the spatial distribution of luminous red galaxies (LRGs) and quasars when detecting the mark left by baryon acoustic oscillations in the early Universe, whose objective is to prove the existence of dark energy. BOSS is a spectroscopic collection of redshifts of 1.5 million LRG's and Lyman-alpha absorption of more than 160000 quasars with high redshifts. BOSS is a telescope with spectroscopic instruments \cite{boss}.\\
 
-\textbf{Large Red Galaxies:} These are the most massive galaxies for each redshift and contain the oldest star population. These kind of galaxies are used to estimate the Hubble factor because they contain little stardust which makes it easier to get their spectrum. 
+\textbf{Large Red Galaxies:} (Cosmic Chronometers) These are the most massive galaxies for each redshift and contain the oldest star population. These kind of galaxies are used to estimate the Hubble factor because they contain little stardust which makes it easier to get their spectrum. 
 
 Two galaxies at different redshift between $z \sim 0-2$ are chosen\footnote{For example galaxies at $z=0$ and $z \sim 0.2$} and the upper cut in its age distributions is compared. We obtain the difference of ages $\Delta t$ and redshifts $\Delta z$ so we can infer $\frac{dz}{dt}$. This quantity is related with the Hubble factor and dark energy state equation as \cite{H1}, \cite{H2}
 \begin{eqnarray}
@@ -1106,18 +1106,15 @@ The code contains several sampling methods available: Metropolis-Hastings, Neste
 \subsection{Some examples}
 \textcolor{red}{Examples of cosmology}
 \subsection{Cosmological example.}
-In this section we show a few examples on Cosmology. We start with the model $\Lambda$CDM where we have set curvature to zero. The figure \ref{LCDM} shows the confidence regions to 1,2-$\sigma$. To obtain this graphs we use first BAO's data. Then we combine it with Planck's data and finally we use BAO, Planck and JLA. It can be seen that increasing the number of data reduces the size of the confidence regions. For example, if we see the first graph, using only BAO's we see that the confidence region is bigger than that the obtained using BAO's plus Planck data. 
-
+In this section we adjust the dimensionless density parameters that appear in the Friedmann equation (\ref{friedmann3}) for different models using the aforementioned observations. We start with $\Lambda$CDM where we have set curvature to zero. The figure \ref{LCDM} shows the confidence regions to 1,2-$\sigma$. To obtain this graphs we use first BAO's data. Then we combine it with Planck's data; BAO, Planck and JLA data and finally we use BAO, Planck, JLA and Cosmic Chronometers data. It can be seen that increasing the number of data reduces the size of the confidence regions. For example, if we see the first graph, using only BAO's we see that the confidence region is bigger than that the obtained using BAO's plus Planck data. 
 \begin{figure}[htp]
 	\centering
 	\includegraphics[width=7cm]{FiguresCosmo/h_Om_LCDM_todas.pdf}	
 	\includegraphics[width=7cm]{FiguresCosmo/Obh2_Om_LCDM_todas.pdf}
 	\caption{Constrictions to cosmological parameters in $\Lambda$CDM usign observational data. Vertical axis corresponds to matter density parameter ($\Omega_m$). In horizontal axis we have Hubble parameter ($h$) and ordinary matter density parameter times $h^2$ ($\Omega_b h^2$).}
 	\label{LCDM}
-\end{figure}
-
-In the figure \ref{cLCDM} we fit the parameters in $\Lambda$CDM but we let $\Omega_k$ as a free parameter to be fitted using the observational data. Again we see that the size of the confidence regions depends on the number of data we use. The last graph of \ref{cLCDM} shows that the best fit to the curvature density parameter is zero.
-
+\end{figure}\\
+In the figure \ref{cLCDM} we fit the parameters in $\Lambda$CDM but we let $\Omega_k$ as a free parameter to be fitted using the same observational data. Again we see that the size of the confidence regions depends on the number of data we use. The last graph of \ref{cLCDM} shows that the best fit to the curvature density parameter is zero.
 \begin{figure}[htp]
 	\centering
 	\includegraphics[width=7cm]{FiguresCosmo/h_Om_cLCDM_todas.pdf}	
@@ -1125,9 +1122,8 @@ In the figure \ref{cLCDM} we fit the parameters in $\Lambda$CDM but we let $\Ome
 	\includegraphics[width=7cm]{FiguresCosmo/Ok_Om_cLCDM_todas.pdf}
 	\caption{Constrictions to cosmological parameters in $\Lambda$CDM usign observational data. Vertical axis corresponds to matter density parameter ($\Omega_m$). In horizontal axis we have Hubble parameter ($h$), ordinary matter density parameter times $h^2$ ($\Omega_b h^2$) and curvature density parameter ($\Omega_k$).}
 	\label{cLCDM}
-\end{figure}
-
-Just to show a different example to $\Lambda$CDM, and because it is used in the cosmological chronometers, we used the CPL parameterization of dark energy state equation. This model considers that dark energy is not a cosmological constant \footnote{For more information see references \cite{CPL1} and \cite{CPL2}}. CPL is the first two terms in the series expansion of the dark energy state equation. This is the simplest parameterization which considers dynamics in dark energy.
+\end{figure}\\
+$\Lambda$CDM is not the only existing model to describe the Universe. There are a lot of them. Just to show a different example we used the Chevallier-Polarski-Linder parameterization of dark energy state equation (\textbf{CPL}). This model considers that dark energy is not a cosmological constant \footnote{For more information see references \cite{CPL1} and \cite{CPL2}}. It is used in the cosmological chronometers. CPL is the first two terms in the series expansion of the dark energy state equation. This is the simplest parameterization which considers dynamics in dark energy.
 
 \begin{equation}
 \omega = \omega_0 + \omega_a\left(\frac{z}{1 + z}\right) = \omega_0 + \omega_a\left(1 - a\right).
@@ -1390,6 +1386,10 @@ The Theory of Probability
 \bibitem{CMB1} Scott D.,  Smoot G. F., {\em Cosmic Microwave Background}, University of British Columbia, 2003. \url{http://pdg.lbl.gov/2004/reviews/microwaverpp.pdf} 
 
 \bibitem{CMB2} Eidelman S. et al. (Particle Data Group), 2004, Phys. Lett. B 592, 1.
+
+\bibitem{COBE}{\em COBE}\url{https://science.nasa.gov/missions/cobe}
+
+\bibitem{WMAP}{\em WMAP}\url{https://www.nasa.gov/pdf/594754main_Citrin_Liz.pdf}
 
 \bibitem{BAO3} Cole S. et al., 2005, MNRAS 362, 505.
 
