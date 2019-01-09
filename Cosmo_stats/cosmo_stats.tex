@@ -162,11 +162,10 @@ P(2heads|D)=\frac{B(13,5)}{B(11,5)}=0.485
 where $B(x,y)$ is the beta function. This last appears given the fact that $B(1,1)$ is the uniform distribution which we assume as our prior. This example and the use of the beta function will be better explained in the following section. 
 \end{itemize}
 
-We can see that both approximations arrive at different results. In the first case, since we adopt the probability as a frequency of events we have a bigger probability to get two heads in a row than when taking the probability as our knowledge about the experiment. However, in both cases, the probability differs from the real one ($P(2heads)=0.25$) because we don't have enough data for our estimations.\lp{Explicar un poco m\'as la diferencia de las estad\'isticas tomando el ejemplo.}
+We can see that both approximations arrive at different results. In the first case, since we adopt the probability as a frequency of events we have a bigger probability to get two heads in a row than when taking the probability as our knowledge about the experiment. However, in both cases, the probability differs from the real one ($P(2heads)=0.25$) because we don't have enough data for our estimations.\lp{Explicar un poco m\'as la diferencia de las estad\'isticas tomando el ejemplo.} \textcolor{red}{(le: padilla quiere modificar el parrafo de arriba porque dice que explica mal el ejemplo, pero a mi se me hace decente.)}
 
 \textit{Note}: If you are unfamiliar with Bayesian statistics, please don't be scared of the last example. In the next section we will introduce the basic concepts to understand the Bayesian part and then we will go back to this example to solve it using the new tools acquired.   
 
-\textcolor{red}{(Tratar de escribir esta parte un poco m\'as bonito)}
 %\subsection{Summary}
 
 %In this section we reviewed the basic differences between the Bayesian and the Frequentist interpretation of statistics. Basically, what is important here is to notice that probability has a different meaning for a frequentist statistician than for a bayesian one. While for a Frequentist, probabilities are related to frequencies of events, for Bayesians, probabilities are related to our own knoledge about an event. Then, given this basic difference, there are several other ones that are a result of it and that are well summarized in table  \ref{table:1}. 
@@ -291,11 +290,11 @@ Then, we have some model parameters that have to be confronted with different se
 
 In fact, if we rewrite Bayes theorem so that all probabilities are explicitly dependent on some prior information $I$
 \begin{equation}\label{BayesTI}
-P(\theta,H|DI)=\frac{P(\theta,H|I)P(D|\theta,HI)}{P(D|I)}
+P(\theta|DI,H)=\frac{P(\theta|I,H)P(DI|\theta,H)}{P(D|I,H)},
 \end{equation}
 and then we consider a new set of data $D'$, letting the old data become part of the prior information $I'=DI$, we arrive at \cite{AlanH}   
 \begin{equation}
-P(\theta,H|D'I')=\frac{P(\theta,H|I)P(DD'|\theta,HI)}{P(DD'|I)}=P(\theta,H|[DD']I)
+P(\theta|D'I',H)=\frac{P(\theta|I,H)P(DD'I|\theta,H)}{P(DD'|I,H)}=P(\theta|[DD']I, H),
 \end{equation}
 where we can explicitly see the equivalence of the 2 different options. 
 \subsection{About the Likelihood}
@@ -381,7 +380,7 @@ On the other hand, if $Q$ is too large there are some reasons that could cause s
 
 Once the best fit parameter values are obtained we would like to know the confidence regions where values could be considered good candidates for our model. The most logical election is to take values inside a compact region around the best fit value. Then, a natural choice are regions with constant $\chi^2$ boundaries. When $\chi^2$ possesses more than 1 minimum, it is said that we have more than one non-connected confidence region, for multi-variate Gaussian distributions (as the likelihood approximation \eqref{LikG}) these are ellipsoidal regions. In this section we exemplify how to calculate the confidence regions following \cite{LiV}. 
 
-We consider a little perturbation from the best fit of chisquare $\Delta\chi^2=\chi^2-\chi^2_{best}$. Then we use the properties of $\chi^2$ distribution to define confidence regions for variations on $\chi^2$ to its minimum. In Table \ref{tableerrors} we see the typical $68.3 \%$, $95.4\%$ and $99.5\%$ confidence levels as a function of number of parameters for the joint confidence level. In the case of Gaussian distribution (as the likelihood) these correspond to the conventional 1, 2 and 3 $\sigma$ \textcolor{red}{(revisar esta parte y la tabla)}.
+We consider a little perturbation from the best fit of chisquare $\Delta\chi^2=\chi^2-\chi^2_{best}$. Then we use the properties of $\chi^2$ distribution to define confidence regions for variations on $\chi^2$ to its minimum. In Table \ref{tableerrors} we see the typical $68.3 \%$, $95.4\%$ and $99.5\%$ confidence levels as a function of number of parameters for the joint confidence level. In the case of Gaussian distribution (as the likelihood) these correspond to the conventional 1, 2 and 3 $\sigma$.
 \begin{table}[h!]
 \centering
 \begin{tabular}{||l|l|l|l|l||} 
@@ -449,6 +448,8 @@ The whole point of the Fisher matrix formalism is to predict how well the experi
 
 The $\leq$ in \eqref{rao} is called the Kramer-Rao inequality. One can see that the Fisher information matrix represents a lower bound for the errors. Only when the likelihood is normally distributed, the $\leq$ is transformed in $=$. However as we saw in [About the likelihood] a gaussian likelihood is only applicable to some circumstances, being generally impossible to be applied, so the key is to have a good understanding of our theoretical model in such a way that we can construct a gaussian likelihood.
 
+There is also a figure of merit used by the Dark Energy Task Force \cite{detf} which is defined to be the reciprocal of the area in the plane enclosing the $95\%$ confidence limit of two parameters. This figure of merit can be used to see how different experiments break degeneracies using it as an additional parameter.
+
 \subsection{Importance Sampling}
 
 We call importance sampling (IS) to the different techniques of determining properties of a distribution by drawing samples from another one. The basic idea of this procedure is to consider that the distribution one draws from should be (for a larger number of samples) representative of the distribution of interest. In such case, we should infer different quantities of it. In this section we review the basic concepts necessary to understand what IS is following \cite{importancesampling}.
@@ -469,7 +470,7 @@ For the strong law of large numbers, in the limit when $m\rightarrow \infty$ we 
 
 In Bayes analysis it can be useful to compute the ratio between evidences for two different models
 \begin{equation}\label{importanceratio}
-\frac{P'(D)}{P(D)}=E\left[\frac{P'(\theta,D}{P(\theta,D)}\right]_{P(\theta|D)}\simeq \frac{1}{N}\sum_{n=1}^N\frac{P'(D|\theta_n)P'(\theta_n)}{P(D|\theta_n)P(\theta_n)}
+\frac{P'(D)}{P(D)}=E\left[\frac{P'(\theta,D)}{P(\theta,D)}\right]_{P(\theta|D)}\simeq \frac{1}{N}\sum_{n=1}^N\frac{P'(D|\theta_n)P'(\theta_n)}{P(D|\theta_n)P(\theta_n)}
 \end{equation}
 where the samples $\lbrace\theta_n\rbrace$ are drawn from $P(\theta|D)$.
 
@@ -482,13 +483,13 @@ In this section we review the main steps necessary to understand the hyperparame
 
 The main feature of this process is the introduction of a new set of ``hyperparameters" $\alpha$ in our bayesian procedure in order to avoid extra freedom in the parameter estimation process.  These hyperparameters are equivalent to nuisance parameters in such case we need to marginalize over the hyperparameters $\alpha$ in order to recover the posterior distribution, i.e.
 \begin{equation}
-P(\theta,H|D)=\frac{1}{P(D)}\int P(D|\theta,\alpha,H)P(\theta,\alpha,H)d\alpha
+P(\theta|D,H)=\frac{1}{P(D|H)}\int P(\theta|\alpha,H)P(\alpha|D, H)d\alpha
 \end{equation}
 where we have used the Bayes theorem. Now, it is necessary for the method to assume that the hyperparameters $\alpha$ and the parameters of interest $\theta$ are independent, i.e. $P(\theta,\alpha,H)=P(\alpha)P(\theta,H)$, it is also necessary to assume that each hyperparameter $\alpha_k$ is independent from each other, i.e. $P(\alpha)=P(\alpha_1)P(\alpha_2)...P(\alpha_N)$. In this way we can rewrite the above expression as
 \begin{equation}
-P(\theta,H|D)=\frac{P(\theta,H)}{P(D|H)}\left[\prod_{k=1}^N\int P(D_k|\theta,\alpha_k,H)P(\alpha_k)d\alpha_k\right]
+P(\theta|D,H)=\frac{P(\theta,H)}{P(D|H)}\left[\prod_{k=1}^N\int P(D_k|\theta,\alpha_k,H)P(\alpha_k)d\alpha_k\right]
 \end{equation}
-Here, the quantity inside square brackets is the marginalized likelihood over hyperparameters $L(D;\theta,H)$, and then we can identify the quantity inside the integration as the individual likelihood $L(D_k;\theta,\alpha,H)$, for every $\alpha_k$ and data set $D_k$; $P(D|H)$ is the evidence and, in a typical parameter inference procedure, works as a normalized function, i.e. $P(D|H)=\int P(\theta,H)L(D;\theta,H)$. Notice that, by considering $P(a_k)=\delta(\alpha_k-1)$, we rely on the standard approach, where no hyperparameters are used.  
+Here, the quantity inside square brackets is the marginalized likelihood over hyperparameters $L(D;\theta,H)$, and then we can identify the quantity inside the integration as the individual likelihood $L(D_k;\theta,\alpha,H)$, for every $\alpha_k$ and data set $D_k$; $P(D|H)$ is the evidence and, in a typical parameter inference procedure, works as a normalized function, i.e. $P(D|H)=\int P(\theta,H)L(D;\theta,H)$. Notice that, by considering $P(\alpha_k)=\delta(\alpha_k-1)$, we rely on the standard approach, where no hyperparameters are used.  
 
 We add these $\alpha_k$ in order to, in a way, weight every dataset and take away the importance of the data that doesn't seem to be consistent with other ones. Then, how can we know whether the data support the introduction of hyperparameters? Of course, if the datasets are consistent, the introduction of hyperparameters could make difficult the estimation or give rise to large uncertainties. A way to answer this question is given by the Bayesian evidence.
 
@@ -500,7 +501,7 @@ we can estimate if it's necessary to introduce the hyperparameters to our model 
 
 If we consider a gaussian likelihood and a maximum entropy prior, and assuming that  inaverage the hyperparameters' weight are unity, we can rewrite the marginalized likelihood function $L(D;\theta,H_1)$ for model $H_1$ as
 \begin{equation}\label{hyperlik}
-P(D;\theta,H_1)=\prod_{k=1}^N\frac{2\Gamma(\frac{n_k}{2}+1)}{\pi^{n_k/2}|V_k|^{1/2}}(\chi_k^2+2)^{-\left(\frac{n_k}{2}+1\right)}
+P(D|\theta,H_1)=\prod_{k=1}^N\frac{2\Gamma(\frac{n_k}{2}+1)}{\pi^{n_k/2}|V_k|^{1/2}}(\chi_k^2+2)^{-\left(\frac{n_k}{2}+1\right)}
 \end{equation}
 obtaining an explicitly functional form for $K$ given by
 \begin{equation}\label{bayesfactork}
@@ -539,7 +540,13 @@ where $\simeq$ follows because the samples $\theta_i$ are generated from the pos
 \langle f(\theta)\rangle \simeq\frac{1}{N}\sum_{i=1}^N f(\theta_i)
 \end{equation}
 
-As was mentioned, in a Markov chain it is necessary to generate a new point $\theta_{i+1}$ in our chain from the present point $\theta_i$. However, as it is expected, we need a criteria for accepting (or refusing) this new point depending on if whether it turns out to be better for our model or not. On the other hand, if this new step is worse than the previous one, we may accept it, since it could be the case that, if we only accept steps with better probability, we could be converging into a local maximum in our parameter space and, therefore, not completely mapping it. The simplest algorithm that contains all this information in its methodology is known as the Metropolis-Hastings algorithm and now we will explain it.
+As was mentioned, in a Markov chain it is necessary to generate a new point $\theta_{i+1}$ in our chain from the present point $\theta_i$. However, as it is expected, we need a criteria for accepting (or refusing) this new point depending on if whether it turns out to be better for our model or not. On the other hand, if this new step is worse than the previous one, we may accept it, since it could be the case that, if we only accept steps with better probability, we could be converging into a local maximum in our parameter space and, therefore, not completely mapping it. The simplest algorithm that contains all this information in its methodology is known as the Metropolis-Hastings algorithm and now we will explain it, then we will explain a special case of Metropolis-Hastings algorithm known as Gibbs sampling.
+
+
+
+
+
+
 \subsubsection{Metropolis-Hastings algorithm}
 
 In the \textit{Metropolis-Hastings algorithm} (MHA) \cite{metr} it is neccesary to start from a random initial point $\theta_0$, with an associated posterior probability $p_0=p(\theta_0|D,H)$. We need to propose a candidate $\theta_c$ by drawing from a \textit{proposal distribution} $q(\theta_0,\theta_c)$ that is used as a generator of new random steps. Then, the probability of acceptance of a new point is given by
@@ -558,6 +565,25 @@ In this way the complete algorithm can be expressed by the following steps:
 \item If the point is not accepted, repeat the previous point in the chain
 \item Repeat steps 2-4 until you have a large enough chain.
 \end{enumerate}
+
+\subsubsection{Gibbs sampling}
+
+The basic idea of the Gibbs sampling algorithm \cite{gibbs} is to split the multidimensional $\theta$ into blocks and sample each block separately, conditional on the most recent values of the other blocks. It basically breaks a high-dimensional problem into low-dimensional problems.
+
+The algorithm reads as follows:
+
+\begin{enumerate}
+\item $\theta$ consists of $k$ blocks $\theta_1, ..., \theta_k$; at step $i$
+\item Draw $\theta^{i+1}_{1}$ from $p(\theta_1|\theta^{i}_{2}, ...,\theta^{i}_{k})$
+\item Draw $\theta^{i+1}_{2}$ from $p(\theta_2|\theta^{i+1}_{1}, \theta^{i}_{3}, ...,\theta^{i}_{k})$\
+\item ...
+\item Repeat the above steps for the wished iterations with $i \rightarrow i+1$.
+\end{enumerate}
+The distribution $p(\theta_1|\theta_{2}, ...,\theta_{k})=\frac{p(\theta_1, ..., \theta_k)}{p(\theta_2, ..., \theta_k)}$ is known as the \textit{full conditional distribution of $\theta_1$}. 
+
+This algorithm is a special case of MHA where the proposal is always accepted.
+
+
 
 \subsubsection{A first example in parameter inference using a MCMC technique with a MHA}
 
@@ -647,7 +673,7 @@ In order to fix this issue in a more efficient way, it is recommendable to run a
 \end{equation}
 where $X_i$ is the $i$-th sample and $X$ is the mean of the samples. This autocorrelation should become smaller as long as $k$ increases (this means that samples start to become independent).\\
 
-\textit{Metropolis Coupled Markov Chain Monte Carlo ($MC^3$)}\textcolor{red}{(No estoy seguro si dejarlo o no)}.- It is easy to see that it could be a little problematic if our likelihoods possess local maxima. The $MC^3$ is a modification of the standard MCMC algorithm that consists in running several Markov Chains in parallel to explore the target distribution for different  ``temperatures", and then simplify the way we sample our parameter space and help us to avoid this local maxima. In this little section we exemplify the basic idea of this algorithm following \cite{mcmcmc}. If you are interested in a more extensive explanation of this algorithm, or a modification to make the temperature of the chains dynamical, please consult reference \cite{mcmcmc}.
+\textit{Metropolis Coupled Markov Chain Monte Carlo ($MC^3$)}.- It is easy to see that it could be a little problematic if our likelihoods possess local maxima. The $MC^3$ is a modification of the standard MCMC algorithm that consists in running several Markov Chains in parallel to explore the target distribution for different  ``temperatures", and then simplify the way we sample our parameter space and help us to avoid this local maxima. In this little section we exemplify the basic idea of this algorithm following \cite{mcmcmc}. If you are interested in a more extensive explanation of this algorithm, or a modification to make the temperature of the chains dynamical, please consult reference \cite{mcmcmc}.
 
 We consider a tempering version of the posterior distribution $P(\theta,T|D,H)$
 \begin{equation}
@@ -688,7 +714,7 @@ a \propto U[0,5] \ \ \ \text{and} \ \ \ b \propto U[0,3]
 \end{equation}
 where $U[\alpha,\beta]$ are uniform distributions with lower limit $\alpha$ and upper limit $\beta$.
 
-If now we consider that there are values for $a$ and $b$ for which our data fits better, then from [eq] we can write our likelihood as
+If now we consider that there are values for $a$ and $b$ for which our data fits better, then from \eqref{GLik} we can write our likelihood as
 \begin{equation}
 L(D;line)\propto \exp\left[-\sum_d \frac{(y_d-y)^2}{2\sigma_d^2}\right]
 \end{equation}
@@ -817,7 +843,7 @@ $b$ & 1.795464 & 0.014116 	 	 & 1.000393\\ [1ex]
 \label{contour_3}
 \end{minipage}\\ $ $
 
-\textit{Case with hyperparameters. Model $H_1$.-} In figure \ref{contour_4} we plotted our posterior. What we can see immediately is that both approximations are very different. While for model $H_0$ we obtained a single region far away of the real values of our data, for model $H_1$ we obtained two locally maximum regions near the real values for our datasets. For this example we do not calculate the typical mean and standar deviation for our results given that by the form the posterior is distributed, it should be not correct to canlculate it.  
+\textit{Case with hyperparameters. Model $H_1$.-} In figure \ref{contour_4} we plotted our posterior. What we can see immediately is that both approximations are very different. While for model $H_0$ we obtained a single region far away of the real values of our data, for model $H_1$ we obtained two locally maximum regions near the real values for our datasets. For this example we do not calculate the typical mean and standar deviation for our results given that by the form the posterior is distributed, it should be not correct to calculate it.  
 
 %\begin{table}[h!]
 %\centering
@@ -1409,6 +1435,10 @@ The Theory of Probability
 \bibitem{H1} Stern D. et al., 2009, arXiv: 0907.3152v1.
 
 \bibitem{H2} Stern D. et al., 2009, arXiv: 0907.3149v1.
+
+\bibitem{detf} Albrecht A. et al., Report of the Dark Energy Task Force, June 2006.
+
+\bibitem{gibbs} Geman S., Geman D., ``Stochastic Relaxation, Gibbs Distributions, and the Bayesian Restoriation of Images''`, 1984.
 
 \end{thebibliography}
 \end{document}
